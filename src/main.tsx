@@ -5,6 +5,7 @@ import { Outlet, RouterProvider, createBrowserRouter } from 'react-router';
 import App from './app';
 import { routesSection } from './routes/sections';
 import { ErrorBoundary } from './routes/components';
+import { AuthProvider } from './contexts/auth-context';
 import './locales/i18n.config';
 
 // ----------------------------------------------------------------------
@@ -12,9 +13,11 @@ import './locales/i18n.config';
 const router = createBrowserRouter([
   {
     Component: () => (
-      <App>
-        <Outlet />
-      </App>
+      <AuthProvider>
+        <App>
+          <Outlet />
+        </App>
+      </AuthProvider>
     ),
     errorElement: <ErrorBoundary />,
     children: routesSection,

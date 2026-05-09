@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { useRouter } from 'src/routes/hooks';
 
@@ -15,18 +16,82 @@ import { Iconify } from 'src/components/iconify';
 import { SocialLoginGroup } from 'src/components/social-login';
 import { LanguageSwitcher } from 'src/components/language-switcher';
 import { useAuthTranslation } from 'src/hooks/use-translation';
+import { useAuth } from 'src/contexts/auth-context';
+import { useToast } from 'src/components/toast';
 
 // ----------------------------------------------------------------------
 
 export function SignInView() {
   const router = useRouter();
-  const { signIn: t } = useAuthTranslation();
+  const { signIn: t, validation: vt, error: et } = useAuthTranslation();
+  const { login, isLoading } = useAuth();
+  const { showSuccess, showError } = useToast();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    username: '',
+    password: ''
+  });
+  const [formErrors, setFormErrors] = useState({
+    username: '',
+    password: ''
+  });
 
-  const handleSignIn = useCallback(() => {
-    router.push('/');
-  }, [router]);
+  const handleInputChange = useCallback((field: string) => (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = event.target.value;
+    setFormData(prev => ({ ...prev, [field]: value }));
+    
+    // Clear error for this field
+    setFormErrors(prev => {
+      if (prev[field as keyof typeof prev]) {
+        return { ...prev, [field]: '' };
+      }
+      return prev;
+    });
+  }, []);
+
+  const validateForm = useCallback((): boolean => {
+    const errors = {
+      username: '',
+      password: ''
+    };
+
+    // Username/Email validation
+    if (!formData.username || formData.username.length < 3) {
+      errors.username = vt.usernameRequired;
+    }
+
+    // Password validation
+    if (!formData.password) {
+      errors.password = vt.passwordRequired;
+    } else if (formData.password.length < 8) {
+      errors.password = vt.passwordTooShort;
+    }
+
+    setFormErrors(errors);
+    return !errors.username && !errors.password;
+  }, [formData, vt]);
+
+  const handleSignIn = useCallback(async () => {
+    if (!validateForm()) {
+      return;
+    }
+
+    try {
+      const result = await login(formData.username, formData.password);
+      
+      if (result.success) {
+        showSuccess('Login successful!');
+        router.push('/');
+      } else {
+        showError(result.error || et.registrationFailed);
+      }
+    } catch (error: any) {
+      showError(error?.message || et.registrationFailed);
+    }
+  }, [formData, validateForm, login, router, showSuccess, showError, et]);
 
   const renderForm = (
     <Box
@@ -38,9 +103,12 @@ export function SignInView() {
     >
       <TextField
         fullWidth
-        name="email"
+        name="username"
         label={t.emailLabel}
-        defaultValue="hello@gmail.com"
+        value={formData.username}
+        onChange={handleInputChange('username')}
+        error={!!formErrors.username}
+        helperText={formErrors.username}
         sx={{ mb: 3 }}
         slotProps={{
           inputLabel: { shrink: true },
@@ -51,8 +119,11 @@ export function SignInView() {
         fullWidth
         name="password"
         label={t.passwordLabel}
-        defaultValue="@demo1234"
         type={showPassword ? 'text' : 'password'}
+        value={formData.password}
+        onChange={handleInputChange('password')}
+        error={!!formErrors.password}
+        helperText={formErrors.password}
         slotProps={{
           inputLabel: { shrink: true },
           input: {
@@ -78,8 +149,9 @@ export function SignInView() {
         color="inherit"
         variant="contained"
         onClick={handleSignIn}
+        disabled={isLoading}
       >
-        {t.signInButton}
+        {isLoading ? <CircularProgress size={24} color="inherit" /> : t.signInButton}
       </Button>
     </Box>
   );
@@ -95,9 +167,6 @@ export function SignInView() {
           mb: 5,
         }}
       >
-        <Box sx={{ alignSelf: 'flex-end', width: '100%' }}>
-          <LanguageSwitcher size="small" />
-        </Box>
         <Typography variant="h5">{t.title}</Typography>
         <Typography
           variant="body2"

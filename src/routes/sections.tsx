@@ -9,6 +9,7 @@ import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgr
 
 import { AuthLayout } from 'src/layouts/auth';
 import { DashboardLayout } from 'src/layouts/dashboard';
+import { RouteGuard } from 'src/components/route-guard';
 
 // ----------------------------------------------------------------------
 
@@ -43,11 +44,13 @@ const renderFallback = () => (
 export const routesSection: RouteObject[] = [
   {
     element: (
-      <DashboardLayout>
-        <Suspense fallback={renderFallback()}>
-          <Outlet />
-        </Suspense>
-      </DashboardLayout>
+      <RouteGuard requireAuth={true}>
+        <DashboardLayout>
+          <Suspense fallback={renderFallback()}>
+            <Outlet />
+          </Suspense>
+        </DashboardLayout>
+      </RouteGuard>
     ),
     children: [
       { index: true, element: <DashboardPage /> },
@@ -59,17 +62,21 @@ export const routesSection: RouteObject[] = [
   {
     path: 'sign-in',
     element: (
-      <AuthLayout>
-        <SignInPage />
-      </AuthLayout>
+      <RouteGuard requireAuth={false} redirectTo="/">
+        <AuthLayout>
+          <SignInPage />
+        </AuthLayout>
+      </RouteGuard>
     ),
   },
   {
     path: 'sign-up',
     element: (
-      <AuthLayout>
-        <SignUpPage />
-      </AuthLayout>
+      <RouteGuard requireAuth={false} redirectTo="/">
+        <AuthLayout>
+          <SignUpPage />
+        </AuthLayout>
+      </RouteGuard>
     ),
   },
   {

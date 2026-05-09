@@ -47,12 +47,26 @@ export interface LoginResponse {
     username: string;
     email: string;
     full_name?: string;
+    avatar?: string;
+    status: string;
     last_login_time: string;
+    register_date?: string;
   };
 }
 
+export interface User {
+  id: number;
+  username: string;
+  email: string;
+  full_name?: string;
+  avatar?: string;
+  status: string;
+  last_login_time: string;
+  register_date?: string;
+}
+
 export interface ApiResponse<T> {
-  status: 'success' | 'created' | 'error';
+  status: 'success' | 'created' | 'error' | 200 | 201 | 400 | 401 | 403 | 404 | 500;
   message: string;
   data?: T;
   error_code?: string;
@@ -120,10 +134,15 @@ class AuthService {
     });
   }
 
-  // Store tokens in localStorage
+  // Store tokens and user data in localStorage
   setTokens(accessToken: string, refreshToken: string): void {
     localStorage.setItem('access_token', accessToken);
     localStorage.setItem('refresh_token', refreshToken);
+  }
+
+  // Store user data
+  setUser(user: User): void {
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   // Get access token
@@ -131,15 +150,68 @@ class AuthService {
     return localStorage.getItem('access_token');
   }
 
-  // Clear tokens
-  clearTokens(): void {
+  // Get refresh token
+  getRefreshToken(): string | null {
+    return localStorage.getItem('refresh_token');
+  }
+
+  // Get user data
+  getUser(): User | null {
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+      try {
+        return JSON.parse(userStr);
+      } catch (error) {
+        console.error('Error parsing user data:', error);
+        this.clearSession();
+        return null;
+      }
+    }
+    return null;
+  }
+
+  // Clear all session data
+  clearSession(): void {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
+    localStorage.removeItem('user');
   }
 
   // Check if user is authenticated
   isAuthenticated(): boolean {
-    return !!this.getAccessToken();
+    const token = this.getAccessToken();
+    const user = this.getUser();
+    return !!(token && user);
+  }
+
+  // Enhanced login method that stores session data
+  async loginAndStoreSession(credentials: LoginRequest): Promise<ApiResponse<LoginResponse>> {
+    try {
+      const response = await this.login(credentials);
+      
+      if ((response.status === 'success' || response.status === 200) && response.data) {
+        // Store tokens and user data
+        this.setTokens(response.data.access_token, response.data.refresh_token);
+        this.setUser(response.data.user);
+      }
+      
+      return response;
+    } catch (error) {
+      console.error('Login failed:', error);
+      throw error;
+    }
+  }
+
+  // Logout and clear session
+  async logoutAndClearSession(): Promise<void> {
+    try {
+      await this.logout();
+    } catch (error) {
+      console.error('Logout API call failed:', error);
+    } finally {
+      // Always clear local session even if API call fails
+      this.clearSession();
+    }
   }
 }
 

@@ -21,6 +21,7 @@ import { Iconify } from 'src/components/iconify';
 import { useToast } from 'src/components/toast';
 import { SocialLoginGroup } from 'src/components/social-login';
 import { LanguageSwitcher } from 'src/components/language-switcher';
+import { SuccessPopup } from 'src/components/success-popup';
 import { authService, RegisterRequest } from 'src/services/auth.service';
 import { useAuthTranslation } from 'src/hooks/use-translation';
 
@@ -32,6 +33,7 @@ export function SignUpView() {
   const { signUp: t, validation: vt, success: st, error: et } = useAuthTranslation();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   // Form state
   const [formData, setFormData] = useState<RegisterRequest>({
@@ -56,21 +58,27 @@ export function SignUpView() {
     const value = 'value' in event ? event.value : event.target.value;
     setFormData(prev => ({ ...prev, [field]: value }));
     
-    // Clear error for this field
-    if (formErrors[field]) {
-      setFormErrors(prev => ({ ...prev, [field]: '' }));
-    }
-  }, [formErrors]);
+    // Clear error for this field using functional update to avoid dependency
+    setFormErrors(prev => {
+      if (prev[field]) {
+        return { ...prev, [field]: '' };
+      }
+      return prev;
+    });
+  }, []);
 
   const handleGenderChange = useCallback((event: SelectChangeEvent) => {
     const value = event.target.value as 'MALE' | 'FEMALE' | 'OTHER';
     setFormData(prev => ({ ...prev, gender: value }));
     
     // Clear error for this field
-    if (formErrors.gender) {
-      setFormErrors(prev => ({ ...prev, gender: '' }));
-    }
-  }, [formErrors]);
+    setFormErrors(prev => {
+      if (prev.gender) {
+        return { ...prev, gender: '' };
+      }
+      return prev;
+    });
+  }, []);
 
   const validateForm = useCallback((): boolean => {
     const errors: Partial<Record<keyof RegisterRequest, string>> = {};
@@ -140,19 +148,23 @@ export function SignUpView() {
     try {
       const response = await authService.register(formData);
       
-      if (response.status === 'created') {
-        showSuccess(st.registrationSuccess);
-        // Redirect to sign-in page after successful registration
-        setTimeout(() => {
-          router.push('/sign-in');
-        }, 2000);
+      // Check if registration was successful (status 201)
+      if (response && (response.status === 201 || response.status === 'created')) {
+        // Registration successful - show success popup
+        setShowSuccessPopup(true);
+        // User can continue with the flow
+      } else {
+        // Registration failed or other status
+        const errorMessage = response?.message || et.registrationFailed;
+        showError(errorMessage);
       }
     } catch (err: any) {
-      showError(err.message || et.registrationFailed);
+      const errorMessage = err?.message || et.registrationFailed;
+      showError(errorMessage);
     } finally {
       setIsLoading(false);
     }
-  }, [formData, validateForm, router, showSuccess, showError]);
+  }, [formData, validateForm, router, showError, et]);
 
   const renderForm = (
     <Box
@@ -339,6 +351,18 @@ export function SignUpView() {
       </Box>
       {renderForm}
       <SocialLoginGroup circular={true} />
+      
+      {/* Success Popup */}
+      <SuccessPopup
+        open={showSuccessPopup}
+        onClose={() => {
+          setShowSuccessPopup(false);
+          router.push('/sign-in');
+        }}
+        title="Success"
+        message={st.registrationSuccess}
+        autoClose={true}
+      />
     </>
   );
 }
