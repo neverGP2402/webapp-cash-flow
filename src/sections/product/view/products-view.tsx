@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react';
-
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
@@ -7,6 +6,7 @@ import Typography from '@mui/material/Typography';
 
 import { _products } from 'src/_mock';
 import { DashboardContent } from 'src/layouts/dashboard';
+import { EmptyData } from 'src/components/empty-data';
 
 import { ProductItem } from '../product-item';
 import { ProductSort } from '../product-sort';
@@ -59,9 +59,8 @@ const defaultFilters = {
 
 export function ProductsView() {
   const [sortBy, setSortBy] = useState('featured');
-
   const [openFilter, setOpenFilter] = useState(false);
-
+  const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState<FiltersProps>(defaultFilters);
 
   const handleOpenFilter = useCallback(() => {
@@ -86,7 +85,7 @@ export function ProductsView() {
 
   return (
     <DashboardContent>
-      <CartIcon totalItems={8} />
+      <CartIcon totalItems={_products.length} />
 
       <Typography variant="h4" sx={{ mb: 5 }}>
         Products
@@ -138,15 +137,29 @@ export function ProductsView() {
         </Box>
       </Box>
 
-      <Grid container spacing={3}>
-        {_products.map((product) => (
-          <Grid key={product.id} size={{ xs: 12, sm: 6, md: 3 }}>
-            <ProductItem product={product} />
+      {_products.length === 0 ? (
+        <EmptyData
+          title="Không có sản phẩm nào"
+          description="Bắt đầu bằng cách thêm sản phẩm đầu tiên vào danh sách của bạn."
+          icon="solar:package-broken"
+          action={{
+            text: 'Thêm sản phẩm mới',
+            onClick: () => console.log('Add product'),
+          }}
+        />
+      ) : (
+        <>
+          <Grid container spacing={3}>
+            {_products.map((product) => (
+              <Grid key={product.id} size={{ xs: 12, sm: 6, md: 3 }}>
+                <ProductItem product={product} />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
 
-      <Pagination count={10} color="primary" sx={{ mt: 8, mx: 'auto' }} />
+          <Pagination count={10} color="primary" sx={{ mt: 8, mx: 'auto' }} />
+        </>
+      )}
     </DashboardContent>
   );
 }

@@ -1,5 +1,7 @@
 import { buildApiUrl, API_CONFIG } from 'src/config/api';
 import { getRequestMetadata, RequestMetadata } from 'src/utils/device-info';
+import { ApiResponse, AuthRequest } from 'src/types';
+import { SocialProvider, SocialLoginResponse, SocialAuthError } from 'src/types';
 
 // Types for API responses
 export interface RegisterRequest {
@@ -33,15 +35,6 @@ export interface RegisterResponse {
   created_at: string;
 }
 
-export interface LoginRequest {
-  username: string;
-  password: string;
-  device_info?: string;
-  ip_address?: string;
-  origin?: string;
-  user_agent?: string;
-}
-
 export interface LoginResponse {
   access_token: string;
   refresh_token: string;
@@ -68,13 +61,7 @@ export interface User {
   register_date?: string;
 }
 
-export interface ApiResponse<T> {
-  status: 'success' | 'created' | 'error' | 200 | 201 | 400 | 401 | 403 | 404 | 500;
-  message: string;
-  data?: T;
-  error_code?: string;
-  timestamp: string;
-}
+export type LoginRequest = AuthRequest;
 
 // Auth Service Class
 class AuthService {

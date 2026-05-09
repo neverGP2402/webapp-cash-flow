@@ -3,8 +3,9 @@ import {
   SocialLoginRequest, 
   SocialLoginResponse, 
   SocialAuthError 
-} from 'src/types/social-auth.types';
+} from 'src/types';
 import { buildApiUrl, API_CONFIG } from 'src/config/api';
+import { ApiResponse, SocialAuthRequest } from 'src/types';
 
 class SocialAuthService {
   private baseUrl: string;
@@ -42,16 +43,19 @@ class SocialAuthService {
     }
   }
 
-  async socialLogin(loginData: SocialLoginRequest): Promise<{ status: string; data: SocialLoginResponse }> {
-    return this.request<{ status: string; data: SocialLoginResponse }>(
+  async socialLogin(loginData: SocialLoginRequest): Promise<ApiResponse<SocialLoginResponse>> {
+    const socialAuthRequest: SocialAuthRequest = {
+      provider: loginData.provider,
+      token: loginData.access_token,
+      device_info: navigator.userAgent,
+      ip_address: await this.getClientIP(),
+    };
+    
+    return this.request<ApiResponse<SocialLoginResponse>>(
       API_CONFIG.ENDPOINTS.AUTH.SOCIAL_LOGIN,
       {
         method: 'POST',
-        body: JSON.stringify({
-          ...loginData,
-          device_info: navigator.userAgent,
-          ip_address: await this.getClientIP(),
-        }),
+        body: JSON.stringify(socialAuthRequest),
       }
     );
   }
