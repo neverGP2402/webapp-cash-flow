@@ -1,1 +1,1 @@
-const a={appName:"Minimal UI"};export{a as C};
+const a={appName:"Cash Flow"};export{a as C};

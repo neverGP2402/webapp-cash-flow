@@ -54,8 +54,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const response = await authService.loginAndStoreSession({
         username,
         password,
-        device_info: navigator.userAgent,
-        ip_address: '127.0.0.1' // You can implement real IP detection later
+        // Device info and IP will be automatically added by the authService
       });
 
       if ((response.status === 'success' || response.status === 200) && response.data) {

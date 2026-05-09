@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { BoxProps } from '@mui/material/Box';
 import type { CardProps } from '@mui/material/Card';
 
@@ -8,11 +9,13 @@ import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import CardHeader from '@mui/material/CardHeader';
 import ListItemText from '@mui/material/ListItemText';
+import IconButton from '@mui/material/IconButton';
 
 import { fToNow } from 'src/utils/format-time';
 
 import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
+import { AssetCreationPopup, AssetFormData } from 'src/components/asset-creation-popup';
 
 // ----------------------------------------------------------------------
 
@@ -26,31 +29,70 @@ type Props = CardProps & {
     description: string;
     postedAt: string | number | null;
   }[];
+  onAssetCreate?: (data: AssetFormData) => void;
 };
 
-export function AnalyticsNews({ title, subheader, list, sx, ...other }: Props) {
+export function AnalyticsNews({ title, subheader, list, onAssetCreate, sx, ...other }: Props) {
+  const [popupOpen, setPopupOpen] = useState(false);
+
+  const handleAddAsset = () => {
+    setPopupOpen(true);
+  };
+
+  const handleAssetSubmit = (data: AssetFormData) => {
+    if (onAssetCreate) {
+      onAssetCreate(data);
+    }
+  };
   return (
-    <Card sx={sx} {...other}>
-      <CardHeader title={title} subheader={subheader} sx={{ mb: 1 }} />
+    <>
+      <Card sx={sx} {...other}>
+        <CardHeader 
+          title={title} 
+          subheader={subheader} 
+          sx={{ mb: 1 }}
+          action={
+            <IconButton 
+              onClick={handleAddAsset}
+              size="small"
+              sx={{ 
+                bgcolor: 'primary.main',
+                color: 'primary.contrastText',
+                '&:hover': {
+                  bgcolor: 'primary.dark',
+                }
+              }}
+            >
+              <Iconify icon="mingcute:add-line" width={20} />
+            </IconButton>
+          }
+        />
 
-      <Scrollbar sx={{ minHeight: 405 }}>
-        <Box sx={{ minWidth: 640 }}>
-          {list.map((item) => (
-            <Item key={item.id} item={item} />
-          ))}
+        <Scrollbar sx={{ minHeight: 405 }}>
+          <Box sx={{ minWidth: 640 }}>
+            {list.map((item) => (
+              <Item key={item.id} item={item} />
+            ))}
+          </Box>
+        </Scrollbar>
+
+        <Box sx={{ p: 2, textAlign: 'right' }}>
+          <Button
+            size="small"
+            color="inherit"
+            endIcon={<Iconify icon="eva:arrow-ios-forward-fill" width={18} sx={{ ml: -0.5 }} />}
+          >
+            Xem thêm
+          </Button>
         </Box>
-      </Scrollbar>
+      </Card>
 
-      <Box sx={{ p: 2, textAlign: 'right' }}>
-        <Button
-          size="small"
-          color="inherit"
-          endIcon={<Iconify icon="eva:arrow-ios-forward-fill" width={18} sx={{ ml: -0.5 }} />}
-        >
-          View all
-        </Button>
-      </Box>
-    </Card>
+      <AssetCreationPopup
+        open={popupOpen}
+        onClose={() => setPopupOpen(false)}
+        onSubmit={handleAssetSubmit}
+      />
+    </>
   );
 }
 

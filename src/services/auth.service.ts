@@ -1,4 +1,5 @@
 import { buildApiUrl, API_CONFIG } from 'src/config/api';
+import { getRequestMetadata, RequestMetadata } from 'src/utils/device-info';
 
 // Types for API responses
 export interface RegisterRequest {
@@ -37,6 +38,8 @@ export interface LoginRequest {
   password: string;
   device_info?: string;
   ip_address?: string;
+  origin?: string;
+  user_agent?: string;
 }
 
 export interface LoginResponse {
@@ -83,15 +86,40 @@ class AuthService {
 
   private async request<T>(
     endpoint: string,
-    options: RequestInit = {}
+    options: RequestInit = {},
+    includeMetadata: boolean = false,
+    useCustomHeaders: boolean = false
   ): Promise<ApiResponse<T>> {
     const url = buildApiUrl(endpoint);
     
+    let headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      ...options.headers as Record<string, string>,
+    };
+
+    // Add metadata headers if requested and custom headers are allowed
+    if (includeMetadata && useCustomHeaders) {
+      try {
+        const metadata = await getRequestMetadata();
+        headers['X-Client-IP'] = metadata.ip_address;
+        headers['X-Origin'] = metadata.origin;
+        headers['X-User-Agent'] = metadata.user_agent;
+        headers['X-Device-Info'] = metadata.device_info;
+        
+        // Add location headers if available
+        if (metadata.location) {
+          headers['X-Country'] = metadata.location.country || '';
+          headers['X-City'] = metadata.location.city || '';
+          headers['X-Region'] = metadata.location.region || '';
+          headers['X-ISP'] = metadata.location.isp || '';
+        }
+      } catch (error) {
+        console.warn('Failed to get request metadata:', error);
+      }
+    }
+    
     const config: RequestInit = {
-      headers: {
-        'Content-Type': 'application/json',
-        ...options.headers,
-      },
+      headers,
       ...options,
     };
 
@@ -118,10 +146,21 @@ class AuthService {
   }
 
   async login(credentials: LoginRequest): Promise<ApiResponse<LoginResponse>> {
+    // Get metadata to enhance login request
+    const metadata = await getRequestMetadata();
+    
+    const enhancedCredentials = {
+      ...credentials,
+      device_info: credentials.device_info || metadata.device_info,
+      ip_address: credentials.ip_address || metadata.ip_address,
+      origin: metadata.origin,
+      user_agent: metadata.user_agent,
+    };
+
     return this.request<LoginResponse>(API_CONFIG.ENDPOINTS.AUTH.LOGIN, {
       method: 'POST',
-      body: JSON.stringify(credentials),
-    });
+      body: JSON.stringify(enhancedCredentials),
+    }, true, API_CONFIG.USE_CUSTOM_HEADERS); // Use config to control custom headers
   }
 
   async logout(): Promise<ApiResponse<null>> {
@@ -131,7 +170,7 @@ class AuthService {
       headers: {
         'Authorization': `Bearer ${token}`,
       },
-    });
+    }, true, API_CONFIG.USE_CUSTOM_HEADERS); // Use config to control custom headers
   }
 
   // Store tokens and user data in localStorage
