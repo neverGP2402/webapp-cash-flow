@@ -1,0 +1,91 @@
+{
+  "auth": {
+    "signIn": {
+      "title": "Anmelden",
+      "subtitle": "Haben Sie kein Konto?",
+      "getStarted": "Loslegen",
+      "emailLabel": "E-Mail-Adresse",
+      "passwordLabel": "Passwort",
+      "forgotPassword": "Passwort vergessen?",
+      "signInButton": "Anmelden",
+      "socialLogin": {
+        "title": "Oder fortfahren mit",
+        "google": "Mit Google fortfahren",
+        "github": "Mit GitHub fortfahren",
+        "facebook": "Mit Facebook fortfahren"
+      }
+    },
+    "signUp": {
+      "title": "Registrieren",
+      "subtitle": "Konto erstellen, um loszulegen",
+      "fullNameLabel": "Vollständiger Name",
+      "usernameLabel": "Benutzername",
+      "emailLabel": "E-Mail-Adresse",
+      "passwordLabel": "Passwort",
+      "birthdayLabel": "Geburtstag (DD-MM-YYYY)",
+      "genderLabel": "Geschlecht",
+      "addressLabel": "Adresse",
+      "male": "Männlich",
+      "female": "Weiblich",
+      "other": "Andere",
+      "signUpButton": "Registrieren",
+      "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
+      "signIn": "Anmelden",
+      "socialLogin": {
+        "title": "Oder fortfahren mit",
+        "google": "Mit Google fortfahren",
+        "github": "Mit GitHub fortfahren",
+        "facebook": "Mit Facebook fortfahren"
+      }
+    },
+    "validation": {
+      "usernameRequired": "Benutzername muss mindestens 3 Zeichen lang sein",
+      "usernameTooLong": "Benutzername muss weniger als 50 Zeichen lang sein",
+      "emailRequired": "E-Mail ist erforderlich",
+      "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "passwordRequired": "Passwort ist erforderlich",
+      "passwordTooShort": "Passwort muss mindestens 8 Zeichen lang sein",
+      "passwordTooLong": "Passwort muss weniger als 255 Zeichen lang sein",
+      "passwordRequirements": "Muss 1 Großbuchstaben, 1 Kleinbuchstaben und 1 Ziffer enthalten",
+      "birthdayInvalid": "Bitte geben Sie das Datum im Format DD-MM-YYYY ein",
+      "birthdayInvalidDate": "Bitte geben Sie ein gültiges Datum ein"
+    },
+    "success": {
+      "registrationSuccess": "Registrierung erfolgreich! Weiterleitung zur Anmeldeseite..."
+    },
+    "error": {
+      "registrationFailed": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut."
+    }
+  },
+  "socialLogin": {
+    "configWarning": {
+      "title": "Sozial-Login-Konfiguration erforderlich",
+      "subtitle": "Die folgenden Social-Login-Anbieter sind nicht konfiguriert:",
+      "instructions": "Bitte fügen Sie diese Umgebungsvariablen zu Ihrer .env-Datei hinzu und starten Sie den Entwicklungsserver neu.",
+      "environment": "Umgebung:",
+      "providers": {
+        "google": {
+          "name": "Google OAuth",
+          "instructions": "1. Gehen Sie zur Google Cloud Console\n2. Erstellen Sie OAuth 2.0 Client ID\n3. Fügen Sie autorisierte Weiterleitungs-URIs hinzu"
+        },
+        "github": {
+          "name": "GitHub OAuth", 
+          "instructions": "1. Gehen Sie zu GitHub Developer Settings\n2. Erstellen Sie neue OAuth App\n3. Legen Sie Callback-URL fest"
+        },
+        "facebook": {
+          "name": "Facebook OAuth",
+          "instructions": "1. Gehen Sie zu Facebook Developers\n2. Erstellen Sie neue App\n3. Fügen Sie Facebook Login Produkt hinzu"
+        },
+        "default": {
+          "name": "OAuth-Einstellungen",
+          "instructions": "Bitte konfigurieren Sie OAuth-Einstellungen"
+        }
+      }
+    }
+  },
+  "common": {
+    "loading": "Wird geladen...",
+    "required": "Erforderlich",
+    "optional": "Optional"
+  }
+}

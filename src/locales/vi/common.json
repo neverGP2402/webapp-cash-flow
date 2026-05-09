@@ -1,0 +1,91 @@
+{
+  "auth": {
+    "signIn": {
+      "title": "Đăng nhập",
+      "subtitle": "Chưa có tài khoản?",
+      "getStarted": "Bắt đầu",
+      "emailLabel": "Địa chỉ email",
+      "passwordLabel": "Mật khẩu",
+      "forgotPassword": "Quên mật khẩu?",
+      "signInButton": "Đăng nhập",
+      "socialLogin": {
+        "title": "Hoặc tiếp tục với",
+        "google": "Tiếp tục với Google",
+        "github": "Tiếp tục với GitHub",
+        "facebook": "Tiếp tục với Facebook"
+      }
+    },
+    "signUp": {
+      "title": "Đăng ký",
+      "subtitle": "Tạo tài khoản để bắt đầu",
+      "fullNameLabel": "Họ và tên",
+      "usernameLabel": "Tên đăng nhập",
+      "emailLabel": "Địa chỉ email",
+      "passwordLabel": "Mật khẩu",
+      "birthdayLabel": "Ngày sinh (DD-MM-YYYY)",
+      "genderLabel": "Giới tính",
+      "addressLabel": "Địa chỉ",
+      "male": "Nam",
+      "female": "Nữ",
+      "other": "Khác",
+      "signUpButton": "Đăng ký",
+      "alreadyHaveAccount": "Đã có tài khoản?",
+      "signIn": "Đăng nhập",
+      "socialLogin": {
+        "title": "Hoặc tiếp tục với",
+        "google": "Tiếp tục với Google",
+        "github": "Tiếp tục với GitHub",
+        "facebook": "Tiếp tục với Facebook"
+      }
+    },
+    "validation": {
+      "usernameRequired": "Tên đăng nhập phải có ít nhất 3 ký tự",
+      "usernameTooLong": "Tên đăng nhập phải nhỏ hơn 50 ký tự",
+      "emailRequired": "Email là bắt buộc",
+      "emailInvalid": "Vui lòng nhập địa chỉ email hợp lệ",
+      "passwordRequired": "Mật khẩu là bắt buộc",
+      "passwordTooShort": "Mật khẩu phải có ít nhất 8 ký tự",
+      "passwordTooLong": "Mật khẩu phải nhỏ hơn 255 ký tự",
+      "passwordRequirements": "Phải chứa 1 chữ hoa, 1 chữ thường và 1 chữ số",
+      "birthdayInvalid": "Vui lòng nhập ngày theo định dạng DD-MM-YYYY",
+      "birthdayInvalidDate": "Vui lòng nhập ngày hợp lệ"
+    },
+    "success": {
+      "registrationSuccess": "Đăng ký thành công! Đang chuyển hướng đến trang đăng nhập..."
+    },
+    "error": {
+      "registrationFailed": "Đăng ký thất bại. Vui lòng thử lại."
+    }
+  },
+  "socialLogin": {
+    "configWarning": {
+      "title": "Cấu hình đăng nhập xã hội được yêu cầu",
+      "subtitle": "Các nhà cung cấp đăng nhập xã hội sau chưa được cấu hình:",
+      "instructions": "Vui lòng thêm các biến môi trường này vào tệp .env của bạn và khởi động lại máy chủ phát triển.",
+      "environment": "Môi trường:",
+      "providers": {
+        "google": {
+          "name": "Google OAuth",
+          "instructions": "1. Đi tới Google Cloud Console\n2. Tạo OAuth 2.0 Client ID\n3. Thêm URI chuyển hướng được ủy quyền"
+        },
+        "github": {
+          "name": "GitHub OAuth", 
+          "instructions": "1. Đi tới GitHub Developer Settings\n2. Tạo OAuth App mới\n3. Đặt URL callback"
+        },
+        "facebook": {
+          "name": "Facebook OAuth",
+          "instructions": "1. Đi tới Facebook Developers\n2. Tạo ứng dụng mới\n3. Thêm sản phẩm Facebook Login"
+        },
+        "default": {
+          "name": "Cài đặt OAuth",
+          "instructions": "Vui lòng cấu hình cài đặt OAuth"
+        }
+      }
+    }
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "required": "Bắt buộc",
+    "optional": "Tùy chọn"
+  }
+}
