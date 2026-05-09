@@ -60,6 +60,7 @@ curl -X GET "http://localhost:5000/api/v1/common/assets?page=1&limit=10" \
       "name": "Cổ phiếu",
       "type": "FINANCIAL",
       "unit_id": 1,
+      "icon": "trending-up",
       "is_deleted": false,
       "created_at": "2026-05-09T09:30:00Z",
       "updated_at": "2026-05-09T09:30:00Z",
@@ -72,6 +73,7 @@ curl -X GET "http://localhost:5000/api/v1/common/assets?page=1&limit=10" \
       "name": "Bất động sản",
       "type": "PROPERTY",
       "unit_id": 2,
+      "icon": "home",
       "is_deleted": false,
       "created_at": "2026-05-09T09:35:00Z",
       "updated_at": "2026-05-09T09:35:00Z",
@@ -84,6 +86,7 @@ curl -X GET "http://localhost:5000/api/v1/common/assets?page=1&limit=10" \
       "name": "Phương tiện giao thông",
       "type": "TRANSPORT",
       "unit_id": 3,
+      "icon": "car",
       "is_deleted": false,
       "created_at": "2026-05-09T09:40:00Z",
       "updated_at": "2026-05-09T09:40:00Z",
@@ -122,6 +125,7 @@ curl -X GET "http://localhost:5000/api/v1/common/assets?page=1&limit=10" \
 | name | string | Asset display name (max 255 chars) |
 | type | string | Asset category type (max 10 chars) |
 | unit_id | integer | Reference to unit measurement |
+| icon | string | Icon name/reference for client-side display (max 255 chars) |
 | is_deleted | boolean | Soft delete flag |
 | created_at | string | ISO 8601 timestamp |
 | updated_at | string | ISO 8601 timestamp |
@@ -143,21 +147,70 @@ curl -X GET "http://localhost:5000/api/v1/common/assets?page=1&limit=10" \
 | OTHER | Khác | Các loại tài sản khác |
 
 #### Common Asset Codes
-| Code | Name | Type | Description |
-|------|------|------|-------------|
-| STOCK | Cổ phiếu | FINANCIAL | Cổ phiếu công ty |
-| BOND | Trái phiếu | FINANCIAL | Trái phiếu chính phủ/doanh nghiệp |
-| FUND | Quỹ đầu tư | FINANCIAL | Quỹ mutual/ETF |
-| HOUSE | Nhà ở | PROPERTY | Nhà ở, căn hộ |
-| LAND | Đất đai | PROPERTY | Đất nền, đất nông nghiệp |
-| APARTMENT | Căn hộ | PROPERTY | Căn hộ chung cư |
-| CAR | Ô tô | TRANSPORT | Xe hơi, xe tải |
-| MOTORCYCLE | Xe máy | TRANSPORT | Xe máy, xe scooter |
-| BICYCLE | Xe đạp | TRANSPORT | Xe đạp, xe đạp điện |
-| COMPUTER | Máy tính | TECHNOLOGY | PC, laptop, máy chủ |
-| PHONE | Điện thoại | TECHNOLOGY | Smartphone, tablet |
-| GOLD | Vàng | JEWELRY | Vàng miếng, trang sức vàng |
-| DIAMOND | Kim cương | JEWELRY | Kim cương, đá quý |
+| Code | Name | Type | Icon | Description |
+|------|------|------|------|-------------|
+| STOCK | Cổ phiếu | FINANCIAL | trending-up | Cổ phiếu công ty |
+| BOND | Trái phiếu | FINANCIAL | chart-line | Trái phiếu chính phủ/doanh nghiệp |
+| FUND | Quỹ đầu tư | FINANCIAL | briefcase | Quỹ mutual/ETF |
+| HOUSE | Nhà ở | PROPERTY | home | Nhà ở, căn hộ |
+| LAND | Đất đai | PROPERTY | map | Đất nền, đất nông nghiệp |
+| APARTMENT | Căn hộ | PROPERTY | building | Căn hộ chung cư |
+| CAR | Ô tô | TRANSPORT | car | Xe hơi, xe tải |
+| MOTORCYCLE | Xe máy | TRANSPORT | motorcycle | Xe máy, xe scooter |
+| BICYCLE | Xe đạp | TRANSPORT | bicycle | Xe đạp, xe đạp điện |
+| COMPUTER | Máy tính | TECHNOLOGY | computer | PC, laptop, máy chủ |
+| PHONE | Điện thoại | TECHNOLOGY | mobile | Smartphone, tablet |
+| GOLD | Vàng | JEWELRY | star | Vàng miếng, trang sức vàng |
+| DIAMOND | Kim cương | JEWELRY | gem | Kim cương, đá quý |
+
+#### Icon Guidelines
+
+**Icon Field Purpose:**
+The `icon` field stores a **reference name** that the client uses to display the appropriate icon. The server only stores the icon name/reference, not the actual icon character or emoji.
+
+**Icon Reference Examples:**
+- **Icon Libraries**: `trending-up`, `home`, `car`, `computer`, `star`
+- **Icon Frameworks**: `fa-chart-line`, `fa-home`, `fa-car`, `fa-laptop`, `fa-star`
+- **Custom Names**: `stock-icon`, `house-icon`, `vehicle-icon`, `tech-icon`
+- **Unicode References**: `emoji-trending-up`, `emoji-house`, `emoji-car`
+
+**Client-Side Icon Mapping:**
+The client application should map the icon reference to actual display icons:
+
+```javascript
+// Example icon mapping on client side
+const iconMap = {
+  'trending-up': '📈',           // or use icon library: <TrendingUpIcon />
+  'home': '🏠',                  // or: <HomeIcon />
+  'car': '🚗',                   // or: <CarIcon />
+  'computer': '💻',              // or: <ComputerIcon />
+  'star': '⭐',                  // or: <StarIcon />
+  'chart-line': '📊',            // or: <ChartLineIcon />
+  'briefcase': '💼',             // or: <BriefcaseIcon />
+  'map': '🗺️',                   // or: <MapIcon />
+  'building': '🏢',              // or: <BuildingIcon />
+  'motorcycle': '🏍️',            // or: <MotorcycleIcon />
+  'bicycle': '🚴',               // or: <BicycleIcon />
+  'mobile': '📱',                // or: <MobileIcon />
+  'gem': '💎'                    // or: <GemIcon />
+};
+```
+
+**Icon Usage Best Practices:**
+1. **Use descriptive names** that clearly indicate the icon type
+2. **Keep naming consistent** across the application
+3. **Use standard icon library names** when possible (Font Awesome, Material Icons, etc.)
+4. **Provide fallback icons** on client side for unknown icon references
+5. **Document icon mapping** for client developers
+
+**Icon Reference Examples by Category:**
+- **Financial**: `trending-up`, `chart-line`, `briefcase`, `dollar-sign`
+- **Property**: `home`, `building`, `map`, `location-pin`
+- **Transport**: `car`, `motorcycle`, `bicycle`, `airplane`
+- **Technology**: `computer`, `mobile`, `watch`, `monitor`
+- **Jewelry**: `star`, `gem`, `ring`, `crown`
+- **Art**: `palette`, `image`, `vase`, `scroll`
+- **Collectible**: `vase`, 'document', 'ticket', 'coin'
 
 ### Unit Reference (unit_id)
 The `unit_id` field references the unit measurement table for standardized units:
@@ -208,6 +261,26 @@ def get_all(self, page: int = 1, limit: int = 10) -> List[ComAsset]:
 
 #### JavaScript/TypeScript
 ```javascript
+// Icon mapping function
+const getIconDisplay = (iconRef) => {
+  const iconMap = {
+    'trending-up': '📈',
+    'home': '🏠',
+    'car': '🚗',
+    'computer': '💻',
+    'star': '⭐',
+    'chart-line': '📊',
+    'briefcase': '💼',
+    'map': '🗺️',
+    'building': '🏢',
+    'motorcycle': '🏍️',
+    'bicycle': '🚴',
+    'mobile': '📱',
+    'gem': '💎'
+  };
+  return iconMap[iconRef] || '📦'; // fallback icon
+};
+
 async function getAssetTypes(page = 1, limit = 10) {
   const token = localStorage.getItem('access_token');
   
@@ -235,9 +308,27 @@ async function getAssetTypes(page = 1, limit = 10) {
   }
 }
 
-// Usage
+// Usage with icon display
 const assetTypes = await getAssetTypes(1, 10);
-console.log('Available asset types:', assetTypes);
+assetTypes.forEach(asset => {
+  console.log(`${getIconDisplay(asset.icon)} ${asset.name}`);
+  // Output: 📈 Cổ phiếu, 🏠 Bất động sản, 🚗 Phương tiện giao thông
+});
+
+// React component example
+function AssetList({ assets }) {
+  return (
+    <div>
+      {assets.map(asset => (
+        <div key={asset.id} className="asset-item">
+          <span className="asset-icon">{getIconDisplay(asset.icon)}</span>
+          <span className="asset-name">{asset.name}</span>
+          <span className="asset-type">{asset.type}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
 ```
 
 #### Python

@@ -49,6 +49,11 @@ export const navData = [
     icon: icon('ic-lock'),
   },
   {
+    title: 'Cấu hình chung',
+    path: '/settings',
+    icon: icon('setting'),
+  },
+  {
     title: 'Not found',
     path: '/404',
     icon: icon('ic-disabled'),
