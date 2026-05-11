@@ -7,7 +7,9 @@ export interface AssetTypeData {
   code: string;
   name: string;
   icon: string;
-  unit_id: string;
+  unit_id: number;
+  unit_name: string;
+  unit_code: string;
   type: 'PHYSICAL' | 'DIGITAL' | 'CASH';
   createdAt: string;
   createdBy: string;
@@ -15,13 +17,13 @@ export interface AssetTypeData {
 
 export interface CreateAssetTypeRequest extends CreateRequest {
   icon: string;
-  unit_id: string;
+  unit_id: number;
   type: 'PHYSICAL' | 'DIGITAL' | 'CASH';
 }
 
 export interface UpdateAssetTypeRequest extends UpdateRequest {
   icon?: string;
-  unit_id?: string;
+  unit_id?: number;
   type?: 'PHYSICAL' | 'DIGITAL' | 'CASH';
 }
 

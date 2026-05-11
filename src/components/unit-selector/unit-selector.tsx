@@ -10,8 +10,8 @@ import {
 import { unitService, UnitData } from 'src/services/unit-service';
 
 interface UnitSelectorProps {
-  value: string;
-  onChange: (value: string) => void;
+  value: number;
+  onChange: (value: number) => void;
   label?: string;
   disabled?: boolean;
   fullWidth?: boolean;
@@ -49,7 +49,7 @@ export function UnitSelector({
       <InputLabel>{label}</InputLabel>
       <Select
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onChange(Number(e.target.value))}
         label={label}
         disabled={disabled || loading}
       >
@@ -62,7 +62,7 @@ export function UnitSelector({
           </MenuItem>
         ) : (
           units.map((unit) => (
-            <MenuItem key={unit.id} value={unit.id.toString()}>
+            <MenuItem key={unit.id} value={unit.id}>
               {unit.name}
             </MenuItem>
           ))

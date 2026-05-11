@@ -1,0 +1,6 @@
+src/view/**/*.js
+src/view/**/*.js.map
+dist/
+build/
+*.min.js
+*.bundle.js

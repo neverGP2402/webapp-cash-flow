@@ -34,30 +34,30 @@ export function NavUpgrade({ sx, ...other }: StackProps) {
           }),
         ]}
       >
-        More features?
+        Xin chào!
       </Typography>
 
       <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5 }}>
-        {`From only `}
+        {`Chào mừng đến với `}
         <Box component="strong" sx={{ color: 'text.primary' }}>
-          $69
+          Cash Flow
         </Box>
       </Typography>
 
       <Box
         component="img"
-        alt="Minimal dashboard"
-        src="/assets/illustrations/illustration-dashboard.webp"
+        alt="Cash Flow"
+        src="/assets/images/logo.png"
         sx={{ width: 200, my: 2 }}
       />
 
       <Button
-        href="https://material-ui.com/store/items/minimal-dashboard/"
+        href="#"
         target="_blank"
         variant="contained"
         color="inherit"
       >
-        Upgrade to Pro
+        Đăng xuất
       </Button>
     </Box>
   );

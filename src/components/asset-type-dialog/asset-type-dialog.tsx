@@ -57,7 +57,7 @@ export function AssetTypeDialog({
     code: '',
     name: '',
     icon: '',
-    unitId: '',
+    unitId: 0,
     type: 'PHYSICAL' as AssetTypeData['type'],
   });
 
@@ -75,7 +75,7 @@ export function AssetTypeDialog({
   }, [editingAssetType]);
 
   const handleClose = () => {
-    setFormData({ code: '', name: '', icon: '', unitId: '', type: 'PHYSICAL' });
+    setFormData({ code: '', name: '', icon: '', unitId: 0, type: 'PHYSICAL' });
     onClose();
   };
 

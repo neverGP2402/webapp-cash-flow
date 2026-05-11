@@ -189,7 +189,7 @@ export function AssetTypeConfig() {
                       <TableCell>
                         <Iconify icon={assetType.icon as any} width={20} />
                       </TableCell>
-                      <TableCell>{assetType.unit_id}</TableCell>
+                      <TableCell>{assetType.unit_name}</TableCell>
                       <TableCell>{assetTypeLabels[assetType.type]}</TableCell>
                       <TableCell align="center">
                         <IconButton

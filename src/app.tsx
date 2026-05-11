@@ -24,7 +24,7 @@ export default function App({ children }: AppProps) {
     <Fab
       size="medium"
       aria-label="Github"
-      href="https://github.com/minimal-ui-kit/material-kit-react"
+      href="#"
       sx={{
         zIndex: 9,
         right: 20,
@@ -32,10 +32,10 @@ export default function App({ children }: AppProps) {
         width: 48,
         height: 48,
         position: 'fixed',
-        bgcolor: 'grey.800',
+        bgcolor: 'blue',
       }}
     >
-      <Iconify width={24} icon="socials:github" sx={{ '--color': 'white' }} />
+      <Iconify width={24} icon="socials:facebook" sx={{ '--color': 'white' }} />
     </Fab>
   );
 

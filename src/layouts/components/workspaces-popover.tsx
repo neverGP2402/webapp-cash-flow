@@ -83,14 +83,14 @@ export function WorkspacesPopover({ data = [], sx, ...other }: WorkspacesPopover
             fontWeight: 'fontWeightSemiBold',
           }}
         >
-          {workspace?.name}
-          {renderLabel(workspace?.plan)}
+          {'Quản lý tài chính'}
+          {/* {renderLabel(workspace?.plan)} */}
         </Box>
 
-        <Iconify width={16} icon="carbon:chevron-sort" sx={{ color: 'text.disabled' }} />
+        {/* <Iconify width={16} icon="carbon:chevron-sort" sx={{ color: 'text.disabled' }} /> */}
       </ButtonBase>
 
-      <Popover open={!!openPopover} anchorEl={openPopover} onClose={handleClosePopover}>
+      {/* <Popover open={!!openPopover} anchorEl={openPopover} onClose={handleClosePopover}>
         <MenuList
           disablePadding
           sx={{
@@ -126,7 +126,7 @@ export function WorkspacesPopover({ data = [], sx, ...other }: WorkspacesPopover
             </MenuItem>
           ))}
         </MenuList>
-      </Popover>
+      </Popover> */}
     </>
   );
 }

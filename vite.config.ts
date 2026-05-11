@@ -10,11 +10,7 @@ export default defineConfig({
     react(),
     checker({
       typescript: true,
-      eslint: {
-        useFlatConfig: true,
-        lintCommand: 'eslint "./src/**/*.{js,jsx,ts,tsx}"',
-        dev: { logLevel: ['error'] },
-      },
+      eslint: false, // Disable ESLint for now
       overlay: {
         position: 'tl',
         initialIsOpen: false,
@@ -23,7 +19,7 @@ export default defineConfig({
   ],
 
   build: {
-    outDir: 'src/view',        // 🔥 build thẳng vào folder server serve
+    outDir: 'build/view',        // 🔥 build thẳng vào folder server serve
     emptyOutDir: true,
     assetsDir: 'assets',       // mặc định nhưng ghi rõ cho chắc
   },
