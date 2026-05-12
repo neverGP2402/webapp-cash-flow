@@ -15,6 +15,7 @@ import { RouteGuard } from 'src/components/route-guard/index';
 
 export const DashboardPage = lazy(() => import('src/pages/dashboard'));
 export const AssetsPage = lazy(() => import('src/pages/assets'));
+export const TransactionHistoryPage = lazy(() => import('src/pages/transaction-history'));
 export const BlogPage = lazy(() => import('src/pages/blog'));
 export const UserPage = lazy(() => import('src/pages/user'));
 export const SettingsPage = lazy(() => import('src/pages/settings'));
@@ -57,6 +58,7 @@ export const routesSection: RouteObject[] = [
     children: [
       { index: true, element: <DashboardPage /> },
       { path: 'assets', element: <AssetsPage /> },
+      { path: 'transaction-history', element: <TransactionHistoryPage /> },
       { path: 'user', element: <UserPage /> },
       { path: 'products', element: <ProductsPage /> },
       { path: 'blog', element: <BlogPage /> },

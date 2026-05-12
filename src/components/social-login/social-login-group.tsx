@@ -44,9 +44,9 @@ export function SocialLoginGroup({
 
   return (
     <>
-      {missingProviders.length > 0 && (
+      {/* {missingProviders.length > 0 && (
         <SocialLoginConfigWarning missingProviders={missingProviders} />
-      )}
+      )} */}
       
       {showSeparator && <SocialLoginSeparator />}
       
@@ -62,7 +62,7 @@ export function SocialLoginGroup({
           } : undefined}
         />
         
-        <SocialLoginButton
+        {/* <SocialLoginButton
           provider="github"
           onClick={signInWithGitHub}
           isLoading={githubLoading}
@@ -71,7 +71,7 @@ export function SocialLoginGroup({
           sx={!circular ? {
             mb: buttonVariant === 'vertical' ? 1 : 0,
           } : undefined}
-        />
+        /> */}
         
         <SocialLoginButton
           provider="facebook"
