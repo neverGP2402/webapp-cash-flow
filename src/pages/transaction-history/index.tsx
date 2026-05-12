@@ -15,6 +15,7 @@ import { TransactionCard } from 'src/components/transaction-card';
 import { TransactionFilters } from 'src/components/transaction-filters';
 import { MiniAnalytics } from 'src/components/mini-analytics';
 import { QuickInsightsComponent } from 'src/components/quick-insights';
+import { TransactionDrawer } from 'src/components/transaction-drawer';
 
 import type { 
   Transaction, 
@@ -166,6 +167,39 @@ export default function TransactionHistoryPage() {
   });
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
+
+  // Transaction Drawer state
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerMode, setDrawerMode] = useState<'create' | 'edit'>('create');
+  const [selectedTransaction, setSelectedTransaction] = useState<any>(null);
+
+  const handleOpenDrawer = () => {
+    setDrawerOpen(true);
+    setDrawerMode('create');
+    setSelectedTransaction(null);
+  };
+
+  const handleEditTransaction = (transaction: any) => {
+    setDrawerOpen(true);
+    setDrawerMode('edit');
+    setSelectedTransaction(transaction);
+  };
+
+  const handleCloseDrawer = () => {
+    setDrawerOpen(false);
+    setSelectedTransaction(null);
+  };
+
+  const handleSaveTransaction = async (data: any) => {
+    // Here you would normally save to API
+    console.log('Saving transaction:', data);
+    
+    // For demo, just close drawer
+    handleCloseDrawer();
+    
+    // You could also update the transaction list here
+    // refreshTransactions();
+  };
 
   // Simulate loading
   useEffect(() => {
@@ -348,6 +382,7 @@ export default function TransactionHistoryPage() {
       {/* Floating Action Button */}
       <Fab
         color="primary"
+        onClick={handleOpenDrawer}
         sx={{
           position: 'fixed',
           bottom: 24,
@@ -357,6 +392,15 @@ export default function TransactionHistoryPage() {
       >
         <Iconify icon="mingcute:add-line" width={24} />
       </Fab>
+
+      {/* Transaction Drawer */}
+      <TransactionDrawer
+        open={drawerOpen}
+        mode={drawerMode}
+        transaction={selectedTransaction}
+        onClose={handleCloseDrawer}
+        onSave={handleSaveTransaction}
+      />
     </Box>
   );
 }

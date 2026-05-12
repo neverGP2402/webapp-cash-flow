@@ -43,7 +43,7 @@ export default function App({ children }: AppProps) {
     <ThemeProvider>
       <ToastProvider>
         {children}
-        {githubButton()}
+        {/* {githubButton()} */}
       </ToastProvider>
     </ThemeProvider>
   );
