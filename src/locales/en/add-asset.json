@@ -1,0 +1,113 @@
+{
+  "page": {
+    "title": "Add Asset",
+    "subtitle": "Manage and track your personal assets",
+    "miniSummary": "Asset Overview"
+  },
+  "form": {
+    "assetType": {
+      "label": "Asset Type",
+      "placeholder": "Select asset type",
+      "searchPlaceholder": "Search assets..."
+    },
+    "wallet": {
+      "label": "Storage Wallet",
+      "placeholder": "Select wallet"
+    },
+    "amount": {
+      "label": "Amount",
+      "placeholder": "Enter amount"
+    },
+    "unit": {
+      "label": "Unit"
+    },
+    "price": {
+      "label": "Purchase Price",
+      "placeholder": "Enter purchase price"
+    },
+    "exchangeRate": {
+      "label": "Current Exchange Rate",
+      "buyPrice": "Buy Price",
+      "sellPrice": "Sell Price",
+      "updatedAt": "Updated"
+    },
+    "profit": {
+      "label": "Estimated Profit",
+      "profit": "Profit",
+      "loss": "Loss"
+    },
+    "origin": {
+      "label": "Asset Origin",
+      "placeholder": "Enter origin"
+    },
+    "status": {
+      "label": "Asset Status"
+    },
+    "transactionDate": {
+      "label": "Transaction Date"
+    },
+    "description": {
+      "label": "Notes",
+      "placeholder": "Enter notes (optional)"
+    }
+  },
+  "overview": {
+    "title": "Realtime Overview",
+    "currentValue": "Current Value",
+    "purchaseValue": "Purchase Value",
+    "difference": "Difference",
+    "profitPercent": "% Change",
+    "assetStatus": "Status"
+  },
+  "insight": {
+    "title": "Quick Insight",
+    "positive": "Asset is up {percent}%",
+    "negative": "Asset is down {percent}%",
+    "neutral": "Value is stable",
+    "goodPerformance": "This is a high-performing asset",
+    "higherThanPurchase": "Current value is higher than purchase",
+    "lowerThanPurchase": "Current value is lower than purchase"
+  },
+  "actions": {
+    "save": "Save Asset",
+    "saveAndAdd": "Save & Add More",
+    "cancel": "Cancel"
+  },
+  "validation": {
+    "assetTypeRequired": "Please select an asset type",
+    "walletRequired": "Please select a wallet",
+    "amountRequired": "Please enter an amount",
+    "amountPositive": "Amount must be greater than 0",
+    "priceRequired": "Please enter a purchase price",
+    "pricePositive": "Price must be greater than 0",
+    "unitRequired": "Please select a unit",
+    "dateRequired": "Please select a transaction date"
+  },
+  "assetTypes": {
+    "gold": "Gold",
+    "silver": "Silver",
+    "usd": "USD",
+    "crypto": "Crypto",
+    "cash": "Cash",
+    "eWallet": "E-Wallet",
+    "digitalAsset": "Digital Asset",
+    "other": "Other Savings"
+  },
+  "origins": {
+    "purchase": "Purchase/Savings",
+    "investment": "Investment",
+    "gift": "Gift",
+    "savings": "Savings"
+  },
+  "statuses": {
+    "holding": "Holding",
+    "lending": "Lending",
+    "pledged": "Pledged",
+    "investing": "Investing"
+  },
+  "messages": {
+    "saveSuccess": "Asset saved successfully",
+    "saveFailed": "An error occurred while saving",
+    "confirmCancel": "Are you sure you want to cancel? Data will be lost."
+  }
+}

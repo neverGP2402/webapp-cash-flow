@@ -1,0 +1,113 @@
+{
+  "page": {
+    "title": "Thêm tài sản",
+    "subtitle": "Quản lý và theo dõi tài sản cá nhân của bạn",
+    "miniSummary": "Tổng quan tài sản"
+  },
+  "form": {
+    "assetType": {
+      "label": "Loại tài sản",
+      "placeholder": "Chọn loại tài sản",
+      "searchPlaceholder": "Tìm kiếm tài sản..."
+    },
+    "wallet": {
+      "label": "Ví lưu trữ",
+      "placeholder": "Chọn ví lưu trữ"
+    },
+    "amount": {
+      "label": "Số lượng",
+      "placeholder": "Nhập số lượng"
+    },
+    "unit": {
+      "label": "Đơn vị"
+    },
+    "price": {
+      "label": "Giá nhập",
+      "placeholder": "Nhập giá mua"
+    },
+    "exchangeRate": {
+      "label": "Tỉ giá hiện tại",
+      "buyPrice": "Giá mua",
+      "sellPrice": "Giá bán",
+      "updatedAt": "Cập nhật"
+    },
+    "profit": {
+      "label": "Lợi nhuận tạm tính",
+      "profit": "Lãi",
+      "loss": "Lỗ"
+    },
+    "origin": {
+      "label": "Nguồn gốc tài sản",
+      "placeholder": "Nhập nguồn gốc"
+    },
+    "status": {
+      "label": "Trạng thái tài sản"
+    },
+    "transactionDate": {
+      "label": "Ngày giao dịch"
+    },
+    "description": {
+      "label": "Ghi chú",
+      "placeholder": "Nhập ghi chú (tùy chọn)"
+    }
+  },
+  "overview": {
+    "title": "Tổng quan realtime",
+    "currentValue": "Giá trị hiện tại",
+    "purchaseValue": "Giá trị lúc nhập",
+    "difference": "Chênh lệch",
+    "profitPercent": "% Tăng giảm",
+    "assetStatus": "Trạng thái"
+  },
+  "insight": {
+    "title": "Phân tích nhanh",
+    "positive": "Tài sản đang tăng {percent}%",
+    "negative": "Tài sản đang giảm {percent}%",
+    "neutral": "Giá trị ổn định",
+    "goodPerformance": "Đây is tài sản có hiệu suất tốt",
+    "higherThanPurchase": "Giá trị hiện tại cao hơn lúc mua",
+    "lowerThanPurchase": "Giá trị hiện tại thấp hơn lúc mua"
+  },
+  "actions": {
+    "save": "Lưu tài sản",
+    "saveAndAdd": "Lưu & thêm tiếp",
+    "cancel": "Hủy"
+  },
+  "validation": {
+    "assetTypeRequired": "Vui lòng chọn loại tài sản",
+    "walletRequired": "Vui lòng chọn ví lưu trữ",
+    "amountRequired": "Vui lòng nhập số lượng",
+    "amountPositive": "Số lượng phải lớn hơn 0",
+    "priceRequired": "Vui lòng nhập giá mua",
+    "pricePositive": "Giá phải lớn hơn 0",
+    "unitRequired": "Vui lòng chọn đơn vị",
+    "dateRequired": "Vui lòng chọn ngày giao dịch"
+  },
+  "assetTypes": {
+    "gold": "Vàng",
+    "silver": "Bạc",
+    "usd": "USD",
+    "crypto": "Crypto",
+    "cash": "Tiền mặt",
+    "eWallet": "Ví điện tử",
+    "digitalAsset": "Tài sản số",
+    "other": "Tài sản tích lũy khác"
+  },
+  "origins": {
+    "purchase": "Mua tích lũy",
+    "investment": "Đầu tư",
+    "gift": "Được tặng",
+    "savings": "Tiết kiệm"
+  },
+  "statuses": {
+    "holding": "Đang giữ",
+    "lending": "Cho vay",
+    "pledged": "Cầm cố",
+    "investing": "Đầu tư"
+  },
+  "messages": {
+    "saveSuccess": "Đã lưu tài sản thành công",
+    "saveFailed": "Có lỗi xảy ra khi lưu",
+    "confirmCancel": "Bạn có chắc muốn hủy? Dữ liệu sẽ bị mất."
+  }
+}
