@@ -76,7 +76,7 @@ const ScrollContainer = styled(Box)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export function TransactionDrawer({ open, mode, transaction, onClose, onSave }: TransactionDrawerProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 

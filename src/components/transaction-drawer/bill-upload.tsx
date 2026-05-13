@@ -8,7 +8,7 @@ import { Iconify } from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 interface BillUploadProps {
-  image?: File | string;
+  image?: File | string | null;
   onImageChange: (image: File | null) => void;
 }
 
@@ -54,7 +54,7 @@ const RemoveButton = styled(IconButton)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export function BillUpload({ image, onImageChange }: BillUploadProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const [isDragOver, setIsDragOver] = useState(false);
 
   const handleFileSelect = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {

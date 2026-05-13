@@ -115,7 +115,7 @@ const mockCategories: Category[] = [
 // ----------------------------------------------------------------------
 
 export function CategoryGrid({ categories, selectedCategory, transactionType, onSelectCategory }: CategoryGridProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   // Filter categories by transaction type
   const filteredCategories = categories.length > 0 

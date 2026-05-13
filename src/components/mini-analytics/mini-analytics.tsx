@@ -51,7 +51,7 @@ const CategoryAvatar = styled(Avatar)<{ color?: string }>(({ theme, color }) => 
 // ----------------------------------------------------------------------
 
 export function MiniAnalytics({ monthlyStats, topCategories }: MiniAnalyticsProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   const formatAmount = (amount: number) => {
     return new Intl.NumberFormat('vi-VN', {

@@ -66,7 +66,7 @@ const TrendChip = styled(Chip)<{ trend: 'increasing' | 'decreasing' | 'stable' }
 // ----------------------------------------------------------------------
 
 export function QuickInsightsComponent({ insights }: QuickInsightsProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   const formatAmount = (amount: number) => {
     return new Intl.NumberFormat('vi-VN', {

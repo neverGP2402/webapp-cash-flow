@@ -51,7 +51,7 @@ const FilterSection = styled(Box)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export function TransactionFilters({ filters, onFiltersChange }: TransactionFiltersProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const [expanded, setExpanded] = useState(false);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {

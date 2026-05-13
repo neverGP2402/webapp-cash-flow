@@ -137,6 +137,13 @@
     "noTransactions": "No transactions",
     "noTransactionsDescription": "You don't have any transactions in this period.",
     "viewAll": "View All",
-    "showLess": "Show Less"
+    "showLess": "Show Less",
+    "productDetails": "Product Details",
+    "productName": "Product Name",
+    "quantity": "Quantity",
+    "unitPrice": "Unit Price",
+    "total": "Total",
+    "addProduct": "Add Product",
+    "noProducts": "No products yet. Click + to add products."
   }
 }

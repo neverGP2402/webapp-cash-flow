@@ -39,6 +39,17 @@ const AddButton = styled(IconButton)(({ theme }) => ({
   backgroundColor: alpha(theme.palette.primary.main, 0.1),
   color: theme.palette.primary.main,
   border: `1px solid ${theme.palette.primary.main}`,
+  borderRadius: theme.spacing(1),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.primary.main, 0.2),
+  },
+}));
+
+const DelButton = styled(IconButton)(({ theme }) => ({
+  backgroundColor: alpha(theme.palette.error.main, 0.1),
+  color: theme.palette.error.main,
+  border: `1px solid ${theme.palette.error.main}`,
+  borderRadius: theme.spacing(1),
   '&:hover': {
     backgroundColor: alpha(theme.palette.primary.main, 0.2),
   },
@@ -47,7 +58,7 @@ const AddButton = styled(IconButton)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export function TransactionDetailList({ items, onChange }: TransactionDetailListProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   const handleItemChange = (index: number, field: keyof TransactionDetailItem, value: string | number) => {
     const newItems = [...items];
@@ -86,14 +97,14 @@ export function TransactionDetailList({ items, onChange }: TransactionDetailList
   return (
     <Box sx={{ mb: 3 }}>
       <Typography variant="subtitle2" fontWeight={600} sx={{ mb: 2 }}>
-        Chi tiết sản phẩm
+        {t('transactionHistory.productDetails')}
       </Typography>
       
       {items.length === 0 ? (
         <Card sx={{ textAlign: 'center', py: 4, border: `2px dashed alpha('#000', 0.1)` }}>
           <CardContent>
             <Typography variant="body2" color="text.secondary">
-              Chưa có sản phẩm nào. Click + để thêm sản phẩm.
+              {t('transactionHistory.noProducts')}
             </Typography>
           </CardContent>
         </Card>
@@ -101,11 +112,12 @@ export function TransactionDetailList({ items, onChange }: TransactionDetailList
         items.map((item, index) => (
           <DetailItemCard key={item.id}>
             <CardContent sx={{ p: 2 }}>
-              <ItemRow>
-                <Box flex={1}>
+              <Box>
+                {/* First row - Product name */}
+                <Box sx={{ mb: 1.5, display: 'flex', alignItems: 'center', gap: 1 }}>
                   <StyledTextField
                     fullWidth
-                    label="Tên sản phẩm"
+                    label={t('transactionHistory.productName')}
                     value={item.name}
                     onChange={(e) => handleItemChange(index, 'name', e.target.value)}
                     size="small"
@@ -113,41 +125,45 @@ export function TransactionDetailList({ items, onChange }: TransactionDetailList
                   />
                 </Box>
                 
-                <Box sx={{ width: 80 }}>
-                  <StyledTextField
-                    label="SL"
-                    type="number"
-                    value={item.quantity}
-                    onChange={(e) => handleItemChange(index, 'quantity', parseInt(e.target.value) || 0)}
-                    size="small"
-                    InputProps={{ min: 1 }}
-                  />
-                </Box>
-                
-                <Box sx={{ width: 100 }}>
-                  <StyledTextField
-                    label="Đơn giá"
-                    type="number"
-                    value={item.price}
-                    onChange={(e) => handleItemChange(index, 'price', parseFloat(e.target.value) || 0)}
-                    size="small"
-                    InputProps={{ min: 0 }}
-                  />
-                </Box>
-                
-                <Box sx={{ width: 100 }}>
-                  <StyledTextField
-                    label="Thành tiền"
-                    value={formatCurrency(item.total)}
-                    disabled
-                    size="small"
-                  />
-                </Box>
-                
-                <AddButton onClick={() => handleRemoveItem(index)} size="small">
-                  <Iconify icon="mingcute:close-line" width={16} />
-                </AddButton>
-              </ItemRow>
+                {/* Second row - Quantity, Unit Price, Total, Delete button */}
+                <ItemRow>
+                  
+                  <Box sx={{ width: 80 }}>
+                    <StyledTextField
+                      label={t('transactionHistory.quantity')}
+                      type="number"
+                      value={item.quantity}
+                      onChange={(e) => handleItemChange(index, 'quantity', parseInt(e.target.value) || 0)}
+                      size="small"
+                      InputProps={{ min: 1 }}
+                    />
+                  </Box>
+                  
+                  <Box sx={{ width: 100 }}>
+                    <StyledTextField
+                      label={t('transactionHistory.unitPrice')}
+                      type="number"
+                      value={item.price}
+                      onChange={(e) => handleItemChange(index, 'price', parseFloat(e.target.value) || 0)}
+                      size="small"
+                      InputProps={{ min: 0 }}
+                    />
+                  </Box>
+                  
+                  <Box sx={{ width: 100 }}>
+                    <StyledTextField
+                      label={t('transactionHistory.total')}
+                      value={formatCurrency(item.total)}
+                      disabled
+                      size="small"
+                    />
+                  </Box>
+                  
+                  <DelButton onClick={() => handleRemoveItem(index)} size="small" color='error'>
+                    <Iconify icon="mingcute:close-line" width={16} />
+                  </DelButton>
+                </ItemRow>
+              </Box>
             </CardContent>
           </DetailItemCard>
         ))
@@ -156,9 +172,9 @@ export function TransactionDetailList({ items, onChange }: TransactionDetailList
       <Box sx={{ textAlign: 'center', mt: 2 }}>
         <AddButton onClick={handleAddItem}>
           <Iconify icon="mingcute:add-line" width={20} />
-          <Typography variant="body2" sx={{ ml: 1 }}>
-            Thêm sản phẩm
-          </Typography>
+            <Typography variant="body2" sx={{ ml: 1 }}>
+              {t('transactionHistory.addProduct')}
+            </Typography>
         </AddButton>
       </Box>
     </Box>

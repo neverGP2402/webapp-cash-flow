@@ -46,7 +46,7 @@ const SaveButton = styled(Button)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export function TransactionFooterAction({ state, onCancel, onSave, onValidate }: TransactionFooterActionProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   const hasErrors = Object.keys(state.errors).length > 0;
   const isFormValid = state.formData && state.formData.amount > 0 && 
@@ -65,14 +65,14 @@ export function TransactionFooterAction({ state, onCancel, onSave, onValidate }:
       </CancelButton>
       
       <Box sx={{ display: 'flex', gap: 1 }}>
-        <Button
+        {/* <Button
           variant="outlined"
           onClick={onValidate}
           disabled={state.isSubmitting}
           sx={{ minWidth: 120 }}
         >
           {t('common.required')}
-        </Button>
+        </Button> */}
         
         <SaveButton
           variant="contained"

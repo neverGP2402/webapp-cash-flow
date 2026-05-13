@@ -157,7 +157,7 @@ const mockQuickInsights: QuickInsights = {
 };
 
 export default function TransactionHistoryPage() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const [filters, setFilters] = useState<FilterOptions>({
     searchTerm: '',
     timeFilter: 'all',

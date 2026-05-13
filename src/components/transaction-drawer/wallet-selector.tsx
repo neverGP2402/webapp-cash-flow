@@ -86,7 +86,7 @@ const mockWallets: Wallet[] = [
 // ----------------------------------------------------------------------
 
 export function WalletSelector({ wallets, selectedWallet, onSelectWallet }: WalletSelectorProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   const formatBalance = (balance: number) => {
     return new Intl.NumberFormat('vi-VN', {

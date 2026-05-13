@@ -34,7 +34,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export function TransactionInfoForm({ formData, errors, onChange, onErrorsChange }: TransactionInfoFormProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   const handleFieldChange = (field: keyof TransactionFormData) => (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const value = event.target.value;

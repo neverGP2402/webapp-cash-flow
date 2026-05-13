@@ -60,7 +60,7 @@ const ExpenseButton = styled(Button)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export function TransactionTypeSelector({ value, onChange }: TransactionTypeSelectorProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   const handleTypeChange = (_: any, newType: TransactionType) => {
     onChange(newType);

@@ -53,7 +53,7 @@ const CurrencySymbol = styled('span')<{ transactionType: TransactionType }>(({ t
 // ----------------------------------------------------------------------
 
 export function AmountInput({ value, onChange, type }: AmountInputProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const [displayValue, setDisplayValue] = useState('');
 
   const formatAmount = useCallback((num: number) => {

@@ -137,6 +137,13 @@
     "noTransactions": "Không có giao dịch nào",
     "noTransactionsDescription": "Bạn chưa có giao dịch nào trong khoảng thời gian này.",
     "viewAll": "Xem tất cả",
-    "showLess": "Thu gọn"
+    "showLess": "Thu gọn",
+    "productDetails": "Chi tiết sản phẩm",
+    "productName": "Tên sản phẩm",
+    "quantity": "Số lượng",
+    "unitPrice": "Đơn giá",
+    "total": "Thành tiền",
+    "addProduct": "Thêm sản phẩm",
+    "noProducts": "Chưa có sản phẩm nào. Click + để thêm sản phẩm."
   }
 }

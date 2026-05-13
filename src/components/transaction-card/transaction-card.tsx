@@ -72,7 +72,7 @@ const StatusChip = styled(Chip)<{ status: string }>(({ theme, status }) => {
 // ----------------------------------------------------------------------
 
 export function TransactionCard({ transaction, onClick }: TransactionCardProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const [expanded, setExpanded] = useState(false);
 
   const handleCardClick = () => {
