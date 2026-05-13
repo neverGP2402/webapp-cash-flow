@@ -6,45 +6,52 @@
     "totalProfit": "Lợi nhuận hiện tại",
     "profitPercentage": "% Tăng giảm",
     "status": {
-      "profit": "Lãi",
-      "loss": "Lỗ", 
+      "profit": "Đang lãi",
+      "loss": "Đang lỗ",
       "neutral": "Ổn định"
     },
-    "lastUpdated": "Cập nhật lần cuối: {{time}}"
+    "lastUpdated": "Cập nhật {{time}}",
+    "assetType": "Loại tài sản",
+    "holdingValue": "Giá trị nắm giữ",
+    "averageCost": "Giá vốn bình quân"
   },
   "performance": {
     "averageBuyPrice": "Giá vốn trung bình",
-    "currentMarketPrice": "Giá thị trường hiện tại",
+    "currentMarketPrice": "Giá thị trường",
     "totalInvested": "Tổng vốn đầu tư",
     "currentValue": "Giá trị hiện tại",
-    "unrealizedProfit": "Lợi nhuận chưa thực hiện",
-    "realizedProfit": "Lợi nhuận đã thực hiện",
-    "dayChange": "Thay đổi ngày",
-    "weekChange": "Thay đổi tuần",
-    "monthChange": "Thay đổi tháng",
-    "yearChange": "Thay đổi năm"
+    "unrealizedProfit": "Lãi/lỗ chưa chốt",
+    "realizedProfit": "Lãi/lỗ đã chốt",
+    "dayChange": "Thay đổi hôm nay",
+    "weekChange": "Thay đổi tuần này",
+    "monthChange": "Thay đổi tháng này",
+    "yearChange": "Thay đổi năm nay",
+    "allTime": "Tất cả thời gian"
   },
   "chart": {
-    "title": "Biểu đồ hiệu suất",
+    "title": "Biểu đồ tăng trưởng",
+    "subtitle": "Theo dõi giá trị tài sản theo thời gian",
     "filter": {
-      "7D": "7 ngày",
-      "30D": "30 ngày", 
-      "90D": "3 tháng",
-      "1Y": "1 năm",
+      "7D": "7N",
+      "30D": "30N",
+      "90D": "3T",
+      "1Y": "1N",
       "ALL": "Tất cả"
     },
     "value": "Giá trị",
     "profit": "Lợi nhuận",
-    "date": "Ngày"
+    "date": "Ngày",
+    "noData": "Không có dữ liệu cho khoảng thời gian này"
   },
   "allocation": {
     "title": "Phân bổ danh mục",
     "portfolioPercentage": "Chiếm {{percentage}}% tổng tài sản",
-    "rank": "Thứ hạng {{rank}}/{{total}} trong danh mục",
-    "totalPortfolioValue": "Tổng giá trị danh mục"
+    "rank": "Hạng {{rank}}/{{total}}",
+    "totalPortfolioValue": "Tổng danh mục",
+    "assetValue": "Giá trị tài sản"
   },
   "timeline": {
-    "title": "Dòng thời gian tài sản",
+    "title": "Lịch sử hoạt động",
     "noEvents": "Chưa có hoạt động nào",
     "today": "Hôm nay",
     "yesterday": "Hôm qua",
@@ -58,26 +65,30 @@
       "transfer": "Chuyển ví",
       "profit_distribution": "Nhận lợi nhuận",
       "other": "Khác"
-    }
+    },
+    "viewDetails": "Xem chi tiết"
   },
   "transactions": {
-    "title": "Giao dịch liên quan",
+    "title": "Giao dịch",
     "noTransactions": "Chưa có giao dịch nào",
     "type": "Loại",
     "wallet": "Ví",
     "quantity": "Số lượng",
-    "price": "Giá giao dịch",
+    "price": "Giá",
     "currentValue": "Giá trị hiện tại",
-    "profit": "Lời/Lỗ",
+    "profit": "Lãi/Lỗ",
     "buy": "Mua",
-    "sell": "Bán"
+    "sell": "Bán",
+    "viewDetails": "Xem chi tiết",
+    "edit": "Chỉnh sửa",
+    "totalProfit": "Tổng L/L"
   },
   "insights": {
-    "title": "Thông tin chi tiết",
-    "noInsights": "Chưa có thông tin phân tích",
+    "title": "Phân tích",
+    "noInsights": "Chưa có phân tích nào",
     "types": {
       "performance": "Hiệu suất",
-      "profit": "Lợi nhuận", 
+      "profit": "Lợi nhuận",
       "growth": "Tăng trưởng",
       "comparison": "So sánh",
       "recommendation": "Gợi ý"
@@ -86,28 +97,48 @@
       "high": "Cao",
       "medium": "Trung bình",
       "low": "Thấp"
-    }
+    },
+    "viewDetails": "Xem chi tiết"
+  },
+  "exchangeRate": {
+    "title": "Tỷ giá",
+    "buyRate": "Giá mua",
+    "sellRate": "Giá bán",
+    "source": "Nguồn",
+    "lastUpdated": "Cập nhật",
+    "noData": "Không có dữ liệu tỷ giá"
   },
   "actions": {
     "buy": "Mua thêm",
     "sell": "Bán",
     "updatePrice": "Cập nhật giá",
-    "viewHistory": "Xem lịch sử",
+    "viewHistory": "Lịch sử",
     "transfer": "Chuyển ví"
   },
   "quickActions": {
-    "title": "Hành động nhanh",
-    "moreActions": "Thêm hành động"
+    "title": "Thao tác nhanh",
+    "moreActions": "Thêm"
   },
   "emptyState": {
-    "title": "Chưa có dữ liệu tài sản",
-    "description": "Bạn chưa có giao dịch nào cho tài sản này. Hãy bắt đầu tích lũy để theo dõi hiệu suất.",
+    "title": "Chưa có dữ liệu",
+    "description": "Bạn chưa có giao dịch nào cho tài sản này. Hãy bắt đầu theo dõi để xem hiệu suất.",
     "addTransaction": "Thêm giao dịch đầu tiên"
   },
-  "loading": "Đang tải dữ liệu tài sản...",
+  "loading": "Đang tải...",
   "error": {
-    "loadFailed": "Không thể tải dữ liệu tài sản. Vui lòng thử lại.",
-    "priceUpdateFailed": "Cập nhật giá thất bại. Vui lòng thử lại.",
-    "transactionFailed": "Thực hiện giao dịch thất bại. Vui lòng thử lại."
+    "loadFailed": "Không thể tải dữ liệu. Vui lòng thử lại.",
+    "priceUpdateFailed": "Cập nhật giá thất bại.",
+    "transactionFailed": "Giao dịch thất bại."
+  },
+  "common": {
+    "ago": "{{time}} trước",
+    "justNow": "Vừa xong",
+    "hours": "giờ",
+    "days": "ngày",
+    "months": "tháng",
+    "years": "năm",
+    "viewAll": "Xem tất cả",
+    "showMore": "Xem thêm",
+    "showLess": "Thu gọn"
   }
 }

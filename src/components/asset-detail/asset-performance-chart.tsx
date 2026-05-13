@@ -10,7 +10,7 @@ import {
   Button,
   alpha,
   useTheme,
-  Fade,
+  Skeleton,
 } from '@mui/material';
 
 import { Chart } from 'src/components/chart';
@@ -73,7 +73,7 @@ export function AssetPerformanceChart({
       },
       animations: {
         enabled: true,
-        easing: 'easeinout',
+        easing: 'easeinout' as const,
         speed: 800,
         animateGradually: {
           enabled: true,
@@ -85,25 +85,25 @@ export function AssetPerformanceChart({
         },
       },
     },
-    colors: [
-      theme.palette.primary.main,
-      theme.palette.success.main,
-      theme.palette.error.main,
-    ],
+    colors: [theme.palette.primary.main],
     dataLabels: {
       enabled: false,
     },
     stroke: {
       curve: 'smooth' as const,
-      width: 2,
+      width: 3,
     },
     fill: {
       type: 'gradient',
       gradient: {
         shadeIntensity: 1,
-        opacityFrom: 0.7,
-        opacityTo: 0.1,
+        opacityFrom: 0.4,
+        opacityTo: 0.05,
         stops: [0, 90, 100],
+        colorStops: [
+          { offset: 0, color: alpha(theme.palette.primary.main, 0.4), opacity: 0.4 },
+          { offset: 100, color: alpha(theme.palette.primary.main, 0.01), opacity: 0.01 },
+        ],
       },
     },
     xaxis: {
@@ -112,7 +112,8 @@ export function AssetPerformanceChart({
         format: 'dd/MM',
         style: {
           colors: theme.palette.text.secondary,
-          fontSize: '12px',
+          fontSize: '11px',
+          fontWeight: 500,
         },
       },
       axisBorder: {
@@ -121,31 +122,58 @@ export function AssetPerformanceChart({
       axisTicks: {
         show: false,
       },
+      tooltip: {
+        enabled: false,
+      },
     },
     yaxis: {
       labels: {
-        formatter: (value: number) => `${(value / 1000000).toFixed(1)}M`,
+        formatter: (value: number) => {
+          if (value >= 1000000) {
+            return `${(value / 1000000).toFixed(1)}M`;
+          }
+          if (value >= 1000) {
+            return `${(value / 1000).toFixed(0)}K`;
+          }
+          return value.toString();
+        },
         style: {
           colors: theme.palette.text.secondary,
-          fontSize: '12px',
+          fontSize: '11px',
+          fontWeight: 500,
         },
+      },
+      tooltip: {
+        enabled: true,
       },
     },
     tooltip: {
+      theme: 'light' as const,
       x: {
-        format: 'dd MMM yyyy HH:mm',
+        format: 'dd MMM yyyy',
+        show: true,
       },
       y: {
-        formatter: (value: number) => `${value.toLocaleString('vi-VN')}₫`,
+        formatter: (value: number) => `${new Intl.NumberFormat('vi-VN').format(Math.round(value))}₫`,
+        title: {
+          formatter: () => t('chart.value'),
+        },
       },
-      theme: 'light',
       style: {
         fontSize: '12px',
+        fontWeight: 500,
+      },
+      marker: {
+        show: true,
+        size: 6,
+        colors: [theme.palette.primary.main],
+        strokeColor: theme.palette.background.paper,
+        strokeWidth: 2,
       },
     },
     grid: {
-      borderColor: alpha(theme.palette.divider, 0.1),
-      strokeDashArray: 3,
+      borderColor: alpha(theme.palette.divider, 0.08),
+      strokeDashArray: 4,
       xaxis: {
         lines: {
           show: false,
@@ -156,22 +184,40 @@ export function AssetPerformanceChart({
           show: true,
         },
       },
+      padding: {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+      },
     },
     legend: {
-      show: true,
-      position: 'top' as const,
-      horizontalAlign: 'right' as const,
-      labels: {
-        colors: theme.palette.text.secondary,
-        useSeriesColors: false,
-      },
-      markers: {
-        size: 8,
-        strokeWidth: 0,
-        fillColors: [theme.palette.primary.main],
+      show: false,
+    },
+    markers: {
+      size: 0,
+      strokeWidth: 0,
+      hover: {
+        size: 6,
+        sizeOffset: 3,
       },
     },
-  }), [theme]);
+    responsive: [
+      {
+        breakpoint: 600,
+        options: {
+          chart: {
+            height: 250,
+          },
+          xaxis: {
+            labels: {
+              rotate: -30,
+            },
+          },
+        },
+      },
+    ],
+  }), [theme, t]);
 
   const chartSeries = useMemo(() => {
     if (!filteredData.length) return [];
@@ -184,15 +230,32 @@ export function AssetPerformanceChart({
           y: point.value,
         })),
       },
-      {
-        name: t('chart.profit'),
-        data: filteredData.map(point => ({
-          x: new Date(point.timestamp).getTime(),
-          y: point.profit,
-        })),
-      },
     ];
   }, [filteredData, t]);
+
+  // Calculate summary stats
+  const summaryStats = useMemo(() => {
+    if (!filteredData.length) return null;
+    
+    const firstValue = filteredData[0].value;
+    const lastValue = filteredData[filteredData.length - 1].value;
+    const change = lastValue - firstValue;
+    const changePercent = ((change / firstValue) * 100);
+    const highestValue = Math.max(...filteredData.map(d => d.value));
+    const lowestValue = Math.min(...filteredData.map(d => d.value));
+    
+    return {
+      change,
+      changePercent,
+      highestValue,
+      lowestValue,
+      currentValue: lastValue,
+    };
+  }, [filteredData]);
+
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('vi-VN').format(Math.round(value));
+  };
 
   if (isLoading) {
     return (
@@ -201,100 +264,174 @@ export function AssetPerformanceChart({
           borderRadius: 4,
           border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
           height: 400,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
         }}
       >
-        <Typography variant="body2" color="text.secondary">
-          {t('loading')}
-        </Typography>
+        <CardContent sx={{ p: 3 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Skeleton variant="circular" width={40} height={40} sx={{ mr: 2 }} />
+              <Box>
+                <Skeleton variant="text" width={150} height={28} sx={{ mb: 0.5 }} />
+                <Skeleton variant="text" width={80} height={20} />
+              </Box>
+            </Box>
+            <Skeleton variant="text" width={200} height={36} />
+          </Box>
+          <Skeleton variant="rectangular" width="100%" height={250} sx={{ borderRadius: 2 }} />
+        </CardContent>
       </Card>
     );
   }
 
   return (
-    <Fade in={!isLoading} timeout={800}>
-      <Card
-        sx={{
-          borderRadius: 4,
-          border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
-        }}
-      >
-        <CardContent sx={{ p: 3 }}>
-          {/* Header */}
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Box
-                sx={{
-                  p: 1.5,
-                  borderRadius: 2,
-                  background: alpha(theme.palette.primary.main, 0.1),
-                  mr: 2,
-                  color: theme.palette.primary.main,
-                }}
-              >
-                <Iconify icon={("solar:chart-square-bold" as any)} width={24} />
-              </Box>
-              <Box>
-                <Typography variant="h6" fontWeight={600}>
-                  {t('chart.title')}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {periods.find(p => p.value === selectedPeriod)?.label}
-                </Typography>
-              </Box>
+    <Card
+      sx={{
+        borderRadius: 4,
+        border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+        background: theme.palette.background.paper,
+      }}
+    >
+      <CardContent sx={{ p: { xs: 3, md: 4 } }}>
+        {/* Header */}
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3, flexWrap: 'wrap', gap: 2 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box
+              sx={{
+                p: 1.5,
+                borderRadius: 2,
+                background: alpha(theme.palette.primary.main, 0.1),
+                mr: 2,
+                color: theme.palette.primary.main,
+              }}
+            >
+              <Iconify icon={("solar:chart-square-bold" as any)} width={24} />
             </Box>
-
-            {/* Period Filter */}
-            <ButtonGroup size="small">
-              {periods.map((period) => (
-                <Button
-                  key={period.value}
-                  variant={selectedPeriod === period.value ? 'contained' : 'outlined'}
-                  onClick={() => onPeriodChange(period.value)}
-                  sx={{
-                    px: 2,
-                    py: 1,
-                    fontSize: '12px',
-                    fontWeight: 500,
-                  }}
-                >
-                  {period.label}
-                </Button>
-              ))}
-            </ButtonGroup>
+            <Box>
+              <Typography variant="h6" fontWeight={700}>
+                {t('chart.title')}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {periods.find(p => p.value === selectedPeriod)?.label}
+              </Typography>
+            </Box>
           </Box>
 
-          {/* Chart */}
-          <Box sx={{ height: 300, position: 'relative' }}>
-            {filteredData.length > 0 ? (
-              <Chart
-                type="area"
-                series={chartSeries}
-                options={chartOptions}
-                sx={{ height: '100%', width: '100%' }}
-              />
-            ) : (
-              <Box
+          {/* Period Filter */}
+          <ButtonGroup 
+            size="small" 
+            variant="outlined"
+            sx={{
+              '& .MuiButtonGroup-grouped': {
+                borderRadius: 2,
+                px: 2,
+                py: 1,
+                fontWeight: 600,
+                fontSize: '12px',
+                textTransform: 'none',
+              },
+            }}
+          >
+            {periods.map((period) => (
+              <Button
+                key={period.value}
+                variant={selectedPeriod === period.value ? 'contained' : 'text'}
+                onClick={() => onPeriodChange(period.value)}
                 sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: theme.palette.text.secondary,
+                  backgroundColor: selectedPeriod === period.value ? 'primary.main' : 'transparent',
+                  color: selectedPeriod === period.value ? 'primary.contrastText' : 'text.secondary',
+                  '&:hover': {
+                    backgroundColor: selectedPeriod === period.value ? 'primary.dark' : alpha(theme.palette.primary.main, 0.08),
+                  },
                 }}
               >
-                <Iconify icon={("solar:chart-square-bold" as any)} width={48} sx={{ mb: 2, opacity: 0.3 }} />
-                <Typography variant="body2" textAlign="center">
-                  Không có dữ liệu cho khoảng thời gian này
-                </Typography>
-              </Box>
-            )}
+                {period.label}
+              </Button>
+            ))}
+          </ButtonGroup>
+        </Box>
+
+        {/* Summary Stats */}
+        {summaryStats && (
+          <Box sx={{ display: 'flex', gap: 3, mb: 3, flexWrap: 'wrap' }}>
+            <Box>
+              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
+                {t('performance.currentValue')}
+              </Typography>
+              <Typography variant="h6" fontWeight={700}>
+                {formatCurrency(summaryStats.currentValue)}₫
+              </Typography>
+            </Box>
+            <Box>
+              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
+                Thay đổi
+              </Typography>
+              <Typography 
+                variant="h6" 
+                fontWeight={700} 
+                color={summaryStats.change >= 0 ? 'success.main' : 'error.main'}
+              >
+                {summaryStats.change >= 0 ? '+' : ''}{formatCurrency(summaryStats.change)}₫
+              </Typography>
+            </Box>
+            <Box>
+              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
+                % Thay đổi
+              </Typography>
+              <Typography 
+                variant="h6" 
+                fontWeight={700} 
+                color={summaryStats.changePercent >= 0 ? 'success.main' : 'error.main'}
+              >
+                {summaryStats.changePercent >= 0 ? '+' : ''}{summaryStats.changePercent.toFixed(2)}%
+              </Typography>
+            </Box>
+            <Box>
+              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
+                Cao nhất
+              </Typography>
+              <Typography variant="h6" fontWeight={700}>
+                {formatCurrency(summaryStats.highestValue)}₫
+              </Typography>
+            </Box>
+            <Box>
+              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
+                Thấp nhất
+              </Typography>
+              <Typography variant="h6" fontWeight={700}>
+                {formatCurrency(summaryStats.lowestValue)}₫
+              </Typography>
+            </Box>
           </Box>
-        </CardContent>
-      </Card>
-    </Fade>
+        )}
+
+        {/* Chart */}
+        <Box sx={{ height: 280, position: 'relative' }}>
+          {filteredData.length > 0 ? (
+            <Chart
+              type="area"
+              series={chartSeries}
+              options={chartOptions}
+              sx={{ height: '100%', width: '100%' }}
+            />
+          ) : (
+            <Box
+              sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: theme.palette.text.secondary,
+              }}
+            >
+              <Iconify icon={("solar:chart-square-bold" as any)} width={48} sx={{ mb: 2, opacity: 0.3 }} />
+              <Typography variant="body2" textAlign="center">
+                {t('chart.noData')}
+              </Typography>
+            </Box>
+          )}
+        </Box>
+      </CardContent>
+    </Card>
   );
 }

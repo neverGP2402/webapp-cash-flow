@@ -21,6 +21,7 @@ import { AssetTransactionList } from './asset-transaction-list';
 import { AssetInsightSection } from './asset-insight-section';
 import { AssetQuickAction } from './asset-quick-action';
 import { AssetEmptyState } from './asset-empty-state';
+import { AssetExchangeRateCard } from './asset-exchange-rate-card';
 
 import type { 
   AssetDetailData, 
@@ -315,6 +316,9 @@ export function AssetDetailPage({
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
               {/* Asset Allocation */}
               <AssetAllocationCard allocation={currentData.allocation} isLoading={isLoading} />
+
+              {/* Exchange Rate Card */}
+              <AssetExchangeRateCard isLoading={isLoading} />
 
               {/* Quick Actions */}
               {!isMobile && (

@@ -112,3 +112,27 @@ export interface AssetQuickAction {
   action: 'buy' | 'sell' | 'update_price' | 'view_history' | 'transfer';
   disabled?: boolean;
 }
+
+export interface ExchangeRate {
+  id: string;
+  currency: string;
+  currencyName: string;
+  buyRate: number;
+  sellRate: number;
+  source: string;
+  lastUpdated: string;
+  trend?: 'up' | 'down' | 'neutral';
+  change?: number;
+  changePercentage?: number;
+}
+
+export interface AssetStatisticCard {
+  id: string;
+  title: string;
+  value: number;
+  subtitle?: string;
+  icon: string;
+  color: string;
+  trend?: number;
+  trendLabel?: string;
+}
