@@ -1,0 +1,99 @@
+{
+  "pageTitle": "Mục tiêu tài chính",
+  "heroOverview": {
+    "activeGoals": "Mục tiêu đang hoạt động",
+    "totalTarget": "Tổng mục tiêu",
+    "totalSaved": "Đã tích lũy",
+    "overallProgress": "Tiến độ tổng thể",
+    "estimatedCompletion": "Dự kiến hoàn thành",
+    "buildYourFuture": "Xây dựng tương lai tài chính của bạn"
+  },
+  "goalStatus": {
+    "onTrack": "Đúng tiến độ",
+    "delayed": "Chậm tiến độ",
+    "completed": "Đã hoàn thành",
+    "noProgress": "Chưa có tiến độ"
+  },
+  "goalTypes": {
+    "buyCar": "Mua xe",
+    "buyHouse": "Mua nhà",
+    "travel": "Du lịch",
+    "emergencyFund": "Quỹ khẩn cấp",
+    "investment": "Đầu tư",
+    "other": "Khác"
+  },
+  "goalCard": {
+    "targetAmount": "Mục tiêu",
+    "currentAmount": "Hiện tại",
+    "remainingAmount": "Còn lại",
+    "monthlySaving": "Tiết kiệm hàng tháng",
+    "estimatedCompletion": "Dự kiến hoàn thành"
+  },
+  "analytics": {
+    "closestGoal": "Mục tiêu gần hoàn thành nhất",
+    "hardestGoal": "Mục tiêu thách thức nhất",
+    "fastestGrowing": "Phát triển nhanh nhất",
+    "monthlyRequired": "Cần tiết kiệm mỗi tháng",
+    "predictionProgress": "Dự báo tiến độ"
+  },
+  "timeline": {
+    "title": "Lịch sử tích lũy",
+    "unknownGoal": "Mục tiêu không xác định",
+    "noMilestones": "Chưa có cột mốc nào",
+    "startTracking": "Bắt đầu theo dõi tiến độ",
+    "achievedAmount": "Đạt được: {{amount}}₫",
+    "milestone25": "Đạt 25%",
+    "milestone50": "Đạt 50%",
+    "milestone75": "Đạt 75%",
+    "milestone100": "Hoàn thành mục tiêu"
+  },
+  "insights": {
+    "title": "Thông tin chi tiết",
+    "currentPace": "Với tốc độ hiện tại",
+    "willCompleteIn": "bạn sẽ hoàn thành vào",
+    "priorityGoal": "Mục tiêu ưu tiên",
+    "focusOn": "Tập trung vào",
+    "aheadGoal": "mục tiêu vượt tiến độ",
+    "keepGoing": "Tiếp tục tốt!",
+    "motivationTip": "Mẹo động lực"
+  },
+  "goalForm": {
+    "title": "Tạo mục tiêu tài chính",
+    "subtitle": "Đặt mục tiêu và theo dõi tiến độ của bạn",
+    "goalName": "Tên mục tiêu",
+    "targetAmount": "Số tiền mục tiêu",
+    "currentSaved": "Đã tích lũy",
+    "deadline": "Thời hạn hoàn thành",
+    "selectType": "Chọn loại mục tiêu",
+    "motivationQuote": "Mục tiêu không phải là đích đến, mà là hướng đi.",
+    "futureProjection": "Dự tương lai",
+    "savingSuggestion": "Gợi ý tiết kiệm",
+    "cancel": "Hủy",
+    "createGoal": "Tạo mục tiêu",
+    "validation": {
+      "nameRequired": "Tên mục tiêu là bắt buộc",
+      "targetRequired": "Số tiền mục tiêu là bắt buộc",
+      "targetPositive": "Số tiền mục tiêu phải lớn hơn 0",
+      "deadlineRequired": "Thời hạn là bắt buộc",
+      "deadlineFuture": "Thời hạn phải là ngày trong tương lai"
+    }
+  },
+  "filter": {
+    "all": "Tất cả",
+    "active": "Đang hoạt động",
+    "completed": "Đã hoàn thành",
+    "delayed": "Chậm tiến độ"
+  },
+  "sort": {
+    "nearestCompletion": "Sắp hoàn thành",
+    "highestAmount": "Giá trị cao nhất",
+    "latestCreated": "Mới tạo",
+    "progress": "Tiến độ"
+  },
+  "actions": {
+    "addGoal": "Thêm mục tiêu",
+    "editGoal": "Chỉnh sửa",
+    "deleteGoal": "Xóa",
+    "markComplete": "Đánh dấu hoàn thành"
+  }
+}

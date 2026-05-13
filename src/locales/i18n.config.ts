@@ -4,7 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 // Import translation files
 import enTranslations from './en/common.json';
-import viTranslations from './vi/common.json';
+import viCommonTranslations from './vi/common.json';
 import deTranslations from './de/common.json';
 import frTranslations from './fr/common.json';
 
@@ -63,7 +63,7 @@ const i18nConfig = {
       common: enTranslations,
     },
     vi: {
-      common: viTranslations,
+      common: viCommonTranslations,
     },
     de: {
       common: deTranslations,
