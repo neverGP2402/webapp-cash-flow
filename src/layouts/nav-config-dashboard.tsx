@@ -24,6 +24,11 @@ export const navData = [
     icon: icon('wallet-money'),
   },
   {
+    title: 'Chi tiết tài sản',
+    path: '/asset-detail',
+    icon: icon('ic-analytics'),
+  },
+  {
     title: 'Mục tiêu tài chính',
     path: '/financial-goals',
     icon: icon('ticker-star'),
@@ -32,6 +37,11 @@ export const navData = [
     title: 'Lịch sử giao dịch',
     path: '/transaction-history',
     icon: icon('ic-finance'),
+  },
+  {
+    title: 'Hồ sơ & Cài đặt',
+    path: '/profile-settings',
+    icon: icon('ic-user'),
   },
   {
     title: 'Danh sách người dùng',
