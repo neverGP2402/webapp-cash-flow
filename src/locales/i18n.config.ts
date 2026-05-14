@@ -7,6 +7,7 @@ import enTranslations from './en/common.json';
 import viCommonTranslations from './vi/common.json';
 import viAssetDetailTranslations from './vi/asset-detail.json';
 import viProfileSettingsTranslations from './vi/profile-settings.json';
+import viAddAssetTranslations from './vi/add-asset.json';
 import deTranslations from './de/common.json';
 import frTranslations from './fr/common.json';
 
@@ -68,6 +69,7 @@ const i18nConfig = {
       common: viCommonTranslations,
       assetDetail: viAssetDetailTranslations,
       profileSettings: viProfileSettingsTranslations,
+      addAsset: viAddAssetTranslations,
     },
     de: {
       common: deTranslations,

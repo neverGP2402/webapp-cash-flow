@@ -44,6 +44,11 @@ export const navData = [
     icon: icon('ic-finance'),
   },
   {
+    title: 'Báo cáo & Thống kê',
+    path: '/financial-reports',
+    icon: icon('ic-analytics'),
+  },
+  {
     title: 'Hồ sơ & Cài đặt',
     path: '/profile-settings',
     icon: icon('ic-user'),

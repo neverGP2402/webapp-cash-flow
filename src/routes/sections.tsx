@@ -19,6 +19,7 @@ export const AddAssetPage = lazy(() => import('src/pages/add-asset'));
 export const AssetDetailPage = lazy(() => import('src/pages/asset-detail'));
 export const FinancialGoalsPage = lazy(() => import('src/pages/financial-goals'));
 export const TransactionHistoryPage = lazy(() => import('src/pages/transaction-history'));
+export const FinancialReportsPage = lazy(() => import('src/pages/financial-reports'));
 export const ProfileSettingsPage = lazy(() => import('src/pages/profile-settings'));
 export const BlogPage = lazy(() => import('src/pages/blog'));
 export const UserPage = lazy(() => import('src/pages/user'));
@@ -66,6 +67,7 @@ export const routesSection: RouteObject[] = [
       { path: 'asset-detail', element: <AssetDetailPage /> },
       { path: 'financial-goals', element: <FinancialGoalsPage /> },
       { path: 'transaction-history', element: <TransactionHistoryPage /> },
+      { path: 'financial-reports', element: <FinancialReportsPage /> },
       { path: 'profile-settings', element: <ProfileSettingsPage /> },
       { path: 'user', element: <UserPage /> },
       { path: 'products', element: <ProductsPage /> },

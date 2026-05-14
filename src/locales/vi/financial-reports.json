@@ -1,0 +1,100 @@
+{
+  "pageTitle": "Báo cáo & Thống kê",
+  "subtitle": "Theo dõi và phân tích tài chính cá nhân của bạn",
+  "overview": {
+    "totalIncome": "Tổng thu",
+    "totalExpense": "Tổng chi",
+    "netWorth": "Tài sản ròng",
+    "profit": "Lợi nhuận",
+    "debt": "Công nợ",
+    "savings": "Tiết kiệm"
+  },
+  "filters": {
+    "today": "Hôm nay",
+    "7days": "7 ngày",
+    "30days": "30 ngày",
+    "thisMonth": "Tháng này",
+    "thisYear": "Năm nay",
+    "custom": "Tùy chỉnh",
+    "allWallets": "Tất cả ví",
+    "allAssets": "Tất cả tài sản",
+    "allCategories": "Tất cả danh mục",
+    "allTypes": "Tất cả loại"
+  },
+  "sections": {
+    "cashFlow": {
+      "title": "Dòng tiền",
+      "subtitle": "Thu vs Chi theo thời gian",
+      "income": "Thu nhập",
+      "expense": "Chi tiêu"
+    },
+    "spendingAnalysis": {
+      "title": "Phân tích chi tiêu",
+      "subtitle": "Chi tiêu theo danh mục",
+      "topCategories": "Danh mục chi tiêu hàng đầu",
+      "viewAll": "Xem tất cả"
+    },
+    "assetAllocation": {
+      "title": "Phân bổ tài sản",
+      "subtitle": "Cơ cấu danh mục đầu tư",
+      "cash": "Tiền mặt",
+      "gold": "Vàng",
+      "crypto": "Crypto",
+      "usd": "USD",
+      "others": "Khác"
+    },
+    "assetGrowth": {
+      "title": "Tăng trưởng tài sản",
+      "subtitle": "Tổng tài sản theo thời gian",
+      "currentValue": "Giá trị hiện tại",
+      "change": "Thay đổi",
+      "changePercent": "% Thay đổi",
+      "highest": "Cao nhất",
+      "lowest": "Thấp nhất"
+    },
+    "financialGoals": {
+      "title": "Mục tiêu tài chính",
+      "subtitle": "Tiến độ mục tiêu",
+      "completed": "Hoàn thành",
+      "inProgress": "Đang thực hiện",
+      "remaining": "Còn lại",
+      "timeLeft": "Thời gian còn lại",
+      "onTrack": "Đúng tiến độ",
+      "delayed": "Chậm tiến độ"
+    },
+    "insights": {
+      "title": "Thông tin chi tiết",
+      "spendingIncrease": "Chi tiêu tháng này tăng {{percent}}%",
+      "savingBetter": "Bạn đang tiết kiệm tốt hơn tháng trước",
+      "categoryWarning": "Danh mục {{category}} đang chiếm tỷ trọng cao",
+      "assetGrowth": "Tài sản {{asset}} đang tăng mạnh"
+    },
+    "transactions": {
+      "title": "Giao dịch gần đây",
+      "subtitle": "Hoạt động最近",
+      "viewAll": "Xem tất cả",
+      "today": "Hôm nay",
+      "yesterday": "Hôm qua",
+      "thisWeek": "Tuần này"
+    },
+    "wallets": {
+      "title": "Phân tích ví",
+      "subtitle": "Số dư và hoạt động ví",
+      "mostUsed": "Sử dụng nhiều nhất",
+      "highestSpending": "Chi tiêu nhiều nhất",
+      "balance": "Số dư"
+    }
+  },
+  "emptyStates": {
+    "noData": "Chưa có dữ liệu",
+    "noDataDescription": "Bắt đầu theo dõi tài chính của bạn để xem báo cáo",
+    "noTransactions": "Không có giao dịch nào",
+    "noGoals": "Chưa có mục tiêu nào"
+  },
+  "actions": {
+    "viewDetails": "Xem chi tiết",
+    "addTransaction": "Thêm giao dịch",
+    "addGoal": "Thêm mục tiêu",
+    "export": "Xuất báo cáo"
+  }
+}

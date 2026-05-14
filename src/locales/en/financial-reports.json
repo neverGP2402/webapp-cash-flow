@@ -1,0 +1,100 @@
+{
+  "pageTitle": "Reports & Analytics",
+  "subtitle": "Track and analyze your personal finances",
+  "overview": {
+    "totalIncome": "Total Income",
+    "totalExpense": "Total Expense",
+    "netWorth": "Net Worth",
+    "profit": "Profit",
+    "debt": "Debt",
+    "savings": "Savings"
+  },
+  "filters": {
+    "today": "Today",
+    "7days": "7 Days",
+    "30days": "30 Days",
+    "thisMonth": "This Month",
+    "thisYear": "This Year",
+    "custom": "Custom",
+    "allWallets": "All Wallets",
+    "allAssets": "All Assets",
+    "allCategories": "All Categories",
+    "allTypes": "All Types"
+  },
+  "sections": {
+    "cashFlow": {
+      "title": "Cash Flow",
+      "subtitle": "Income vs Expense over time",
+      "income": "Income",
+      "expense": "Expense"
+    },
+    "spendingAnalysis": {
+      "title": "Spending Analysis",
+      "subtitle": "Spending by category",
+      "topCategories": "Top spending categories",
+      "viewAll": "View all"
+    },
+    "assetAllocation": {
+      "title": "Asset Allocation",
+      "subtitle": "Portfolio distribution",
+      "cash": "Cash",
+      "gold": "Gold",
+      "crypto": "Crypto",
+      "usd": "USD",
+      "others": "Others"
+    },
+    "assetGrowth": {
+      "title": "Asset Growth",
+      "subtitle": "Total assets over time",
+      "currentValue": "Current Value",
+      "change": "Change",
+      "changePercent": "% Change",
+      "highest": "Highest",
+      "lowest": "Lowest"
+    },
+    "financialGoals": {
+      "title": "Financial Goals",
+      "subtitle": "Goal progress",
+      "completed": "Completed",
+      "inProgress": "In Progress",
+      "remaining": "Remaining",
+      "timeLeft": "Time Left",
+      "onTrack": "On Track",
+      "delayed": "Delayed"
+    },
+    "insights": {
+      "title": "Smart Insights",
+      "spendingIncrease": "Spending increased {{percent}}% this month",
+      "savingBetter": "You're saving better than last month",
+      "categoryWarning": "{{category}} category is taking a large portion",
+      "assetGrowth": "{{asset}} assets are growing strongly"
+    },
+    "transactions": {
+      "title": "Recent Transactions",
+      "subtitle": "Recent activity",
+      "viewAll": "View all",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "thisWeek": "This Week"
+    },
+    "wallets": {
+      "title": "Wallet Analysis",
+      "subtitle": "Wallet balances and activity",
+      "mostUsed": "Most Used",
+      "highestSpending": "Highest Spending",
+      "balance": "Balance"
+    }
+  },
+  "emptyStates": {
+    "noData": "No data available",
+    "noDataDescription": "Start tracking your finances to see reports",
+    "noTransactions": "No transactions found",
+    "noGoals": "No goals yet"
+  },
+  "actions": {
+    "viewDetails": "View details",
+    "addTransaction": "Add transaction",
+    "addGoal": "Add goal",
+    "export": "Export report"
+  }
+}

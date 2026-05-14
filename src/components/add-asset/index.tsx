@@ -87,7 +87,7 @@ const mockStatuses: AssetStatus[] = [
 ];
 
 export default function AddAssetPage() {
-  const { t, i18n } = useTranslation('add-asset');
+  const { t, i18n } = useTranslation('addAsset');
   const isVietnamese = i18n.language === 'vi';
 
   // Form state
