@@ -135,5 +135,91 @@
     "paymentFailed": "An error occurred while adding payment",
     "confirmDelete": "Are you sure you want to delete this debt?",
     "confirmCancel": "Are you sure you want to cancel? Data will be lost."
+  },
+  "drawer": {
+    "title": "Debt Details",
+    "close": "Close",
+    "edit": "Edit",
+    "header": {
+      "contractNumber": "Contract Number",
+      "type": "Type",
+      "status": "Status"
+    },
+    "overview": {
+      "title": "Overview",
+      "principal": "Principal",
+      "interestRate": "Interest Rate",
+      "totalToPay": "Total to Pay",
+      "totalPaid": "Total Paid",
+      "remaining": "Remaining",
+      "paymentCount": "Payment Count",
+      "startDate": "Start Date",
+      "endDate": "End Date"
+    },
+    "paymentProgress": {
+      "title": "Payment Progress",
+      "completed": "{{percent}}% completed",
+      "remainingAmount": "Remaining"
+    },
+    "paymentTimeline": {
+      "title": "Payment Timeline",
+      "paymentHistory": "Payment History",
+      "amount": "Amount",
+      "date": "Date",
+      "method": "Method",
+      "status": "Status",
+      "note": "Note",
+      "methods": {
+        "cash": "Cash",
+        "bank": "Bank",
+        "transfer": "Transfer",
+        "other": "Other"
+      }
+    },
+    "contract": {
+      "title": "Contract Information",
+      "contractNumber": "Contract Number",
+      "signedDate": "Signed Date",
+      "loanType": "Loan Type",
+      "paymentCycle": "Payment Cycle",
+      "notes": "Notes",
+      "attachments": "Attachments",
+      "loanTypes": {
+        "personal": "Personal",
+        "business": "Business",
+        "mortgage": "Mortgage",
+        "other": "Other"
+      },
+      "paymentCycles": {
+        "weekly": "Weekly",
+        "biweekly": "Bi-weekly",
+        "monthly": "Monthly",
+        "quarterly": "Quarterly",
+        "yearly": "Yearly"
+      }
+    },
+    "analysis": {
+      "title": "Debt Analysis",
+      "repaymentTrend": "Repayment Trend",
+      "remainingDebt": "Remaining Debt",
+      "monthlyPayment": "Monthly Payment"
+    },
+    "schedule": {
+      "title": "Payment Schedule",
+      "nextPayment": "Next Payment",
+      "amount": "Amount to Pay",
+      "deadline": "Deadline",
+      "remainingPayments": "{{count}} payments remaining",
+      "overdueWarning": "{{days}} days overdue",
+      "upcomingWarning": "{{days}} days until due"
+    },
+    "actions": {
+      "payNow": "Pay Now",
+      "updateDebt": "Update Debt",
+      "addPayment": "Add Payment",
+      "markComplete": "Mark as Complete",
+      "viewContract": "View Contract",
+      "downloadContract": "Download Contract"
+    }
   }
 }

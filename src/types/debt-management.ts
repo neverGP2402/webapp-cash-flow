@@ -114,3 +114,64 @@ export interface DebtManagementData {
   counterpartyAnalytics: CounterpartyAnalytics[];
   warnings: DebtWarning[];
 }
+
+// Debt Detail Drawer Types
+export interface DebtDetailDrawerProps {
+  open: boolean;
+  debt: Debt | null;
+  onClose: () => void;
+  onPayNow?: (debtId: string) => void;
+  onUpdate?: (debtId: string) => void;
+  onAddPayment?: (debtId: string) => void;
+  onMarkComplete?: (debtId: string) => void;
+}
+
+export interface DebtPaymentDetail {
+  id: string;
+  debtId: string;
+  amount: number;
+  paymentDate: string;
+  method: 'cash' | 'bank' | 'transfer' | 'other';
+  status: 'completed' | 'pending' | 'cancelled';
+  note?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface DebtContract {
+  contractNumber: string;
+  signedDate: string;
+  loanType: 'personal' | 'business' | 'mortgage' | 'other';
+  paymentCycle: 'weekly' | 'biweekly' | 'monthly' | 'quarterly' | 'yearly';
+  attachments?: ContractAttachment[];
+  notes?: string;
+}
+
+export interface ContractAttachment {
+  id: string;
+  fileName: string;
+  fileType: string;
+  fileSize: number;
+  url: string;
+  uploadedAt: string;
+}
+
+export interface DebtAnalysis {
+  repaymentTrend: AnalysisDataPoint[];
+  remainingDebt: AnalysisDataPoint[];
+  monthlyPayment: AnalysisDataPoint[];
+}
+
+export interface AnalysisDataPoint {
+  date: string;
+  value: number;
+}
+
+export interface PaymentSchedule {
+  nextPaymentDate: string;
+  nextPaymentAmount: number;
+  remainingPayments: number;
+  totalRemaining: number;
+  isOverdue: boolean;
+  daysUntilDue: number;
+}

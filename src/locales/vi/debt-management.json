@@ -135,5 +135,91 @@
     "paymentFailed": "Có lỗi xảy ra khi thêm thanh toán",
     "confirmDelete": "Bạn có chắc muốn xóa công nợ này?",
     "confirmCancel": "Bạn có chắc muốn hủy? Dữ liệu sẽ bị mất."
+  },
+  "drawer": {
+    "title": "Chi tiết khoản nợ",
+    "close": "Đóng",
+    "edit": "Sửa",
+    "header": {
+      "contractNumber": "Số hợp đồng",
+      "type": "Loại",
+      "status": "Trạng thái"
+    },
+    "overview": {
+      "title": "Tổng quan",
+      "principal": "Nợ gốc",
+      "interestRate": "Lãi suất",
+      "totalToPay": "Tổng phải trả",
+      "totalPaid": "Đã thanh toán",
+      "remaining": "Còn lại",
+      "paymentCount": "Số lần thanh toán",
+      "startDate": "Ngày bắt đầu",
+      "endDate": "Ngày kết thúc"
+    },
+    "paymentProgress": {
+      "title": "Tiến độ thanh toán",
+      "completed": "{{percent}}% hoàn thành",
+      "remainingAmount": "Còn lại"
+    },
+    "paymentTimeline": {
+      "title": "Lịch thanh toán",
+      "paymentHistory": "Lịch sử trả nợ",
+      "amount": "Số tiền",
+      "date": "Ngày",
+      "method": "Phương thức",
+      "status": "Trạng thái",
+      "note": "Ghi chú",
+      "methods": {
+        "cash": "Tiền mặt",
+        "bank": "Ngân hàng",
+        "transfer": "Chuyển khoản",
+        "other": "Khác"
+      }
+    },
+    "contract": {
+      "title": "Thông tin hợp đồng",
+      "contractNumber": "Số hợp đồng",
+      "signedDate": "Ngày ký",
+      "loanType": "Loại vay",
+      "paymentCycle": "Chu kỳ thanh toán",
+      "notes": "Ghi chú",
+      "attachments": "Tệp đính kèm",
+      "loanTypes": {
+        "personal": "Cá nhân",
+        "business": "Kinh doanh",
+        "mortgage": "Thế chấp",
+        "other": "Khác"
+      },
+      "paymentCycles": {
+        "weekly": "Hàng tuần",
+        "biweekly": "2 tuần/lần",
+        "monthly": "Hàng tháng",
+        "quarterly": "Hàng quý",
+        "yearly": "Hàng năm"
+      }
+    },
+    "analysis": {
+      "title": "Phân tích khoản nợ",
+      "repaymentTrend": "Xu hướng thanh toán",
+      "remainingDebt": "Công nợ còn lại",
+      "monthlyPayment": "Thanh toán hàng tháng"
+    },
+    "schedule": {
+      "title": "Lịch thanh toán",
+      "nextPayment": "Kỳ thanh toán tiếp theo",
+      "amount": "Số tiền cần trả",
+      "deadline": "Hạn chót",
+      "remainingPayments": "{{count}} kỳ còn lại",
+      "overdueWarning": "Đã quá hạn {{days}} ngày",
+      "upcomingWarning": "Còn {{days}} ngày tới hạn"
+    },
+    "actions": {
+      "payNow": "Thanh toán ngay",
+      "updateDebt": "Cập nhật khoản nợ",
+      "addPayment": "Thêm thanh toán",
+      "markComplete": "Đánh dấu hoàn thành",
+      "viewContract": "Xem hợp đồng",
+      "downloadContract": "Tải hợp đồng"
+    }
   }
 }

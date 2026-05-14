@@ -23,6 +23,7 @@ import { CounterpartyAnalytics } from './counterparty-analytics';
 import { DebtWarnings } from './debt-warnings';
 import { DebtFilters } from './debt-filters';
 import { EmptyState } from './empty-state';
+import { DebtDetailDrawer } from './debt-detail-drawer';
 
 import type { Debt, DebtFilterOptions, DebtManagementData } from 'src/types/debt-management';
 
@@ -32,6 +33,8 @@ export default function DebtManagementPage() {
   const { t } = useTranslation('debtManagement');
   const theme = useTheme();
   const [activeTab, setActiveTab] = useState(0);
+  const [selectedDebt, setSelectedDebt] = useState<Debt | null>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [filters, setFilters] = useState<DebtFilterOptions>({
     search: '',
     type: 'all',
@@ -78,6 +81,36 @@ export default function DebtManagementPage() {
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
+  };
+
+  const handleDebtClick = (debt: Debt) => {
+    setSelectedDebt(debt);
+    setIsDrawerOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false);
+    setSelectedDebt(null);
+  };
+
+  const handlePayNow = (debtId: string) => {
+    console.log('Pay now for debt:', debtId);
+    // Implement payment logic
+  };
+
+  const handleUpdateDebt = (debtId: string) => {
+    console.log('Update debt:', debtId);
+    // Implement update logic
+  };
+
+  const handleAddPayment = (debtId: string) => {
+    console.log('Add payment for debt:', debtId);
+    // Implement add payment logic
+  };
+
+  const handleMarkComplete = (debtId: string) => {
+    console.log('Mark debt as complete:', debtId);
+    // Implement mark complete logic
   };
 
   const tabs = [
@@ -180,7 +213,7 @@ export default function DebtManagementPage() {
           }}
         >
           {filteredDebts.map((debt) => (
-            <DebtCard key={debt.id} debt={debt} />
+            <DebtCard key={debt.id} debt={debt} onClick={() => handleDebtClick(debt)} />
           ))}
         </Box>
       )}
@@ -193,6 +226,17 @@ export default function DebtManagementPage() {
 
       {/* Counterparty Analytics */}
       {mockData.counterpartyAnalytics.length > 0 && <CounterpartyAnalytics analytics={mockData.counterpartyAnalytics} />}
+
+      {/* Debt Detail Drawer */}
+      <DebtDetailDrawer
+        open={isDrawerOpen}
+        debt={selectedDebt}
+        onClose={handleDrawerClose}
+        onPayNow={handlePayNow}
+        onUpdate={handleUpdateDebt}
+        onAddPayment={handleAddPayment}
+        onMarkComplete={handleMarkComplete}
+      />
     </Container>
   );
 }
