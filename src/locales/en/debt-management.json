@@ -221,5 +221,125 @@
       "viewContract": "View Contract",
       "downloadContract": "Download Contract"
     }
+  },
+  "addDrawer": {
+    "title": "Add Debt",
+    "subtitle": "Create a new loan or lending",
+    "close": "Close",
+    "saveDraft": "Save Draft",
+    "create": "Create Debt",
+    "cancel": "Cancel",
+    "section1": {
+      "title": "Debt Information",
+      "debtType": "Debt Type",
+      "debtTypePlaceholder": "Select debt type",
+      "borrowing": "I Owe Others",
+      "lending": "Others Owe Me",
+      "loanType": "Loan Type",
+      "loanTypePlaceholder": "Select loan type",
+      "installment": "Installment",
+      "oneTime": "One-time",
+      "deferred": "Deferred",
+      "custom": "Custom",
+      "counterparty": "Counterparty",
+      "counterpartyPlaceholder": "Select counterparty",
+      "contractNumber": "Contract Number",
+      "contractNumberPlaceholder": "Enter contract number",
+      "signedDate": "Signed Date",
+      "signedDatePlaceholder": "Select signed date"
+    },
+    "section2": {
+      "title": "Financial Information",
+      "principal": "Principal",
+      "principalPlaceholder": "Enter principal amount",
+      "interestRate": "Interest Rate",
+      "interestRatePlaceholder": "Enter interest rate (%)",
+      "interestType": "Interest Type",
+      "interestTypePlaceholder": "Select interest type",
+      "fixed": "Fixed",
+      "variable": "Variable",
+      "compound": "Compound",
+      "insuranceFee": "Insurance Fee",
+      "insuranceFeePlaceholder": "Enter insurance fee",
+      "otherFees": "Other Fees",
+      "otherFeesPlaceholder": "Enter other fees",
+      "totalToPay": "Total to Pay",
+      "paidAmount": "Paid Amount",
+      "remainingAmount": "Remaining Amount"
+    },
+    "section3": {
+      "title": "Payment Cycle",
+      "paymentCycle": "Payment Cycle",
+      "paymentCyclePlaceholder": "Select payment cycle",
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "biweekly": "Bi-weekly",
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "yearly": "Yearly",
+      "startDate": "Start Date",
+      "startDatePlaceholder": "Select start date",
+      "endDate": "End Date",
+      "endDatePlaceholder": "Select end date",
+      "paymentCount": "Payment Count",
+      "paymentCountPlaceholder": "Enter payment count"
+    },
+    "section4": {
+      "title": "Payment",
+      "wallet": "Payment Wallet",
+      "walletPlaceholder": "Select wallet",
+      "paymentMethod": "Payment Method",
+      "paymentMethodPlaceholder": "Select payment method",
+      "paymentNotes": "Payment Notes",
+      "paymentNotesPlaceholder": "Enter payment notes (optional)"
+    },
+    "section5": {
+      "title": "Attachments",
+      "uploadContract": "Upload Contract",
+      "uploadLoanPaper": "Upload Loan Paper",
+      "uploadDocuments": "Upload Related Documents",
+      "dragDrop": "Drag and drop files here",
+      "orClick": "or click to select files",
+      "maxFileSize": "Max 10MB per file",
+      "supportedFormats": "Supported formats: PDF, JPG, PNG"
+    },
+    "section6": {
+      "title": "Notes",
+      "description": "Loan Description",
+      "descriptionPlaceholder": "Enter detailed description",
+      "internalNotes": "Internal Notes",
+      "internalNotesPlaceholder": "Enter internal notes (optional)"
+    },
+    "section7": {
+      "title": "Payment Preview",
+      "totalToPay": "Total to Pay",
+      "paymentCount": "Payment Count",
+      "estimatedMonthly": "Estimated Monthly Payment",
+      "repaymentPreview": "Repayment Preview",
+      "timelinePreview": "Timeline Preview"
+    },
+    "summary": {
+      "title": "Summary",
+      "totalDebt": "Total Debt",
+      "interestRate": "Interest Rate",
+      "totalPayment": "Total Payment",
+      "duration": "Duration",
+      "paymentPerCycle": "Payment Per Cycle"
+    },
+    "validation": {
+      "debtTypeRequired": "Please select debt type",
+      "loanTypeRequired": "Please select loan type",
+      "counterpartyRequired": "Please select counterparty",
+      "principalRequired": "Please enter principal amount",
+      "principalPositive": "Amount must be greater than 0",
+      "interestRateRequired": "Please enter interest rate",
+      "interestRatePositive": "Interest rate must be greater than or equal to 0",
+      "startDateRequired": "Please select start date",
+      "endDateRequired": "Please select end date",
+      "invalidDateRange": "End date must be after start date",
+      "walletRequired": "Please select payment wallet",
+      "highInterestRate": "Interest rate is higher than market average",
+      "shortDuration": "Short repayment duration may cause financial pressure"
+    }
   }
 }

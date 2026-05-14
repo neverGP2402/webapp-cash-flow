@@ -175,3 +175,77 @@ export interface PaymentSchedule {
   isOverdue: boolean;
   daysUntilDue: number;
 }
+
+// Add Debt Drawer Types
+export interface AddDebtDrawerProps {
+  open: boolean;
+  mode: 'create' | 'edit';
+  debt?: Debt;
+  onClose: () => void;
+  onSave: (data: AddDebtFormData) => Promise<void>;
+  onSaveDraft?: (data: AddDebtFormData) => Promise<void>;
+}
+
+export interface AddDebtFormData {
+  debtType: 'borrowing' | 'lending';
+  loanType: 'installment' | 'oneTime' | 'deferred' | 'custom';
+  counterpartyId: string;
+  counterpartyName: string;
+  contractNumber: string;
+  signedDate: string;
+  principal: number;
+  interestRate: number;
+  interestType: 'fixed' | 'variable' | 'compound';
+  insuranceFee: number;
+  otherFees: number;
+  totalToPay: number;
+  paidAmount: number;
+  remainingAmount: number;
+  paymentCycle: 'daily' | 'weekly' | 'biweekly' | 'monthly' | 'quarterly' | 'yearly';
+  startDate: string;
+  endDate: string;
+  paymentCount: number;
+  walletId: string;
+  paymentMethod: 'cash' | 'bank' | 'transfer' | 'other';
+  paymentNotes: string;
+  description: string;
+  internalNotes: string;
+  attachments: FileAttachment[];
+}
+
+export interface FileAttachment {
+  id: string;
+  file: File;
+  name: string;
+  type: string;
+  size: number;
+  preview?: string;
+}
+
+export interface Wallet {
+  id: string;
+  name: string;
+  type: 'cash' | 'bank' | 'credit' | 'ewallet';
+  balance: number;
+  currency: string;
+  icon: string;
+}
+
+export interface Counterparty {
+  id: string;
+  name: string;
+  type: 'individual' | 'company';
+  phone?: string;
+  email?: string;
+}
+
+export interface ValidationErrors {
+  debtType?: string;
+  loanType?: string;
+  counterpartyId?: string;
+  principal?: string;
+  interestRate?: string;
+  startDate?: string;
+  endDate?: string;
+  walletId?: string;
+}

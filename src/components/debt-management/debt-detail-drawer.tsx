@@ -70,7 +70,7 @@ export function DebtDetailDrawer({ open, debt, onClose, onPayNow, onUpdate, onAd
     {
       id: '1',
       debtId: debt?.id || '',
-      amount: 5000000,
+      amount: debt?.paymentType === 'installment' ? 12500000 : debt?.principal || 0,
       paymentDate: '2024-01-15',
       method: 'bank' as const,
       status: 'completed' as const,
@@ -81,13 +81,35 @@ export function DebtDetailDrawer({ open, debt, onClose, onPayNow, onUpdate, onAd
     {
       id: '2',
       debtId: debt?.id || '',
-      amount: 5000000,
+      amount: debt?.paymentType === 'installment' ? 12500000 : debt?.principal || 0,
       paymentDate: '2024-02-15',
       method: 'transfer' as const,
       status: 'completed' as const,
       note: 'Thanh toán kỳ 2',
       createdAt: '2024-02-15',
       updatedAt: '2024-02-15',
+    },
+    {
+      id: '3',
+      debtId: debt?.id || '',
+      amount: debt?.paymentType === 'installment' ? 12500000 : debt?.principal || 0,
+      paymentDate: '2024-03-15',
+      method: 'bank' as const,
+      status: 'completed' as const,
+      note: 'Thanh toán kỳ 3',
+      createdAt: '2024-03-15',
+      updatedAt: '2024-03-15',
+    },
+    {
+      id: '4',
+      debtId: debt?.id || '',
+      amount: debt?.paymentType === 'installment' ? 12500000 : debt?.principal || 0,
+      paymentDate: '2024-04-15',
+      method: 'transfer' as const,
+      status: 'completed' as const,
+      note: 'Thanh toán kỳ 4',
+      createdAt: '2024-04-15',
+      updatedAt: '2024-04-15',
     },
   ];
 
@@ -102,27 +124,33 @@ export function DebtDetailDrawer({ open, debt, onClose, onPayNow, onUpdate, onAd
 
   const mockAnalysis = {
     repaymentTrend: [
-      { date: '2024-01', value: 5000000 },
-      { date: '2024-02', value: 5000000 },
-      { date: '2024-03', value: 5000000 },
+      { date: '2024-01', value: 12500000 },
+      { date: '2024-02', value: 12500000 },
+      { date: '2024-03', value: 12500000 },
+      { date: '2024-04', value: 12500000 },
+      { date: '2024-05', value: 12500000 },
     ],
     remainingDebt: [
-      { date: '2024-01', value: 145000000 },
-      { date: '2024-02', value: 140000000 },
-      { date: '2024-03', value: 135000000 },
+      { date: '2024-01', value: 137500000 },
+      { date: '2024-02', value: 125000000 },
+      { date: '2024-03', value: 112500000 },
+      { date: '2024-04', value: 100000000 },
+      { date: '2024-05', value: 87500000 },
     ],
     monthlyPayment: [
-      { date: '2024-01', value: 5000000 },
-      { date: '2024-02', value: 5000000 },
-      { date: '2024-03', value: 5000000 },
+      { date: '2024-01', value: 12500000 },
+      { date: '2024-02', value: 12500000 },
+      { date: '2024-03', value: 12500000 },
+      { date: '2024-04', value: 12500000 },
+      { date: '2024-05', value: 12500000 },
     ],
   };
 
   const mockSchedule = {
     nextPaymentDate: debt?.dueDate || '2024-12-31',
-    nextPaymentAmount: 5000000,
-    remainingPayments: 10,
-    totalRemaining: debt?.remainingAmount || 50000000,
+    nextPaymentAmount: debt?.paymentType === 'installment' ? 12500000 : debt?.principal || 0,
+    remainingPayments: debt?.paymentType === 'installment' ? 8 : 1,
+    totalRemaining: debt?.remainingAmount || 0,
     isOverdue: debt?.status === 'overdue',
     daysUntilDue: 30,
   };

@@ -221,5 +221,125 @@
       "viewContract": "Xem hợp đồng",
       "downloadContract": "Tải hợp đồng"
     }
+  },
+  "addDrawer": {
+    "title": "Thêm công nợ",
+    "subtitle": "Tạo khoản vay hoặc khoản cho vay mới",
+    "close": "Đóng",
+    "saveDraft": "Lưu nháp",
+    "create": "Tạo công nợ",
+    "cancel": "Hủy",
+    "section1": {
+      "title": "Thông tin công nợ",
+      "debtType": "Loại công nợ",
+      "debtTypePlaceholder": "Chọn loại công nợ",
+      "borrowing": "Tôi nợ người khác",
+      "lending": "Người khác nợ tôi",
+      "loanType": "Loại khoản vay",
+      "loanTypePlaceholder": "Chọn loại khoản vay",
+      "installment": "Trả góp",
+      "oneTime": "Không định kỳ",
+      "deferred": "Trả chậm",
+      "custom": "Tùy chỉnh",
+      "counterparty": "Đối tác",
+      "counterpartyPlaceholder": "Chọn đối tác",
+      "contractNumber": "Số hợp đồng",
+      "contractNumberPlaceholder": "Nhập số hợp đồng",
+      "signedDate": "Ngày ký hợp đồng",
+      "signedDatePlaceholder": "Chọn ngày ký"
+    },
+    "section2": {
+      "title": "Thông tin tài chính",
+      "principal": "Nợ gốc",
+      "principalPlaceholder": "Nhập số tiền nợ gốc",
+      "interestRate": "Lãi suất",
+      "interestRatePlaceholder": "Nhập lãi suất (%)",
+      "interestType": "Loại lãi",
+      "interestTypePlaceholder": "Chọn loại lãi",
+      "fixed": "Cố định",
+      "variable": "Thả nổi",
+      "compound": "Lãi kép",
+      "insuranceFee": "Phí bảo hiểm",
+      "insuranceFeePlaceholder": "Nhập phí bảo hiểm",
+      "otherFees": "Phí khác",
+      "otherFeesPlaceholder": "Nhập phí khác",
+      "totalToPay": "Tổng phải trả",
+      "paidAmount": "Đã thanh toán",
+      "remainingAmount": "Còn lại"
+    },
+    "section3": {
+      "title": "Chu kỳ thanh toán",
+      "paymentCycle": "Chu kỳ thanh toán",
+      "paymentCyclePlaceholder": "Chọn chu kỳ",
+      "daily": "Hàng ngày",
+      "weekly": "Hàng tuần",
+      "biweekly": "2 tuần/lần",
+      "monthly": "Hàng tháng",
+      "quarterly": "Hàng quý",
+      "yearly": "Hàng năm",
+      "startDate": "Ngày bắt đầu",
+      "startDatePlaceholder": "Chọn ngày bắt đầu",
+      "endDate": "Ngày kết thúc",
+      "endDatePlaceholder": "Chọn ngày kết thúc",
+      "paymentCount": "Số lần thanh toán",
+      "paymentCountPlaceholder": "Nhập số lần thanh toán"
+    },
+    "section4": {
+      "title": "Thanh toán",
+      "wallet": "Ví thanh toán",
+      "walletPlaceholder": "Chọn ví",
+      "paymentMethod": "Phương thức thanh toán",
+      "paymentMethodPlaceholder": "Chọn phương thức",
+      "paymentNotes": "Ghi chú thanh toán",
+      "paymentNotesPlaceholder": "Nhập ghi chú (tùy chọn)"
+    },
+    "section5": {
+      "title": "File đính kèm",
+      "uploadContract": "Tải lên hợp đồng",
+      "uploadLoanPaper": "Tải lên giấy vay",
+      "uploadDocuments": "Tải lên tài liệu liên quan",
+      "dragDrop": "Kéo và thả file vào đây",
+      "orClick": "hoặc nhấp để chọn file",
+      "maxFileSize": "Tối đa 10MB mỗi file",
+      "supportedFormats": "Định dạng hỗ trợ: PDF, JPG, PNG"
+    },
+    "section6": {
+      "title": "Ghi chú",
+      "description": "Mô tả khoản vay",
+      "descriptionPlaceholder": "Nhập mô tả chi tiết",
+      "internalNotes": "Ghi chú nội bộ",
+      "internalNotesPlaceholder": "Nhập ghi chú nội bộ (tùy chọn)"
+    },
+    "section7": {
+      "title": "Xem trước thanh toán",
+      "totalToPay": "Tổng phải trả",
+      "paymentCount": "Số kỳ thanh toán",
+      "estimatedMonthly": "Thanh toán ước tính hàng tháng",
+      "repaymentPreview": "Xem trước trả nợ",
+      "timelinePreview": "Xem trước lịch trình"
+    },
+    "summary": {
+      "title": "Tóm tắt",
+      "totalDebt": "Tổng nợ",
+      "interestRate": "Lãi suất",
+      "totalPayment": "Tổng thanh toán",
+      "duration": "Thời hạn",
+      "paymentPerCycle": "Số tiền mỗi kỳ"
+    },
+    "validation": {
+      "debtTypeRequired": "Vui lòng chọn loại công nợ",
+      "loanTypeRequired": "Vui lòng chọn loại khoản vay",
+      "counterpartyRequired": "Vui lòng chọn đối tác",
+      "principalRequired": "Vui lòng nhập số tiền nợ gốc",
+      "principalPositive": "Số tiền phải lớn hơn 0",
+      "interestRateRequired": "Vui lòng nhập lãi suất",
+      "interestRatePositive": "Lãi suất phải lớn hơn hoặc bằng 0",
+      "startDateRequired": "Vui lòng chọn ngày bắt đầu",
+      "endDateRequired": "Vui lòng chọn ngày kết thúc",
+      "invalidDateRange": "Ngày kết thúc phải sau ngày bắt đầu",
+      "walletRequired": "Vui lòng chọn ví thanh toán",
+      "highInterestRate": "Lãi suất cao hơn mức trung bình thị trường",
+      "shortDuration": "Thời hạn thanh toán ngắn có thể gây áp lực tài chính"
+    }
   }
 }
