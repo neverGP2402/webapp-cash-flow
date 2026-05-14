@@ -11,7 +11,7 @@ export default function ProfitDisplay({
   overview,
   loading
 }: ProfitDisplayProps) {
-  const { t } = useTranslation('add-asset');
+  const { t } = useTranslation('addAsset');
 
   if (loading) {
     return (

@@ -17,7 +17,7 @@ export default function PriceInput({
   error,
   helperText
 }: PriceInputProps) {
-  const { t } = useTranslation('add-asset');
+  const { t } = useTranslation('addAsset');
   const [displayValue, setDisplayValue] = useState<string>(value.toString());
 
   const formatCurrency = useCallback((numStr: string): string => {

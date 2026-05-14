@@ -5,6 +5,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 // Import translation files
 import enTranslations from './en/common.json';
 import enFinancialReportsTranslations from './en/financial-reports.json';
+import enAddAssetTranslations from './en/add-asset.json';
 import viCommonTranslations from './vi/common.json';
 import viFinancialReportsTranslations from './vi/financial-reports.json';
 import viAssetDetailTranslations from './vi/asset-detail.json';
@@ -40,7 +41,7 @@ export const SUPPORTED_LANGUAGES = {
 export type SupportedLanguage = keyof typeof SUPPORTED_LANGUAGES;
 
 // Default language
-export const DEFAULT_LANGUAGE: SupportedLanguage = 'en';
+export const DEFAULT_LANGUAGE: SupportedLanguage = 'vi';
 
 // Get saved language or use default
 const getInitialLanguage = (): SupportedLanguage => {
@@ -67,6 +68,7 @@ const i18nConfig = {
     en: {
       common: enTranslations,
       financialReports: enFinancialReportsTranslations,
+      addAsset: enAddAssetTranslations,
     },
     vi: {
       common: viCommonTranslations,

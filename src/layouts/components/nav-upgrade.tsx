@@ -21,6 +21,13 @@ export function NavUpgrade({ sx, ...other }: StackProps) {
       ]}
       {...other}
     >
+      <Box
+        component="img"
+        alt="Cash Flow"
+        src="/assets/images/logo.png"
+        sx={{ width: 70, my: 2 }}
+      />
+
       <Typography
         variant="h6"
         sx={[
@@ -44,21 +51,14 @@ export function NavUpgrade({ sx, ...other }: StackProps) {
         </Box>
       </Typography>
 
-      <Box
-        component="img"
-        alt="Cash Flow"
-        src="/assets/images/logo.png"
-        sx={{ width: 200, my: 2 }}
-      />
-
-      <Button
+      {/* <Button
         href="#"
         target="_blank"
         variant="contained"
         color="inherit"
       >
         Đăng xuất
-      </Button>
+      </Button> */}
     </Box>
   );
 }

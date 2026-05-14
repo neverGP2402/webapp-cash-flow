@@ -17,7 +17,7 @@ export default function StatusChips({
   error,
   helperText
 }: StatusChipsProps) {
-  const { t } = useTranslation('add-asset');
+  const { t } = useTranslation('addAsset');
 
   const getStatusColor = (statusId: string): 'success' | 'warning' | 'error' | 'info' => {
     const colors: Record<string, 'success' | 'warning' | 'error' | 'info'> = {

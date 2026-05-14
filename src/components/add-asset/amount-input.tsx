@@ -21,7 +21,7 @@ export default function AmountInput({
   label,
   placeholder
 }: AmountInputProps) {
-  const { t } = useTranslation('add-asset');
+  const { t } = useTranslation('addAsset');
   const [displayValue, setDisplayValue] = useState<string>(value.toString());
 
   const formatDisplayValue = useCallback((numStr: string): string => {

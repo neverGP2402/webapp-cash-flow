@@ -17,7 +17,7 @@ export default function WalletSelector({
   error,
   helperText
 }: WalletSelectorProps) {
-  const { t } = useTranslation('add-asset');
+  const { t } = useTranslation('addAsset');
 
   const getWalletIcon = (walletType: string) => {
     const icons: Record<string, string> = {

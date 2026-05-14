@@ -13,7 +13,7 @@ export default function RealtimeOverview({
   assetStatus,
   loading
 }: RealtimeOverviewProps) {
-  const { t } = useTranslation('add-asset');
+  const { t } = useTranslation('addAsset');
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('vi-VN', {

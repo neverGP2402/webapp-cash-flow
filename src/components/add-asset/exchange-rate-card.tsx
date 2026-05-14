@@ -11,7 +11,7 @@ export default function ExchangeRateCard({
   exchangeRate,
   loading
 }: ExchangeRateCardProps) {
-  const { t } = useTranslation('add-asset');
+  const { t } = useTranslation('addAsset');
 
   if (!exchangeRate && !loading) {
     return null;

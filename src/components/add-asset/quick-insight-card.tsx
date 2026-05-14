@@ -11,7 +11,7 @@ export default function QuickInsightCard({
   insight,
   loading
 }: QuickInsightCardProps) {
-  const { t } = useTranslation('add-asset');
+  const { t } = useTranslation('addAsset');
 
   if (loading || !insight) {
     return null;

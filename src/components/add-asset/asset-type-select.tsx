@@ -18,7 +18,7 @@ export default function AssetTypeSelect({
   error,
   helperText
 }: AssetTypeSelectProps) {
-  const { t } = useTranslation('add-asset');
+  const { t } = useTranslation('addAsset');
 
   const getAssetIcon = (assetCode: string) => {
     const icons: Record<string, string> = {
