@@ -73,6 +73,7 @@ const mockUnits: Unit[] = [
 ];
 
 const mockOrigins: AssetOrigin[] = [
+  { id: '0', name: 'Mua tích lũy', name_en: 'Purchase/Savings' },
   { id: 'purchase', name: 'Mua tích lũy', name_en: 'Purchase/Savings' },
   { id: 'investment', name: 'Đầu tư', name_en: 'Investment' },
   { id: 'gift', name: 'Được tặng', name_en: 'Gift' },
@@ -512,36 +513,6 @@ export default function AddAssetPage() {
                 <ProfitDisplay overview={overview} loading={loading} />
               </Grid>
 
-              {/* Origin */}
-              <Grid size={{ xs: 12, md: 6 }}>
-                <TextField
-                  select
-                  fullWidth
-                  value={formData.origin}
-                  onChange={(e) => handleFieldChange('origin', e.target.value)}
-                  label={t('form.origin.label')}
-                  placeholder={t('form.origin.placeholder')}
-                  SelectProps={{
-                    native: true
-                  }}
-                >
-                  <option value="">{t('form.origin.placeholder')}</option>
-                  {mockOrigins.map((origin) => (
-                    <option key={origin.id} value={origin.id}>
-                      {isVietnamese ? origin.name : origin.name_en}
-                    </option>
-                  ))}
-                </TextField>
-              </Grid>
-
-              {/* Status */}
-              <Grid size={{ xs: 12, md: 6 }}>
-                <StatusChips
-                  options={mockStatuses}
-                  value={formData.status}
-                  onChange={(statusId) => handleFieldChange('status', statusId)}
-                />
-              </Grid>
 
               {/* Transaction Date */}
               <Grid size={{ xs: 12, md: 6 }}>
@@ -558,31 +529,52 @@ export default function AddAssetPage() {
                   fullWidth
                 />
               </Grid>
+              {/* Status */}
+              <Grid size={{ xs: 12, md: 6 }}>
+                <StatusChips
+                  options={mockStatuses}
+                  value={formData.status}
+                  onChange={(statusId) => handleFieldChange('status', statusId)}
+                />
+              </Grid>
 
-              {/* Description */}
-              <Grid size={{ xs: 12 }}>
+              {/* Origin */}
+              <Grid size={{ xs: 12, md: 6 }}>
                 <TextField
                   fullWidth
                   multiline
-                  rows={3}
+                  rows={2}
+                  value={formData.origin}
+                  onChange={(e) => handleFieldChange('origin', e.target.value)}
+                  label={t('form.origin.label')}
+                  placeholder={t('form.origin.placeholder')}
+                />
+              </Grid>
+
+              {/* Description */}
+              <Grid size={{ xs: 12, md: 6 }}>
+                <TextField
+                  fullWidth
+                  multiline
+                  rows={2}
                   value={formData.description}
                   onChange={(e) => handleFieldChange('description', e.target.value)}
                   label={t('form.description.label')}
                   placeholder={t('form.description.placeholder')}
                   variant="outlined"
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderWidth: 2
-                      },
-                      '&:hover fieldset': {
-                        borderWidth: 2
-                      },
-                      '&.Mui-focused fieldset': {
-                        borderWidth: 2
-                      }
-                    }
-                  }}
+                  // sx={{
+                  //   '& .MuiOutlinedInput-root': {
+                  //     '& fieldset': {
+                  //       borderWidth: 2
+                  //     },
+                  //     '&:hover fieldset': {
+                  //       borderWidth: 2
+                  //     },
+                  //     '&.Mui-focused fieldset': {
+                  //       borderWidth: 2
+                  //     }
+                  //   }
+                  // }}
                 />
               </Grid>
             </Grid>

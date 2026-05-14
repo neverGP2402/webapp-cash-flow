@@ -6,11 +6,13 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import enTranslations from './en/common.json';
 import enFinancialReportsTranslations from './en/financial-reports.json';
 import enAddAssetTranslations from './en/add-asset.json';
+import enDebtManagementTranslations from './en/debt-management.json';
 import viCommonTranslations from './vi/common.json';
 import viFinancialReportsTranslations from './vi/financial-reports.json';
 import viAssetDetailTranslations from './vi/asset-detail.json';
 import viProfileSettingsTranslations from './vi/profile-settings.json';
 import viAddAssetTranslations from './vi/add-asset.json';
+import viDebtManagementTranslations from './vi/debt-management.json';
 import deTranslations from './de/common.json';
 import frTranslations from './fr/common.json';
 
@@ -69,6 +71,7 @@ const i18nConfig = {
       common: enTranslations,
       financialReports: enFinancialReportsTranslations,
       addAsset: enAddAssetTranslations,
+      debtManagement: enDebtManagementTranslations,
     },
     vi: {
       common: viCommonTranslations,
@@ -76,6 +79,7 @@ const i18nConfig = {
       assetDetail: viAssetDetailTranslations,
       profileSettings: viProfileSettingsTranslations,
       addAsset: viAddAssetTranslations,
+      debtManagement: viDebtManagementTranslations,
     },
     de: {
       common: deTranslations,

@@ -1,0 +1,139 @@
+{
+  "pageTitle": "Công nợ",
+  "subtitle": "Quản lý khoản vay, cho vay và tiến độ thanh toán",
+  "overview": {
+    "totalOwed": "Tổng đang nợ",
+    "totalOwedToMe": "Tổng được nợ",
+    "totalPaid": "Tổng đã thanh toán",
+    "totalRemaining": "Tổng còn lại",
+    "upcomingDue": "Khoản sắp tới hạn",
+    "overdue": "Khoản quá hạn"
+  },
+  "filters": {
+    "all": "Tất cả",
+    "iOwe": "Tôi nợ người khác",
+    "owedToMe": "Người khác nợ tôi",
+    "installment": "Trả góp",
+    "overdue": "Quá hạn",
+    "upcoming": "Sắp tới hạn",
+    "searchPlaceholder": "Tìm kiếm theo tên hoặc số hợp đồng...",
+    "statusFilter": "Trạng thái",
+    "typeFilter": "Loại công nợ",
+    "dateFilter": "Thời gian"
+  },
+  "debtCard": {
+    "contractNumber": "Số hợp đồng",
+    "principal": "Tiền gốc",
+    "paid": "Đã trả",
+    "remaining": "Còn lại",
+    "progress": "Tiến độ",
+    "dueDate": "Ngày tới hạn",
+    "status": "Trạng thái",
+    "viewDetails": "Xem chi tiết"
+  },
+  "status": {
+    "all": "Tất cả",
+    "active": "Đang hoạt động",
+    "paid": "Đã thanh toán",
+    "overdue": "Quá hạn",
+    "pending": "Chờ xử lý",
+    "cancelled": "Đã hủy"
+  },
+  "timeline": {
+    "title": "Lịch thanh toán",
+    "subtitle": "Lịch sử và khoản sắp thanh toán",
+    "recentPayments": "Thanh toán gần đây",
+    "upcomingPayments": "Khoản sắp thanh toán",
+    "paymentHistory": "Lịch sử thanh toán",
+    "amount": "Số tiền",
+    "date": "Ngày",
+    "method": "Phương thức",
+    "note": "Ghi chú"
+  },
+  "charts": {
+    "debtVsPaid": "Nợ vs Đã trả",
+    "remainingDebt": "Công nợ còn lại",
+    "monthlyRepayment": "Thanh toán hàng tháng",
+    "debtDistribution": "Phân bổ công nợ",
+    "repaymentTrend": "Xu hướng thanh toán"
+  },
+  "counterparty": {
+    "title": "Thống kê đối tác",
+    "subtitle": "Phân tích đối tác giao dịch",
+    "topBorrowers": "Người vay nhiều nhất",
+    "slowPayers": "Người trả chậm nhiều nhất",
+    "largestDebts": "Công nợ lớn nhất",
+    "totalDebt": "Tổng công nợ",
+    "onTimeRate": "Tỷ lệ đúng hạn"
+  },
+  "warnings": {
+    "title": "Cảnh báo",
+    "overdueDebts": "Khoản quá hạn",
+    "upcomingDue": "Sắp tới hạn",
+    "highInterest": "Khoản lãi cao",
+    "unpaid": "Chưa thanh toán",
+    "daysOverdue": "{{days}} ngày quá hạn",
+    "daysUntilDue": "{{days}} ngày tới hạn",
+    "interestRate": "Lãi suất: {{rate}}%"
+  },
+  "actions": {
+    "addDebt": "Thêm công nợ",
+    "addPayment": "Thêm thanh toán",
+    "editDebt": "Sửa công nợ",
+    "deleteDebt": "Xóa công nợ",
+    "markAsPaid": "Đánh dấu đã trả",
+    "sendReminder": "Gửi nhắc nhở",
+    "export": "Xuất báo cáo"
+  },
+  "emptyState": {
+    "title": "Chưa có công nợ",
+    "description": "Bắt đầu quản lý công nợ của bạn để theo dõi khoản vay và cho vay",
+    "addFirstDebt": "Thêm công nợ đầu tiên"
+  },
+  "form": {
+    "addDebt": "Thêm công nợ mới",
+    "editDebt": "Sửa công nợ",
+    "counterparty": "Đối tác",
+    "counterpartyPlaceholder": "Chọn đối tác",
+    "type": "Loại công nợ",
+    "typePlaceholder": "Chọn loại",
+    "amount": "Số tiền",
+    "amountPlaceholder": "Nhập số tiền",
+    "interestRate": "Lãi suất",
+    "interestRatePlaceholder": "Nhập lãi suất (%)",
+    "startDate": "Ngày bắt đầu",
+    "dueDate": "Ngày tới hạn",
+    "description": "Mô tả",
+    "descriptionPlaceholder": "Nhập mô tả (tùy chọn)",
+    "contractNumber": "Số hợp đồng",
+    "contractNumberPlaceholder": "Nhập số hợp đồng",
+    "save": "Lưu",
+    "cancel": "Hủy"
+  },
+  "type": {
+    "all": "Tất cả",
+    "borrowing": "Vay",
+    "lending": "Cho vay",
+    "installment": "Trả góp",
+    "oneTime": "Một lần"
+  },
+  "validation": {
+    "counterpartyRequired": "Vui lòng chọn đối tác",
+    "typeRequired": "Vui lòng chọn loại công nợ",
+    "amountRequired": "Vui lòng nhập số tiền",
+    "amountPositive": "Số tiền phải lớn hơn 0",
+    "startDateRequired": "Vui lòng chọn ngày bắt đầu",
+    "dueDateRequired": "Vui lòng chọn ngày tới hạn",
+    "invalidDate": "Ngày tới hạn phải sau ngày bắt đầu"
+  },
+  "messages": {
+    "saveSuccess": "Đã lưu công nợ thành công",
+    "saveFailed": "Có lỗi xảy ra khi lưu",
+    "deleteSuccess": "Đã xóa công nợ thành công",
+    "deleteFailed": "Có lỗi xảy ra khi xóa",
+    "paymentSuccess": "Đã thêm thanh toán thành công",
+    "paymentFailed": "Có lỗi xảy ra khi thêm thanh toán",
+    "confirmDelete": "Bạn có chắc muốn xóa công nợ này?",
+    "confirmCancel": "Bạn có chắc muốn hủy? Dữ liệu sẽ bị mất."
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "pageTitle": "Debt Management",
+  "subtitle": "Manage loans, lending, and payment progress",
+  "overview": {
+    "totalOwed": "Total Owed",
+    "totalOwedToMe": "Total Owed to Me",
+    "totalPaid": "Total Paid",
+    "totalRemaining": "Total Remaining",
+    "upcomingDue": "Upcoming Due",
+    "overdue": "Overdue"
+  },
+  "filters": {
+    "all": "All",
+    "iOwe": "I Owe Others",
+    "owedToMe": "Others Owe Me",
+    "installment": "Installment",
+    "overdue": "Overdue",
+    "upcoming": "Upcoming",
+    "searchPlaceholder": "Search by name or contract number...",
+    "statusFilter": "Status",
+    "typeFilter": "Debt Type",
+    "dateFilter": "Time Range"
+  },
+  "debtCard": {
+    "contractNumber": "Contract Number",
+    "principal": "Principal",
+    "paid": "Paid",
+    "remaining": "Remaining",
+    "progress": "Progress",
+    "dueDate": "Due Date",
+    "status": "Status",
+    "viewDetails": "View Details"
+  },
+  "status": {
+    "all": "All",
+    "active": "Active",
+    "paid": "Paid",
+    "overdue": "Overdue",
+    "pending": "Pending",
+    "cancelled": "Cancelled"
+  },
+  "timeline": {
+    "title": "Payment Timeline",
+    "subtitle": "Payment history and upcoming payments",
+    "recentPayments": "Recent Payments",
+    "upcomingPayments": "Upcoming Payments",
+    "paymentHistory": "Payment History",
+    "amount": "Amount",
+    "date": "Date",
+    "method": "Method",
+    "note": "Note"
+  },
+  "charts": {
+    "debtVsPaid": "Debt vs Paid",
+    "remainingDebt": "Remaining Debt",
+    "monthlyRepayment": "Monthly Repayment",
+    "debtDistribution": "Debt Distribution",
+    "repaymentTrend": "Repayment Trend"
+  },
+  "counterparty": {
+    "title": "Counterparty Analytics",
+    "subtitle": "Transaction partner analysis",
+    "topBorrowers": "Top Borrowers",
+    "slowPayers": "Slowest Payers",
+    "largestDebts": "Largest Debts",
+    "totalDebt": "Total Debt",
+    "onTimeRate": "On-time Rate"
+  },
+  "warnings": {
+    "title": "Warnings",
+    "overdueDebts": "Overdue Debts",
+    "upcomingDue": "Upcoming Due",
+    "highInterest": "High Interest",
+    "unpaid": "Unpaid",
+    "daysOverdue": "{{days}} days overdue",
+    "daysUntilDue": "{{days}} days until due",
+    "interestRate": "Interest rate: {{rate}}%"
+  },
+  "actions": {
+    "addDebt": "Add Debt",
+    "addPayment": "Add Payment",
+    "editDebt": "Edit Debt",
+    "deleteDebt": "Delete Debt",
+    "markAsPaid": "Mark as Paid",
+    "sendReminder": "Send Reminder",
+    "export": "Export Report"
+  },
+  "emptyState": {
+    "title": "No Debts Yet",
+    "description": "Start managing your debts to track loans and lending",
+    "addFirstDebt": "Add First Debt"
+  },
+  "form": {
+    "addDebt": "Add New Debt",
+    "editDebt": "Edit Debt",
+    "counterparty": "Counterparty",
+    "counterpartyPlaceholder": "Select counterparty",
+    "type": "Debt Type",
+    "typePlaceholder": "Select type",
+    "amount": "Amount",
+    "amountPlaceholder": "Enter amount",
+    "interestRate": "Interest Rate",
+    "interestRatePlaceholder": "Enter interest rate (%)",
+    "startDate": "Start Date",
+    "dueDate": "Due Date",
+    "description": "Description",
+    "descriptionPlaceholder": "Enter description (optional)",
+    "contractNumber": "Contract Number",
+    "contractNumberPlaceholder": "Enter contract number",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "type": {
+    "all": "All",
+    "borrowing": "Borrowing",
+    "lending": "Lending",
+    "installment": "Installment",
+    "oneTime": "One-time"
+  },
+  "validation": {
+    "counterpartyRequired": "Please select a counterparty",
+    "typeRequired": "Please select a debt type",
+    "amountRequired": "Please enter an amount",
+    "amountPositive": "Amount must be greater than 0",
+    "startDateRequired": "Please select a start date",
+    "dueDateRequired": "Please select a due date",
+    "invalidDate": "Due date must be after start date"
+  },
+  "messages": {
+    "saveSuccess": "Debt saved successfully",
+    "saveFailed": "An error occurred while saving",
+    "deleteSuccess": "Debt deleted successfully",
+    "deleteFailed": "An error occurred while deleting",
+    "paymentSuccess": "Payment added successfully",
+    "paymentFailed": "An error occurred while adding payment",
+    "confirmDelete": "Are you sure you want to delete this debt?",
+    "confirmCancel": "Are you sure you want to cancel? Data will be lost."
+  }
+}

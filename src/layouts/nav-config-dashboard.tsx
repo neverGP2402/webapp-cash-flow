@@ -34,6 +34,11 @@ export const navData = [
     icon: icon('ic-analytics'),
   },
   {
+    title: 'Công nợ',
+    path: '/debt-management',
+    icon: icon('ic-analytics'),
+  },
+  {
     title: 'Mục tiêu tài chính',
     path: '/financial-goals',
     icon: icon('ticker-star'),
