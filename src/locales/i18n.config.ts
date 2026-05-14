@@ -4,7 +4,9 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 // Import translation files
 import enTranslations from './en/common.json';
+import enFinancialReportsTranslations from './en/financial-reports.json';
 import viCommonTranslations from './vi/common.json';
+import viFinancialReportsTranslations from './vi/financial-reports.json';
 import viAssetDetailTranslations from './vi/asset-detail.json';
 import viProfileSettingsTranslations from './vi/profile-settings.json';
 import viAddAssetTranslations from './vi/add-asset.json';
@@ -64,9 +66,11 @@ const i18nConfig = {
   resources: {
     en: {
       common: enTranslations,
+      financialReports: enFinancialReportsTranslations,
     },
     vi: {
       common: viCommonTranslations,
+      financialReports: viFinancialReportsTranslations,
       assetDetail: viAssetDetailTranslations,
       profileSettings: viProfileSettingsTranslations,
       addAsset: viAddAssetTranslations,
