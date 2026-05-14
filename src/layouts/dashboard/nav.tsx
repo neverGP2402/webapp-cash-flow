@@ -104,7 +104,17 @@ export function NavMobile({
     </Drawer>
   );
 }
-
+const logoImage = (
+    <img
+      src="/assets/images/logo.png"
+      alt="My Cash Flow Logo"
+      style={{
+        width: '100%',
+        height: '100%',
+        objectFit: 'contain',
+      }}
+    />
+  )
 // ----------------------------------------------------------------------
 
 export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {

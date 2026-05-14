@@ -21,12 +21,12 @@ export function NavUpgrade({ sx, ...other }: StackProps) {
       ]}
       {...other}
     >
-      <Box
+      {/* <Box
         component="img"
         alt="Cash Flow"
         src="/assets/images/logo.png"
         sx={{ width: 70, my: 2 }}
-      />
+      /> */}
 
       <Typography
         variant="h6"
