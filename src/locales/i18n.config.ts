@@ -7,6 +7,7 @@ import enTranslations from './en/common.json';
 import enFinancialReportsTranslations from './en/financial-reports.json';
 import enAddAssetTranslations from './en/add-asset.json';
 import enDebtManagementTranslations from './en/debt-management.json';
+import enDashboardTranslations from './en/dashboard.json';
 import viCommonTranslations from './vi/common.json';
 import viFinancialReportsTranslations from './vi/financial-reports.json';
 import viAssetDetailTranslations from './vi/asset-detail.json';
@@ -15,6 +16,7 @@ import viAddAssetTranslations from './vi/add-asset.json';
 import viDebtManagementTranslations from './vi/debt-management.json';
 import enWalletManagementTranslations from './en/wallet-management.json';
 import viWalletManagementTranslations from './vi/wallet-management.json';
+import viDashboardTranslations from './vi/dashboard.json';
 import deTranslations from './de/common.json';
 import frTranslations from './fr/common.json';
 
@@ -75,6 +77,7 @@ const i18nConfig = {
       addAsset: enAddAssetTranslations,
       debtManagement: enDebtManagementTranslations,
       walletManagement: enWalletManagementTranslations,
+      dashboard: enDashboardTranslations,
     },
     vi: {
       common: viCommonTranslations,
@@ -84,6 +87,7 @@ const i18nConfig = {
       addAsset: viAddAssetTranslations,
       debtManagement: viDebtManagementTranslations,
       walletManagement: viWalletManagementTranslations,
+      dashboard: viDashboardTranslations,
     },
     de: {
       common: deTranslations,

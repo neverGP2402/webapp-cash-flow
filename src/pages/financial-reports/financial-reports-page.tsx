@@ -12,6 +12,8 @@ import {
 } from '@mui/material';
 
 import { Iconify } from 'src/components/iconify';
+import { DashboardHero } from 'src/components/dashboard-hero';
+import { QuickActions } from 'src/components/quick-actions';
 
 import { useFinancialReports } from 'src/hooks/useFinancialReports';
 
@@ -41,6 +43,25 @@ export default function FinancialReportsPage() {
     filters,
     updateFilters,
   } = useFinancialReports();
+
+  // Extract hero data from overview metrics
+  const heroData = useMemo(() => {
+    if (!data) return null;
+    
+    const totalAssets = data.overview.find(m => m.id === 'netWorth')?.value || 0;
+    const monthlyChange = data.overview.find(m => m.id === 'profit')?.trend || 0;
+    const netWorth = data.overview.find(m => m.id === 'netWorth')?.value || 0;
+    const totalCash = data.overview.find(m => m.id === 'savings')?.value || 0;
+    const totalDebt = data.overview.find(m => m.id === 'debt')?.value || 0;
+
+    return {
+      totalAssets,
+      monthlyChange,
+      netWorth,
+      totalCash,
+      totalDebt,
+    };
+  }, [data]);
 
   const handleDateFilterChange = (newFilter: FilterOptions['timeRange']) => {
     setDateFilter(newFilter);
@@ -116,31 +137,23 @@ export default function FinancialReportsPage() {
 
   return (
     <Container maxWidth="xl" sx={{ p: { xs: 2, md: 3 } }}>
-      {/* Header */}
+      {/* Hero Section - New Fintech Style */}
       <Box sx={{ mb: 4 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
-          <Box
-            sx={{
-              p: 1.5,
-              borderRadius: 2,
-              background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
-              color: 'white',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Iconify icon={'solar:graph-up-bold' as any} width={28} />
-          </Box>
-          <Box>
-            <Typography variant="h3" fontWeight={700} sx={{ mb: 0.5 }}>
-              {t('pageTitle')}
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              {t('subtitle')}
-            </Typography>
-          </Box>
-        </Box>
+        {loading ? (
+          <Skeleton variant="rectangular" height={280} sx={{ borderRadius: 4 }} />
+        ) : (
+          heroData && (
+            <DashboardHero
+              userName="Minh Đức"
+              totalAssets={heroData.totalAssets}
+              monthlyChange={heroData.monthlyChange}
+              netWorth={heroData.netWorth}
+              totalCash={heroData.totalCash}
+              totalDebt={heroData.totalDebt}
+              isLoading={loading}
+            />
+          )
+        )}
       </Box>
 
       {/* Filter Bar */}
@@ -238,6 +251,14 @@ export default function FinancialReportsPage() {
           </>
         )}
       </Box>
+      {/* Quick Actions FAB */}
+      <QuickActions
+        onAddTransaction={() => console.log('Add transaction')}
+        onAddWallet={() => console.log('Add wallet')}
+        onAddAsset={() => console.log('Add asset')}
+        onAddDebt={() => console.log('Add debt')}
+        onAddGoal={() => console.log('Add goal')}
+      />
     </Container>
   );
 }

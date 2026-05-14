@@ -1,0 +1,116 @@
+{
+  "hero": {
+    "greeting": "Chào {{name}}",
+    "greetingMorning": "Chào buổi sáng",
+    "greetingAfternoon": "Chào buổi chiều",
+    "greetingEvening": "Chào buổi tối",
+    "status": "Tình hình tài chính của bạn",
+    "positiveGrowth": "Tài sản của bạn đang tăng trưởng tích cực trong tháng này.",
+    "stableGrowth": "Tài chính của bạn đang ổn định. Tiếp tục duy trì!",
+    "needsAttention": "Cần xem xét lại chi tiêu để cải thiện tình hình.",
+    "totalAssets": "Tổng tài sản",
+    "monthlyChange": "Thay đổi tháng này",
+    "netWorth": "Tài sản ròng",
+    "totalCash": "Tiền mặt",
+    "totalDebt": "Tổng nợ"
+  },
+  "summary": {
+    "totalAssets": "Tổng tài sản",
+    "monthlyIncome": "Thu tháng này",
+    "monthlyExpense": "Chi tháng này",
+    "cashFlow": "Dòng tiền",
+    "totalDebt": "Tổng nợ",
+    "profit": "Lợi nhuận",
+    "trend": "Xu hướng"
+  },
+  "wallets": {
+    "title": "Ví của tôi",
+    "subtitle": "Quản lý ví và số dư",
+    "bank": "Ngân hàng",
+    "ewallet": "Ví điện tử",
+    "cash": "Tiền mặt",
+    "investment": "Đầu tư",
+    "crypto": "Crypto",
+    "active": "Hoạt động",
+    "inactive": "Không hoạt động",
+    "balance": "Số dư",
+    "change": "Thay đổi"
+  },
+  "assets": {
+    "title": "Phân bổ tài sản",
+    "subtitle": "Cơ cấu danh mục đầu tư",
+    "cash": "Tiền mặt",
+    "gold": "Vàng",
+    "crypto": "Tiền điện tử",
+    "usd": "USD",
+    "others": "Khác",
+    "purchasePrice": "Giá mua",
+    "currentPrice": "Giá hiện tại",
+    "profit": "Lợi nhuận",
+    "allocation": "Phân bổ"
+  },
+  "debts": {
+    "title": "Công nợ",
+    "subtitle": "Quản lý khoản vay",
+    "iOwe": "Tôi nợ",
+    "owedToMe": "Người khác nợ",
+    "upcoming": "Sắp đến hạn",
+    "overdue": "Quá hạn",
+    "repaymentProgress": "Tiến độ trả nợ",
+    "dueDate": "Hạn trả",
+    "principal": "Gốc",
+    "remaining": "Còn lại"
+  },
+  "targets": {
+    "title": "Mục tiêu tài chính",
+    "subtitle": "Theo dõi tiến độ",
+    "savings": "Tiết kiệm",
+    "investment": "Đầu tư",
+    "emergency": "Quỹ khẩn cấp",
+    "progress": "Tiến độ",
+    "completed": "Hoàn thành",
+    "onTrack": "Đúng tiến độ",
+    "delayed": "Chậm tiến độ",
+    "estimatedCompletion": "Dự kiến hoàn thành"
+  },
+  "transactions": {
+    "title": "Giao dịch gần đây",
+    "subtitle": "Hoạt động tài chính mới nhất",
+    "viewAll": "Xem tất cả",
+    "income": "Thu nhập",
+    "expense": "Chi tiêu",
+    "today": "Hôm nay",
+    "yesterday": "Hôm qua",
+    "thisWeek": "Tuần này",
+    "earlier": "Sớm hơn"
+  },
+  "insights": {
+    "title": "Phân tích thông minh",
+    "subtitle": "Gợi ý từ hệ thống",
+    "spendingAlert": "Cảnh báo chi tiêu",
+    "savingTip": "Mẹo tiết kiệm",
+    "investmentOpportunity": "Cơ hội đầu tư",
+    "debtWarning": "Cảnh báo nợ",
+    "goalProgress": "Tiến độ mục tiêu"
+  },
+  "quickActions": {
+    "addTransaction": "Thêm giao dịch",
+    "addWallet": "Thêm ví",
+    "addAsset": "Thêm tài sản",
+    "addDebt": "Thêm công nợ",
+    "addGoal": "Thêm mục tiêu"
+  },
+  "empty": {
+    "noData": "Chưa có dữ liệu",
+    "noDataDescription": "Bắt đầu theo dõi tài chính của bạn bằng cách thêm giao dịch đầu tiên.",
+    "getStarted": "Bắt đầu ngay",
+    "learnMore": "Tìm hiểu thêm"
+  },
+  "filters": {
+    "today": "Hôm nay",
+    "thisWeek": "Tuần này",
+    "thisMonth": "Tháng này",
+    "thisYear": "Năm nay",
+    "allTime": "Tất cả"
+  }
+}

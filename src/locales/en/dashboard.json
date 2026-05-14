@@ -1,0 +1,116 @@
+{
+  "hero": {
+    "greeting": "Hello {{name}}",
+    "greetingMorning": "Good morning",
+    "greetingAfternoon": "Good afternoon",
+    "greetingEvening": "Good evening",
+    "status": "Your financial status",
+    "positiveGrowth": "Your assets are growing positively this month.",
+    "stableGrowth": "Your finances are stable. Keep it up!",
+    "needsAttention": "Review your spending to improve your situation.",
+    "totalAssets": "Total Assets",
+    "monthlyChange": "Monthly Change",
+    "netWorth": "Net Worth",
+    "totalCash": "Cash",
+    "totalDebt": "Total Debt"
+  },
+  "summary": {
+    "totalAssets": "Total Assets",
+    "monthlyIncome": "Monthly Income",
+    "monthlyExpense": "Monthly Expense",
+    "cashFlow": "Cash Flow",
+    "totalDebt": "Total Debt",
+    "profit": "Profit",
+    "trend": "Trend"
+  },
+  "wallets": {
+    "title": "My Wallets",
+    "subtitle": "Manage wallets and balances",
+    "bank": "Bank",
+    "ewallet": "E-Wallet",
+    "cash": "Cash",
+    "investment": "Investment",
+    "crypto": "Crypto",
+    "active": "Active",
+    "inactive": "Inactive",
+    "balance": "Balance",
+    "change": "Change"
+  },
+  "assets": {
+    "title": "Asset Allocation",
+    "subtitle": "Portfolio structure",
+    "cash": "Cash",
+    "gold": "Gold",
+    "crypto": "Cryptocurrency",
+    "usd": "USD",
+    "others": "Others",
+    "purchasePrice": "Purchase Price",
+    "currentPrice": "Current Price",
+    "profit": "Profit",
+    "allocation": "Allocation"
+  },
+  "debts": {
+    "title": "Debts",
+    "subtitle": "Manage loans",
+    "iOwe": "I Owe",
+    "owedToMe": "Owed to Me",
+    "upcoming": "Upcoming",
+    "overdue": "Overdue",
+    "repaymentProgress": "Repayment Progress",
+    "dueDate": "Due Date",
+    "principal": "Principal",
+    "remaining": "Remaining"
+  },
+  "targets": {
+    "title": "Financial Goals",
+    "subtitle": "Track progress",
+    "savings": "Savings",
+    "investment": "Investment",
+    "emergency": "Emergency Fund",
+    "progress": "Progress",
+    "completed": "Completed",
+    "onTrack": "On Track",
+    "delayed": "Delayed",
+    "estimatedCompletion": "Estimated Completion"
+  },
+  "transactions": {
+    "title": "Recent Transactions",
+    "subtitle": "Latest financial activity",
+    "viewAll": "View All",
+    "income": "Income",
+    "expense": "Expense",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "thisWeek": "This Week",
+    "earlier": "Earlier"
+  },
+  "insights": {
+    "title": "Smart Insights",
+    "subtitle": "System suggestions",
+    "spendingAlert": "Spending Alert",
+    "savingTip": "Saving Tip",
+    "investmentOpportunity": "Investment Opportunity",
+    "debtWarning": "Debt Warning",
+    "goalProgress": "Goal Progress"
+  },
+  "quickActions": {
+    "addTransaction": "Add Transaction",
+    "addWallet": "Add Wallet",
+    "addAsset": "Add Asset",
+    "addDebt": "Add Debt",
+    "addGoal": "Add Goal"
+  },
+  "empty": {
+    "noData": "No Data Yet",
+    "noDataDescription": "Start tracking your finances by adding your first transaction.",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "filters": {
+    "today": "Today",
+    "thisWeek": "This Week",
+    "thisMonth": "This Month",
+    "thisYear": "This Year",
+    "allTime": "All Time"
+  }
+}
