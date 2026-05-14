@@ -41,7 +41,7 @@ export const navData = [
   {
     title: 'Ví của tôi',
     path: '/wallet-management',
-    icon: icon('solar:wallet-bold'),
+    icon: icon('ic-my-wallet'),
   },
   {
     title: 'Mục tiêu tài chính',
