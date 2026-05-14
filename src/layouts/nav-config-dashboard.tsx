@@ -39,6 +39,11 @@ export const navData = [
     icon: icon('ic-analytics'),
   },
   {
+    title: 'Ví của tôi',
+    path: '/wallet-management',
+    icon: icon('solar:wallet-bold'),
+  },
+  {
     title: 'Mục tiêu tài chính',
     path: '/financial-goals',
     icon: icon('ticker-star'),

@@ -29,6 +29,7 @@ export const SignUpPage = lazy(() => import('src/pages/sign-up'));
 export const ProductsPage = lazy(() => import('src/pages/products'));
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
 export const DebtManagementPage = lazy(() => import('src/pages/debt-management'));
+export const WalletManagementPage = lazy(() => import('src/pages/wallet-management'));
 
 const renderFallback = () => (
   <Box
@@ -71,6 +72,7 @@ export const routesSection: RouteObject[] = [
       { path: 'financial-reports', element: <FinancialReportsPage /> },
       { path: 'profile-settings', element: <ProfileSettingsPage /> },
       { path: 'debt-management', element: <DebtManagementPage />},
+      { path: 'wallet-management', element: <WalletManagementPage />},
       { path: 'user', element: <UserPage /> },
       { path: 'products', element: <ProductsPage /> },
       { path: 'blog', element: <BlogPage /> },

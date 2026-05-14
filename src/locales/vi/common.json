@@ -146,6 +146,79 @@
     "addProduct": "Thêm sản phẩm",
     "noProducts": "Chưa có sản phẩm nào. Click + để thêm sản phẩm."
   },
+  "walletManagement": {
+    "pageTitle": "Ví của tôi",
+    "subtitle": "Quản lý tài khoản ngân hàng, ví điện tử và dòng tiền cá nhân",
+    "types": {
+      "bank": "Ngân hàng",
+      "ewallet": "Ví điện tử",
+      "cash": "Tiền mặt",
+      "investment": "Đầu tư",
+      "crypto": "Crypto"
+    },
+    "status": {
+      "active": "Hoạt động",
+      "inactive": "Không hoạt động"
+    },
+    "overview": {
+      "totalWallets": "Tổng số ví",
+      "totalBalance": "Tổng tài sản",
+      "mostActiveWallet": "Ví hoạt động nhất",
+      "totalTransactions": "Giao dịch tháng này"
+    },
+    "filters": {
+      "search": "Tìm kiếm ví...",
+      "type": "Loại ví",
+      "status": "Trạng thái",
+      "allTypes": "Tất cả loại",
+      "allStatus": "Tất cả trạng thái"
+    },
+    "actions": {
+      "addWallet": "Thêm ví",
+      "viewAll": "Xem tất cả",
+      "cancel": "Hủy",
+      "create": "Tạo mới",
+      "save": "Lưu",
+      "delete": "Xóa"
+    },
+    "form": {
+      "name": "Tên ví",
+      "code": "Mã ví",
+      "type": "Loại ví",
+      "description": "Mô tả",
+      "active": "Đang hoạt động",
+      "inactive": "Không hoạt động"
+    },
+    "validation": {
+      "nameRequired": "Tên ví is bắt buộc",
+      "codeRequired": "Mã ví là bắt buộc"
+    },
+    "drawer": {
+      "createTitle": "Tạo ví mới",
+      "createSubtitle": "Thêm ví mới để quản lý tài chính",
+      "editTitle": "Chỉnh sửa ví",
+      "editSubtitle": "Cập nhật thông tin ví",
+      "preview": {
+        "walletName": "Tên ví",
+        "walletCode": "Mã ví"
+      }
+    },
+    "deleteModal": {
+      "title": "Xóa ví",
+      "description": "Bạn có chắc chắn muốn xóa ví này? Hành động này không thể hoàn tác.",
+      "warning": "Lưu ý: Ví đã xóa sẽ không thể khôi phục. Các giao dịch liên quan vẫn được giữ lại."
+    },
+    "card": {
+      "updated": "Cập nhật"
+    },
+    "emptyState": {
+      "title": "Chưa có ví nào",
+      "description": "Bắt đầu quản lý tài chính của bạn bằng cách tạo ví đầu tiên"
+    },
+    "recentTransactions": {
+      "title": "Giao dịch gần đây"
+    }
+  },
   "financialGoals": {
     "pageTitle": "Mục tiêu tài chính",
     "heroOverview": {
