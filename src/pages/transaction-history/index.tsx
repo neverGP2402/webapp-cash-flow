@@ -1,163 +1,36 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
   Box,
-  Typography,
   Card,
   CardContent,
   Fab,
   Skeleton,
+  Typography,
 } from '@mui/material';
 
 import { Iconify } from 'src/components/iconify';
-import { TransactionCard } from 'src/components/transaction-card';
-import { TransactionFilters } from 'src/components/transaction-filters';
 import { MiniAnalytics } from 'src/components/mini-analytics';
 import { QuickInsightsComponent } from 'src/components/quick-insights';
+import { TransactionCard } from 'src/components/transaction-card';
 import { TransactionDrawer } from 'src/components/transaction-drawer';
+import { TransactionFilters } from 'src/components/transaction-filters';
 
-import type { 
-  Transaction, 
-  TransactionGroup, 
-  FilterOptions, 
-  MonthlyStats, 
-  CategorySpending, 
-  QuickInsights 
+import { useToast } from 'src/components/toast';
+import { TransactionData, transactionService } from 'src/services/transaction-service';
+import type {
+  FilterOptions,
+  TransactionGroup
 } from 'src/types/transaction';
-
-// Mock data
-const mockTransactions: Transaction[] = [
-  {
-    id: '1',
-    name: 'Coffee & Breakfast',
-    description: 'Morning coffee at Starbucks',
-    amount: 150000,
-    type: 'expense',
-    status: 'completed',
-    category: { id: 'food', name: 'Food & Dining', icon: 'solar:cart-3-bold', color: '#FF6B6B' },
-    wallet: { id: 'credit', name: 'Credit Card', type: 'credit', balance: 5000000, currency: 'VND' },
-    date: '2024-01-15',
-    time: '08:30',
-    note: 'Meeting with client',
-    createdAt: '2024-01-15T08:30:00Z',
-    updatedAt: '2024-01-15T08:30:00Z',
-  },
-  {
-    id: '2',
-    name: 'Salary',
-    description: 'Monthly salary',
-    amount: 15000000,
-    type: 'income',
-    status: 'completed',
-    category: { id: 'salary', name: 'Salary', icon: 'solar:cart-3-bold', color: '#4ECDC4' },
-    wallet: { id: 'bank', name: 'Bank Account', type: 'bank', balance: 20000000, currency: 'VND' },
-    date: '2024-01-15',
-    time: '09:00',
-    createdAt: '2024-01-15T09:00:00Z',
-    updatedAt: '2024-01-15T09:00:00Z',
-  },
-  {
-    id: '3',
-    name: 'Grab Ride',
-    description: 'Trip to office',
-    amount: 85000,
-    type: 'expense',
-    status: 'completed',
-    category: { id: 'transport', name: 'Transportation', icon: 'solar:cart-3-bold', color: '#4ECDC4' },
-    wallet: { id: 'ewallet', name: 'Momo', type: 'ewallet', balance: 1500000, currency: 'VND' },
-    date: '2024-01-15',
-    time: '07:45',
-    createdAt: '2024-01-15T07:45:00Z',
-    updatedAt: '2024-01-15T07:45:00Z',
-  },
-  {
-    id: '4',
-    name: 'Shopping',
-    description: 'Grocery shopping at Big C',
-    amount: 1250000,
-    type: 'expense',
-    status: 'completed',
-    category: { id: 'shopping', name: 'Shopping', icon: 'solar:cart-3-bold', color: '#FFD93D' },
-    wallet: { id: 'cash', name: 'Cash', type: 'cash', balance: 3000000, currency: 'VND' },
-    date: '2024-01-14',
-    time: '18:30',
-    createdAt: '2024-01-14T18:30:00Z',
-    updatedAt: '2024-01-14T18:30:00Z',
-  },
-  {
-    id: '5',
-    name: 'Freelance Project',
-    description: 'Website design payment',
-    amount: 5000000,
-    type: 'income',
-    status: 'completed',
-    category: { id: 'freelance', name: 'Freelance', icon: 'solar:cart-3-bold', color: '#6C63FF' },
-    wallet: { id: 'bank', name: 'Bank Account', type: 'bank', balance: 20000000, currency: 'VND' },
-    date: '2024-01-14',
-    time: '14:20',
-    createdAt: '2024-01-14T14:20:00Z',
-    updatedAt: '2024-01-14T14:20:00Z',
-  },
-  {
-    id: '6',
-    name: 'Netflix Subscription',
-    description: 'Monthly subscription',
-    amount: 260000,
-    type: 'expense',
-    status: 'completed',
-    category: { id: 'entertainment', name: 'Entertainment', icon: 'solar:cart-3-bold', color: '#FF6B6B' },
-    wallet: { id: 'credit', name: 'Credit Card', type: 'credit', balance: 5000000, currency: 'VND' },
-    date: '2024-01-13',
-    time: '12:00',
-    createdAt: '2024-01-13T12:00:00Z',
-    updatedAt: '2024-01-13T12:00:00Z',
-  },
-];
-
-const mockMonthlyStats: MonthlyStats = {
-  totalExpense: 8500000,
-  totalIncome: 15000000,
-  totalTransactions: 45,
-  largestExpense: 2500000,
-};
-
-const mockTopCategories: CategorySpending[] = [
-  {
-    category: { id: 'food', name: 'Food & Dining', icon: 'solar:cart-3-bold', color: '#FF6B6B' },
-    amount: 2500000,
-    percentage: 29.4,
-    transactionCount: 15,
-  },
-  {
-    category: { id: 'transport', name: 'Transportation', icon: 'solar:cart-3-bold', color: '#4ECDC4' },
-    amount: 1200000,
-    percentage: 14.1,
-    transactionCount: 8,
-  },
-  {
-    category: { id: 'shopping', name: 'Shopping', icon: 'solar:cart-3-bold', color: '#FFD93D' },
-    amount: 1800000,
-    percentage: 21.2,
-    transactionCount: 6,
-  },
-  {
-    category: { id: 'entertainment', name: 'Entertainment', icon: 'solar:cart-3-bold', color: '#FF6B6B' },
-    amount: 800000,
-    percentage: 9.4,
-    transactionCount: 4,
-  },
-];
-
-const mockQuickInsights: QuickInsights = {
-  highestSpendingDay: { date: '2024-01-14', amount: 3750000 },
-  topSpendingCategory: mockTopCategories[0],
-  largestTransaction: mockTransactions[4],
-  spendingTrend: { trend: 'increasing', percentage: 15, period: 'this_month' },
-};
 
 export default function TransactionHistoryPage() {
   const { t } = useTranslation('common');
+  const { showSuccess, showError } = useToast();
+
+  const [transactions, setTransactions] = useState<TransactionData[]>([]);
+  const [totalItems, setTotalItems] = useState(0);
+  
   const [filters, setFilters] = useState<FilterOptions>({
     searchTerm: '',
     timeFilter: 'all',
@@ -165,13 +38,15 @@ export default function TransactionHistoryPage() {
     walletFilter: 'all',
     typeFilter: 'all',
   });
+
+  const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   // Transaction Drawer state
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerMode, setDrawerMode] = useState<'create' | 'edit'>('create');
-  const [selectedTransaction, setSelectedTransaction] = useState<any>(null);
+  const [selectedTransaction, setSelectedTransaction] = useState<TransactionData | null>(null);
 
   const handleOpenDrawer = () => {
     setDrawerOpen(true);
@@ -179,7 +54,7 @@ export default function TransactionHistoryPage() {
     setSelectedTransaction(null);
   };
 
-  const handleEditTransaction = (transaction: any) => {
+  const handleEditTransaction = (transaction: TransactionData) => {
     setDrawerOpen(true);
     setDrawerMode('edit');
     setSelectedTransaction(transaction);
@@ -191,36 +66,63 @@ export default function TransactionHistoryPage() {
   };
 
   const handleSaveTransaction = async (data: any) => {
-    // Here you would normally save to API
-    console.log('Saving transaction:', data);
-    
-    // For demo, just close drawer
-    handleCloseDrawer();
-    
-    // You could also update the transaction list here
-    // refreshTransactions();
+    try {
+      if (drawerMode === 'create') {
+        await transactionService.createTransaction(data);
+        showSuccess(t('transactionHistory.createSuccess'));
+      } else if (selectedTransaction) {
+        await transactionService.updateTransaction(selectedTransaction.id, data);
+        showSuccess(t('transactionHistory.updateSuccess'));
+      }
+      handleCloseDrawer();
+      fetchTransactions();
+    } catch (error) {
+      showError(error instanceof Error ? error.message : 'Action failed');
+    }
   };
 
-  // Simulate loading
+  const fetchTransactions = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const response = await transactionService.getTransactions({
+        page,
+        limit: 10,
+        type: filters.typeFilter !== 'all' ? filters.typeFilter.toUpperCase() : undefined,
+        wallet_id: filters.walletFilter !== 'all' ? filters.walletFilter : undefined,
+        // Note: Map other filters if API supports them
+      });
+      
+      // API response structure based on doc: { data: { data: [...], pagination: {...} } }
+      // Our service returns result.data which is the inner object
+      setTransactions(response.data || []);
+      setTotalItems(response.pagination?.total || 0);
+    } catch (error) {
+      showError('Failed to fetch transactions');
+      console.error(error);
+    } finally {
+      // Simulate a bit of loading for UX or use real status
+      setTimeout(() => setIsLoading(false), 500);
+    }
+  }, [page, filters, showSuccess, showError]);
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-    return () => clearTimeout(timer);
-  }, []);
+    fetchTransactions();
+  }, [fetchTransactions]);
 
   const groupedTransactions = useMemo(() => {
   // Group transactions by date
+  if (!transactions.length) return [];
+
   const today = new Date().toISOString().split('T')[0];
   const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
   
   const groups: TransactionGroup[] = [];
   
   // Get unique dates from transactions
-  const uniqueDates = [...new Set(mockTransactions.map(transaction => transaction.date))].sort().reverse();
+  const uniqueDates = [...new Set(transactions.map(transaction => transaction.date))].sort().reverse();
   
   uniqueDates.forEach(date => {
-    const transactionsForDate = mockTransactions.filter(transaction => transaction.date === date);
+    const transactionsForDate = transactions.filter(transaction => transaction.date === date);
     let label = date;
     
     if (date === today) {
@@ -236,15 +138,16 @@ export default function TransactionHistoryPage() {
     groups.push({
       date,
       label,
-      transactions: transactionsForDate,
+      transactions: transactionsForDate as any,
     });
   });
   
   return groups;
-}, [t]);
+}, [t, transactions]);
 
   const handleFiltersChange = (newFilters: FilterOptions) => {
     setFilters(newFilters);
+    setPage(1);
   };
 
   return (
@@ -284,8 +187,10 @@ export default function TransactionHistoryPage() {
           </Box>
         ) : (
           <MiniAnalytics 
-            monthlyStats={mockMonthlyStats} 
-            topCategories={mockTopCategories} 
+            // These might need real API endpoints for analytics
+            // Temporarily using empty or partial data until those APIs are integrated
+            monthlyStats={{ totalExpense: 0, totalIncome: 0, totalTransactions: totalItems, largestExpense: 0 }} 
+            topCategories={[]} 
           />
         )}
       </Box>
@@ -308,7 +213,22 @@ export default function TransactionHistoryPage() {
             ))}
           </Box>
         ) : (
-          <QuickInsightsComponent insights={mockQuickInsights} />
+          <QuickInsightsComponent
+            insights={{
+              highestSpendingDay: {
+                date: transactions.length > 0 ? transactions[0].date : new Date().toISOString(),
+                amount: 0,
+              },
+              topSpendingCategory: {
+                category: { id: '', name: 'N/A', icon: '📁', color: '#ccc' },
+                amount: 0,
+                percentage: 0,
+                transactionCount: 0,
+              },
+              largestTransaction: (transactions[0] || {}) as any,
+              spendingTrend: { trend: 'stable', percentage: 0, period: 'this_month' },
+            }}
+          />
         )}
       </Box>
 
@@ -356,7 +276,7 @@ export default function TransactionHistoryPage() {
                 {group.transactions.map((transaction) => (
                   <TransactionCard
                     key={transaction.id}
-                    transaction={transaction}
+                    transaction={transaction as any}
                   />
                 ))}
               </Box>
@@ -397,7 +317,7 @@ export default function TransactionHistoryPage() {
       <TransactionDrawer
         open={drawerOpen}
         mode={drawerMode}
-        transaction={selectedTransaction}
+        transaction={selectedTransaction as any}
         onClose={handleCloseDrawer}
         onSave={handleSaveTransaction}
       />

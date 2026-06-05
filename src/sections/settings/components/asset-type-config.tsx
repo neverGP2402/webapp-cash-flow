@@ -22,7 +22,7 @@ import { EmptyData } from 'src/components/empty-data';
 import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
 import { useToast } from 'src/components/toast';
-import { assetService, AssetTypeData } from 'src/services/asset-service';
+import { assetTypeService, AssetTypeData } from 'src/services/asset-type-service';
 
 const assetTypeLabels = {
   PHYSICAL: 'Tài sản vật lý',
@@ -52,7 +52,7 @@ export function AssetTypeConfig() {
     try {
       setLoading(true);
       setError(null);
-      const data = await assetService.getAssetTypes();
+      const data = await assetTypeService.getAssetTypes();
       setAssetTypes(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load asset types');
@@ -80,7 +80,7 @@ export function AssetTypeConfig() {
     if (assetTypeToDelete) {
       try {
         setSubmitting(true);
-        await assetService.deleteAssetType(assetTypeToDelete.id);
+        await assetTypeService.deleteAssetType(assetTypeToDelete.id);
         setAssetTypes(assetTypes.filter(type => type.id !== assetTypeToDelete.id));
         setDeleteDialogOpen(false);
         setAssetTypeToDelete(null);

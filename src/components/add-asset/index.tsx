@@ -40,51 +40,15 @@ import ProfitDisplay from './profit-display';
 import StatusChips from './status-chips';
 import RealtimeOverview from './realtime-overview';
 import QuickInsightCard from './quick-insight-card';
+import { assetTypeService } from 'src/services/asset-type-service';
+import { unitService } from 'src/services/unit-service';
+import { walletService } from 'src/services/wallet-service';
+import { assetInfoService } from 'src/pages/asset-info-service';
 
-// Mock data - In production, this would come from API
-const mockAssetTypes: AssetType[] = [
-  { asset_id: '1', asset_name: 'Vàng 9999', asset_code: 'gold', icon: '🥇' },
-  { asset_id: '2', asset_name: 'Bạc', asset_code: 'silver', icon: '🥈' },
-  { asset_id: '3', asset_name: 'USD', asset_code: 'usd', icon: '💵' },
-  { asset_id: '4', asset_name: 'Bitcoin', asset_code: 'btc', icon: '₿' },
-  { asset_id: '5', asset_name: 'Ethereum', asset_code: 'eth', icon: 'Ξ' },
-  { asset_id: '6', asset_name: 'Tiền mặt VND', asset_code: 'cash', icon: '💰' },
-  { asset_id: '7', asset_name: 'Ví MoMo', asset_code: 'eWallet', icon: '📱' },
-  { asset_id: '8', asset_name: 'Tài sản số', asset_code: 'digitalAsset', icon: '💎' },
-  { asset_id: '9', asset_name: 'Tài sản khác', asset_code: 'other', icon: '📦' }
-];
-
-const mockWallets: Wallet[] = [
-  { wallet_id: '1', wallet_name: 'Ví tiền mặt', wallet_type: 'cash', icon: '💰' },
-  { wallet_id: '2', wallet_name: 'Vietcombank', wallet_type: 'bank', bank_name: 'VCB', icon: '🏦' },
-  { wallet_id: '3', wallet_name: 'Techcombank', wallet_type: 'bank', bank_name: 'TCB', icon: '🏦' },
-  { wallet_id: '4', wallet_name: 'Ví MoMo', wallet_type: 'eWallet', icon: '📱' },
-  { wallet_id: '5', wallet_name: 'Ví Crypto', wallet_type: 'crypto', icon: '🔐' }
-];
-
-const mockUnits: Unit[] = [
-  { unit_id: '1', unit_name: 'Chỉ', unit_code: 'chi', symbol: 'chỉ' },
-  { unit_id: '2', unit_name: 'Gram', unit_code: 'g', symbol: 'g' },
-  { unit_id: '3', unit_name: 'USD', unit_code: 'usd', symbol: '$' },
-  { unit_id: '4', unit_name: 'BTC', unit_code: 'btc', symbol: '₿' },
-  { unit_id: '5', unit_name: 'ETH', unit_code: 'eth', symbol: 'Ξ' },
-  { unit_id: '6', unit_name: 'VND', unit_code: 'vnd', symbol: '₫' },
-  { unit_id: '7', unit_name: 'Cái', unit_code: 'pc', symbol: 'cái' }
-];
-
-const mockOrigins: AssetOrigin[] = [
-  { id: '0', name: 'Mua tích lũy', name_en: 'Purchase/Savings' },
-  { id: 'purchase', name: 'Mua tích lũy', name_en: 'Purchase/Savings' },
-  { id: 'investment', name: 'Đầu tư', name_en: 'Investment' },
-  { id: 'gift', name: 'Được tặng', name_en: 'Gift' },
-  { id: 'savings', name: 'Tiết kiệm', name_en: 'Savings' }
-];
-
-const mockStatuses: AssetStatus[] = [
-  { id: 'holding', name: 'Đang giữ', name_en: 'Holding', color: 'success' },
-  { id: 'lending', name: 'Cho vay', name_en: 'Lending', color: 'warning' },
-  { id: 'pledged', name: 'Cầm cố', name_en: 'Pledged', color: 'error' },
-  { id: 'investing', name: 'Đầu tư', name_en: 'Investing', color: 'info' }
+const ASSET_STATUS_OPTIONS: AssetStatus[] = [
+  { id: 'HOLDING', name: 'Đang giữ', name_en: 'Holding', color: 'success' },
+  { id: 'SOLD', name: 'Đã bán', name_en: 'Sold', color: 'error' },
+  { id: 'LENT', name: 'Cho vay', name_en: 'Lent', color: 'warning' }
 ];
 
 export default function AddAssetPage() {
@@ -98,16 +62,54 @@ export default function AddAssetPage() {
     amount: 0,
     price: 0,
     origin: '',
-    status: 'holding',
+    status: 'HOLDING',
     description: '',
     unit_id: '',
     transaction_date: new Date().toISOString().split('T')[0]
   });
 
+  // Data lists from API
+  const [assetTypes, setAssetTypes] = useState<AssetType[]>([]);
+  const [wallets, setWallets] = useState<Wallet[]>([]);
+  const [units, setUnits] = useState<Unit[]>([]);
+
   // Selected items
   const [selectedAsset, setSelectedAsset] = useState<AssetType | null>(null);
   const [selectedWallet, setSelectedWallet] = useState<Wallet | null>(null);
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
+
+  // Fetch initial data from APIs
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [assetTypesData, walletsData, unitsData] = await Promise.all([
+          assetTypeService.getAssetTypes(),
+          walletService.getWallets(),
+          unitService.getUnits()
+        ]);
+
+        setAssetTypes(assetTypesData.map((item) => ({
+          asset_id: String(item.id),
+          asset_name: item.name,
+          asset_code: item.code,
+          icon: item.icon
+        })));
+        setWallets(walletsData.map((item) => ({
+          wallet_id: String(item.id),
+          wallet_name: item.name,
+          wallet_type: item.type
+        })));
+        setUnits(unitsData.map((item) => ({
+          unit_id: String(item.id),
+          unit_name: item.name,
+          unit_code: item.code
+        })));
+      } catch (err) {
+        console.error('Failed to fetch initial data:', err);
+      }
+    };
+    fetchData();
+  }, []);
 
   // Exchange rate
   const [exchangeRate, setExchangeRate] = useState<ExchangeRate | null>(null);
@@ -215,7 +217,7 @@ export default function AddAssetPage() {
 
   // Get current asset status
   const currentAssetStatus = useMemo(() => {
-    return mockStatuses.find(s => s.id === formData.status) || null;
+    return ASSET_STATUS_OPTIONS.find(s => s.id === formData.status) || null;
   }, [formData.status]);
 
   // Handle form changes
@@ -262,8 +264,20 @@ export default function AddAssetPage() {
 
     setSubmitting(true);
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const payload = {
+        asset_id: Number(formData.asset_id),
+        wallet_id: Number(formData.wallet_id),
+        amount: Number(formData.amount),
+        price: Number(formData.price),
+        unit_id: Number(formData.unit_id),
+        // Format date to ISO with time as required by API
+        transaction_date: `${formData.transaction_date}T${new Date().toLocaleTimeString('it-IT')}`,
+        origin: formData.origin,
+        status: formData.status,
+        description: formData.description
+      };
+
+      await assetInfoService.createAssetInfo(payload);
 
       setSnackbar({
         open: true,
@@ -292,7 +306,7 @@ export default function AddAssetPage() {
           amount: 0,
           price: 0,
           origin: '',
-          status: 'holding',
+          status: 'HOLDING',
           description: '',
           unit_id: '',
           transaction_date: new Date().toISOString().split('T')[0]
@@ -326,7 +340,7 @@ export default function AddAssetPage() {
         amount: 0,
         price: 0,
         origin: '',
-        status: 'holding',
+        status: 'HOLDING',
         description: '',
         unit_id: '',
         transaction_date: new Date().toISOString().split('T')[0]
@@ -345,7 +359,7 @@ export default function AddAssetPage() {
       amount: 0,
       price: 0,
       origin: '',
-      status: 'holding',
+      status: 'HOLDING',
       description: '',
       unit_id: '',
       transaction_date: new Date().toISOString().split('T')[0]
@@ -432,7 +446,7 @@ export default function AddAssetPage() {
                     setSelectedAsset(asset);
                     handleFieldChange('asset_id', asset?.asset_id || '');
                   }}
-                  options={mockAssetTypes}
+                  options={assetTypes}
                   error={!!errors.asset_id}
                   helperText={errors.asset_id}
                 />
@@ -446,7 +460,7 @@ export default function AddAssetPage() {
                     setSelectedWallet(wallet);
                     handleFieldChange('wallet_id', wallet?.wallet_id || '');
                   }}
-                  options={mockWallets}
+                  options={wallets}
                   error={!!errors.wallet_id}
                   helperText={errors.wallet_id}
                 />
@@ -469,7 +483,7 @@ export default function AddAssetPage() {
                   fullWidth
                   value={formData.unit_id}
                   onChange={(e) => {
-                    const unit = mockUnits.find(u => u.unit_id === e.target.value);
+                    const unit = units.find(u => u.unit_id === e.target.value);
                     setSelectedUnit(unit || null);
                     handleFieldChange('unit_id', e.target.value);
                   }}
@@ -482,7 +496,7 @@ export default function AddAssetPage() {
                   inputProps={{}}
                 >
                   <option value="">{t('form.unit.label')}</option>
-                  {mockUnits.map((unit) => (
+                  {units.map((unit) => (
                     <option key={unit.unit_id} value={unit.unit_id}>
                       {unit.unit_name} ({unit.symbol})
                     </option>
@@ -532,7 +546,7 @@ export default function AddAssetPage() {
               {/* Status */}
               <Grid size={{ xs: 12, md: 6 }}>
                 <StatusChips
-                  options={mockStatuses}
+                  options={ASSET_STATUS_OPTIONS}
                   value={formData.status}
                   onChange={(statusId) => handleFieldChange('status', statusId)}
                 />

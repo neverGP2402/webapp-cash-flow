@@ -30,7 +30,7 @@ export interface UpdateAssetTypeRequest extends UpdateRequest {
 export type PaginatedAssetTypesResponse = PaginatedApiResponse<AssetTypeData>;
 export type AssetTypeResponse = ApiResponse<AssetTypeData>;
 
-class AssetService {
+class AssetTypeService {
   private baseUrl = buildApiUrl('/common/assets');
 
   async getAssetTypes(): Promise<AssetTypeData[]> {
@@ -105,4 +105,4 @@ class AssetService {
   }
 }
 
-export const assetService = new AssetService();
+export const assetTypeService = new AssetTypeService();

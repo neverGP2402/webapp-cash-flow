@@ -19,8 +19,8 @@ import { Iconify } from 'src/components/iconify';
 import { useToast } from 'src/components/toast';
 import { UnitSelector } from 'src/components/unit-selector';
 
-import type { AssetTypeData, CreateAssetTypeRequest, UpdateAssetTypeRequest } from 'src/services/asset-service';
-import { assetService } from 'src/services/asset-service';
+import type { AssetTypeData, CreateAssetTypeRequest, UpdateAssetTypeRequest } from 'src/services/asset-type-service';
+import { assetTypeService } from 'src/services/asset-type-service';
 
 const availableIcons = [
   'mdi:cash',
@@ -92,7 +92,7 @@ export function AssetTypeDialog({
           unit_id: formData.unitId,
           type: formData.type,
         };
-        const updatedAssetType = await assetService.updateAssetType(editingAssetType.id, updateData);
+        const updatedAssetType = await assetTypeService.updateAssetType(editingAssetType.id, updateData);
         toast.showSuccess('Cập nhật loại tài sản thành công!');
         onAssetTypeUpdated?.(updatedAssetType);
       } else {
@@ -104,7 +104,7 @@ export function AssetTypeDialog({
           unit_id: formData.unitId,
           type: formData.type,
         };
-        const newAssetType = await assetService.createAssetType(createData);
+        const newAssetType = await assetTypeService.createAssetType(createData);
         toast.showSuccess('Thêm loại tài sản thành công!');
         onAssetTypeCreated?.(newAssetType);
       }
