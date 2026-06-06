@@ -89,6 +89,11 @@ export const navData = [
   //   icon: icon('ic-lock'),
   // },
   {
+    title: 'Cấu hình giao dịch',
+    path: '/config-transaction',
+    icon: icon('setting'),
+  },
+  {
     title: 'Cấu hình chung',
     path: '/settings',
     icon: icon('setting'),

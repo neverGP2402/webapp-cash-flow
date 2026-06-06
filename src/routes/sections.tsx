@@ -30,6 +30,7 @@ export const ProductsPage = lazy(() => import('src/pages/products'));
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
 export const DebtManagementPage = lazy(() => import('src/pages/debt-management'));
 export const WalletManagementPage = lazy(() => import('src/pages/wallet-management'));
+export const ConfigTransactionPage = lazy(() => import('src/pages/config-transaction'));
 
 const renderFallback = () => (
   <Box
@@ -76,6 +77,7 @@ export const routesSection: RouteObject[] = [
       { path: 'user', element: <UserPage /> },
       { path: 'products', element: <ProductsPage /> },
       { path: 'blog', element: <BlogPage /> },
+      { path: 'config-transaction', element: <ConfigTransactionPage /> },
       { path: 'settings', element: <SettingsPage /> },
     ],
   },
