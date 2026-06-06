@@ -42,7 +42,7 @@ import RealtimeOverview from './realtime-overview';
 import QuickInsightCard from './quick-insight-card';
 import { assetTypeService } from 'src/services/asset-type-service';
 import { unitService } from 'src/services/unit-service';
-import { walletService } from 'src/services/wallet-service';
+import { walletService } from 'src/services/my-wallet-service';
 import { assetInfoService } from 'src/pages/asset-info-service';
 
 const ASSET_STATUS_OPTIONS: AssetStatus[] = [
@@ -51,7 +51,7 @@ const ASSET_STATUS_OPTIONS: AssetStatus[] = [
   { id: 'LENT', name: 'Cho vay', name_en: 'Lent', color: 'warning' }
 ];
 
-export default function AddAssetPage() {
+export default function AddMyAssetPage() {
   const { t, i18n } = useTranslation('addAsset');
   const isVietnamese = i18n.language === 'vi';
 

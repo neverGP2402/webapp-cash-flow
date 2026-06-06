@@ -38,7 +38,7 @@ interface AssetDetailPageProps {
   onAddTransaction?: () => void;
 }
 
-export function AssetDetailPage({
+export function MyAssetDetailPage({
   assetId,
   data,
   isLoading = false,

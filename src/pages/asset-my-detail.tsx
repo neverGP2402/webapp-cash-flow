@@ -2,7 +2,7 @@ import { CONFIG } from 'src/config-global';
 
 import { Container } from '@mui/material';
 
-import { AssetDetailPage } from 'src/components/asset-detail';
+import { MyAssetDetailPage } from 'src/components/asset-detail';
 
 // ----------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ export default function Page() {
       <meta name="keywords" content="tài sản, chi tiết, quản lý tài chính, cash flow" />
 
       <Container maxWidth="xl">
-        <AssetDetailPage 
+        <MyAssetDetailPage 
           assetId="gold-sjc"
           onPeriodChange={(period) => console.log('Period changed:', period)}
           onActionClick={(action) => console.log('Action clicked:', action)}

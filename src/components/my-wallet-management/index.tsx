@@ -22,7 +22,7 @@ import { OverviewCards } from './overview-cards';
 import { WalletCard } from './wallet-card';
 import { WalletDrawer } from './wallet-drawer';
 import { DeleteWalletModal } from './delete-wallet-modal';
-import { walletService } from 'src/services/wallet-service';
+import { walletService } from 'src/services/my-wallet-service';
 import type { Wallet, WalletFormData, WalletFilterOptions, WalletOverview, WalletTransaction } from 'src/types/wallet';
 
 export default function WalletManagementPage() {

@@ -1,7 +1,7 @@
 // Wallet Management Types
 
 export interface Wallet {
-  id: string;
+  id: number;
   user_id: string;
   code: string;
   name: string;

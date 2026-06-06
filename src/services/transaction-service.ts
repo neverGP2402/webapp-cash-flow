@@ -45,9 +45,11 @@ class TransactionService {
       }
     });
 
+    const headers = getAuthHeaders();
+
     const response = await fetch(`${this.baseUrl}?${query}`, {
       method: 'GET',
-      headers: getAuthHeaders(),
+      headers,
     });
 
     if (!response.ok) throw new Error(`Failed to fetch transactions: ${response.statusText}`);
@@ -86,9 +88,11 @@ class TransactionService {
   }
 
   async deleteTransaction(id: string | number) {
+    const headers = getAuthHeaders();
+
     const response = await fetch(`${this.baseUrl}/${id}`, {
       method: 'DELETE',
-      headers: getAuthHeaders(),
+      headers,
     });
 
     if (!response.ok) throw new Error(`Failed to delete transaction: ${response.statusText}`);

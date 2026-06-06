@@ -15,8 +15,8 @@ import { RouteGuard } from 'src/components/route-guard/index';
 
 export const DashboardPage = lazy(() => import('src/pages/dashboard'));
 export const AssetsPage = lazy(() => import('src/pages/assets'));
-export const AddAssetPage = lazy(() => import('src/pages/add-asset'));
-export const AssetDetailPage = lazy(() => import('src/pages/asset-detail'));
+export const AddAssetPage = lazy(() => import('src/pages/add-my-asset'));
+export const AssetDetailPage = lazy(() => import('src/pages/asset-my-detail'));
 export const FinancialGoalsPage = lazy(() => import('src/pages/financial-goals'));
 export const TransactionHistoryPage = lazy(() => import('src/pages/transaction-history'));
 export const FinancialReportsPage = lazy(() => import('src/pages/financial-reports'));
